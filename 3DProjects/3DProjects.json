@@ -1,0 +1,190 @@
+[
+    {
+        "uniqueName": "Chair",
+        "projectTitle": "Chair",
+        "folder": "chair",
+        "titleImage": "chair.jpg",
+        "model": "chair.glb",
+        "date": "12/1/20",
+        "size": "457MB",
+        "textureRez": "4K (4096x4096)",
+        "verts": "test",
+        "faces": "test",
+        "mats": "tesst",
+        "description": "test test test test",
+        "images": [
+            "chair1.jpg"
+        ],
+        "thumbnails": [
+            "chair0.png",
+            "chair1.png"
+        ]
+    },
+    {
+        "uniqueName": "Redbot",
+        "projectTitle": "Red Robot",
+        "folder": "redbot",
+        "titleImage": "redbot.jpg",
+        "model": "redbot.glb",
+        "date": "08/13/20",
+        "size": "470MB",
+        "textureRez": "4K (4096x4096)",
+        "verts": "429,301",
+        "faces": "395,037",
+        "mats": "7",
+        "description": "This Red Robot is a 3D model of a friends drawing. The model was created and rendered in Blender, the textures were created in Substance Painter, the entire process took aproximately 50-60 hours.",
+        "images": [
+            "redbot1.jpg",
+            "redbot2.jpg",
+            "redbot3.jpg",
+            "redbot4.jpg",
+            "redbot5.jpg"
+        ],
+        "thumbnails": [
+            "redbot0.png",
+            "redbot1.png",
+            "redbot2.png",
+            "redbot3.png",
+            "redbot4.png",
+            "redbot5.png"
+        ]
+    },
+	{
+        "uniqueName": "Stove",
+        "projectTitle": "Cast Iron Stove",
+        "folder": "stove",
+        "titleImage": "stove.jpg",
+        "model": "stove.glb",
+        "date": "6/25/20",
+        "size": "244MB",
+        "textureRez": "4K (4096x4096)",
+        "verts": "11,512",
+        "faces": "22,050",
+        "mats": "4",
+        "description": "This Cast iron stove is a 3D model that was created as a comission. The model was created and rendered in Blender, the textures were created in Substance Painter, the entire process took aproximately 20-30 hours.",
+        "images": [
+            "stove1.jpg",
+            "stove2.jpg"
+        ],
+        "thumbnails": [
+            "stove0.png",
+            "stove1.png",
+            "stove2.png"
+        ]
+    },
+    {
+        "uniqueName": "CatBed",
+        "projectTitle": "Cat Bed",
+        "folder": "catbed",
+        "titleImage": "catbed.jpg",
+        "model": "catbed.glb",
+        "date": "06/30/20",
+        "size": "18MB",
+        "textureRez": "4K (4096x4096)",
+        "verts": "34,628",
+        "faces": "67,313",
+        "mats": "8",
+        "description": "This Cat Bed was created as a commission. The model was created and rendered in Blender, the textures were created in Substance Painter, the entire process took aproximately 30-40 hours.",
+        "images": [
+            "catbed1.jpg",
+            "catbed2.jpg",
+            "catbed3.jpg"
+        ],
+        "thumbnails": [
+            "catbed0.png",
+            "catbed1.png",
+            "catbed2.png",
+            "catbed3.png"
+        ]
+    },
+    {
+        "uniqueName": "Stairs",
+        "projectTitle": "Industrial Stairs",
+        "folder": "staircase",
+        "titleImage": "stairs.jpg",
+        "model": "stairs.glb",
+        "date": "06/14/20",
+        "size": "570KB",
+        "textureRez": "1024x1024",
+        "verts": "1,134",
+        "faces": "1,134",
+        "mats": "4",
+        "description": "This staircase was created as a game asset. The primary goals were to have a low polygon set of stairs that still looked good and fit the mood of an industrial facility. The model was created and rendered in Blender, the textures are from CC0textures, the entire process took aproximately 2-5 hours.",
+        "images": [
+            "stairs1.jpg",
+            "stairs2.jpg",
+            "stairs3.jpg"
+        ],
+        "thumbnails": [
+            "stairs0.png",
+            "stairs1.png",
+            "stairs2.png",
+            "stairs3.png"
+        ]
+    },
+    {
+        "uniqueName": "YellowBot",
+        "projectTitle": "Yellow Robot",
+        "folder": "yellowbot",
+        "titleImage": "yellowbot0.jpg",
+        "model": "yellowbot.glb",
+        "date": "04/29/20",
+        "size": "4MB",
+        "textureRez": "Procedural",
+        "verts": "19,138",
+        "faces": "18,822",
+        "mats": "4",
+        "description": "This Yellow Robot is a 3D model of a friends drawing. The model was created and rendered in Blender, the textures were created using blenders node editer, the entire process took aproximately 20-30 hours.",
+        "images": [
+            "yellowbot0.jpg",
+            "yellowbot1.jpg",
+            "yellowbot2.jpg",
+            "yellowbot3.jpg",
+            "yellowbot4.jpg",
+            "yellowbot5.jpg"
+        ],
+        "thumbnails": [
+            "yellowbot00.png",
+            "yellowbot0.png",
+            "yellowbot1.png",
+            "yellowbot2.png",
+            "yellowbot3.png",
+            "yellowbot4.png",
+            "yellowbot5.png"
+        ]
+    },
+    {
+        "uniqueName": "Foods",
+        "projectTitle": "Various Foods",
+        "folder": "foods",
+        "titleImage": "foods.jpg",
+        "model": "foods.glb",
+        "date": "05/20/20 - 06/06/20",
+        "size": "58KB - 110MB",
+        "textureRez": "1024x1024",
+        "verts": "Various",
+        "faces": "Various",
+        "mats": "1 per food item",
+        "description": "These foods were created by commission for a game. The primary goals were to have a variaty of low polygon foods. The model was created and rendered in Blender, the textures were painted in blender using projection from real life pictures. the entire process took aproximately 2-5 hours per food item.",
+        "images": [
+            "apple.jpg",
+            "banana.jpg",
+            "bread.jpg",
+            "carrot.jpg",
+            "chicken.jpg",
+            "choco.jpg",
+            "orange.jpg"
+        ],
+        "thumbnails": [
+            "foodmodels.png",
+            "apple.png",
+            "banana.png",
+            "bread.png",
+            "carrot.png",
+            "chicken.png",
+            "choco.png",
+            "orange.png"
+        ]
+    }
+    
+]

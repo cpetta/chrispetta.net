@@ -1,0 +1,1 @@
+*.glb,*.png,*.mp4,*.jpg,*.gltf filter=lfs diff=lfs merge=lfs -text

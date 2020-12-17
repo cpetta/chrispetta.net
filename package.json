@@ -1,0 +1,25 @@
+{
+  "name": "chrispetta.net",
+  "version": "0.0.1",
+  "description": "Personal website for various work.",
+  "main": "index.html",
+  "scripts": {
+    "test": "sandpaper --lint --strict"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cpetta/chrispetta.net"
+  },
+  "keywords": [
+    "website"
+  ],
+  "author": "Christopher Petta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cpetta/chrispetta.net/issues"
+  },
+  "homepage": "chrispetta.net",
+  "dependencies": {
+    "@google/model-viewer": "^1.3.0"
+  }
+}
