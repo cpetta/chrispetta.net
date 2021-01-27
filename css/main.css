@@ -1,26 +1,41 @@
 @font-face {
+	font-family: 'Roboto-Light';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url(../fonts/Roboto/Roboto-Light.ttf);
+}
+@font-face {
 	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url(../fonts/Roboto/Roboto-Light.ttf);
+	src: url(../fonts/Roboto/Roboto-Medium.ttf);
+}
+@font-face {
+	font-family: 'Oxygen';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url(../fonts/Oxygen/Oxygen-Bold.ttf);
 }
 
 body,
 html {
+	background-color:#eee;
 	scroll-behavior: smooth;
 	color: #313131;
-	font-family: 'Roboto', "Arial", sans-serif;
-	font-size: 12pt;
+	font-family: 'Roboto-Light', "Arial", sans-serif;
+	font-size: 14pt;
+	letter-spacing: 1px;
 	margin: 0;
 	/*overflow-x: hidden;*/
 }
 nav, main {
 	line-height: 150%;
 }
-
 a {
-	color: #000;
+	color: #313131;
 	text-decoration: none;
 }
 header {
@@ -28,7 +43,7 @@ header {
 	display: grid;
 	grid-gap: 5px;
 	border-bottom: 3px solid rgb(49, 127, 230);
-	background-color: rgb(232, 246, 255);
+	background-color: rgb(220, 220, 220);
 }
 .logo {
 	grid-column: 1;
@@ -38,6 +53,7 @@ header {
 /* navigation */
 nav {
 	font-size: 16pt;
+	font-family: "Oxygen", "Roboto", "Arial", sans-serif;
 	grid-column: 2 / 9;
 	grid-row: 1;
 	grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
@@ -57,7 +73,7 @@ nav a {
 	padding: 15px;
 }
 nav a:hover, nav a:focus {
-	background-color: rgb(245, 251, 255);
+	background-color: rgb(251, 251, 251);
 }
 
 nav a:hover > .text .underline, nav a:focus > .text .underline {
@@ -65,7 +81,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	width:100%;
 	opacity: 100%;
 }
-
 .underline {
 	height:2px;
 	border-radius: 2px;
@@ -74,12 +89,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	width:65%;
 	transition: 0.2s ease-out;
 }
-/*
-nav a .navUnderline:hover {
-	padding:0px;
- 	border-bottom: 2px solid black;
-}
-*/
 .humburgcontainer {
 	display: none;
 	grid-column: 2;
@@ -117,37 +126,99 @@ nav a .navUnderline:hover {
 		border-top: 1px solid #555
 	}
 }
-#theCatch {
-	width: 100%;
+#about {
+	display:flex;
+	flex-wrap:nowrap;
+	padding:20px;
+	padding-top: 100px;
+	padding-bottom:100px;
+	min-height:50%;
+	justify-content: center;
 }
-.catchImgContainer {
-	position: relative;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	width: 100%;
-	margin-bottom:50px;
-}
-
-#catchVideo {
-	position: static;
-	width: 100%;
-	top: 0;
-	left: 0;
-	z-index: 0;
+@media only screen and (max-width: 860px) {
+	#about {
+		flex-wrap:wrap;
+	}
 }
 
-.catchText {
-	padding-top: 18%;
-	font-size: 32pt;
-	font-weight: 1000;
-	color: rgb(232, 246, 255);
+
+#aboutImg {
+	align-items: center;
+	display:flex;
+	max-height:80%;
+	height:100%;
+	min-width:200px;
+	min-height:500px;
+}
+#aboutImg img{
+	width:100%;
+	max-width:500px;
+	border-radius: 5px;
+	box-shadow: 0px 1px 10px 0px rgba(92,92,92,1);
+}
+#aboutText {
+	display:flex;
+	align-items: center;
+	padding:50px;
+	margin:0px;
+	/*min-width:400px;*/
+	width:100%;
+	max-width: 900px;
+}
+
+#webDev {
+	display:flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+	align-items: center;
+	display:flex;
+	flex-wrap:nowrap;
+	padding:20px;
+	padding-top: 100px;
+	padding-bottom:100px;
+	min-height:50%;
+	justify-content: center;
+}
+#webDev article{
+ width:100%;
+}
+.websiteTitle {
 	text-align: center;
-	text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-	line-height: 120%;
-	position: absolute;
-	width: 100%;
 }
+.webProject {
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.webProject p{
+	margin: 0px;
+}
+
+.website {
+	width:100%;
+}
+.webImg {
+	align-items: center;
+	display:flex;
+	height:100%;
+	min-width:200px;
+	min-height:500px;
+	padding:25px;
+}
+.webImg img{
+	width:100%;
+	max-width:800px;
+}
+
+.webText {
+	max-width: 800px;
+	padding:25px;
+}
+
+/* 3D projects */
 
 #webGLViewer {
 	display: none;
@@ -156,15 +227,16 @@ nav a .navUnderline:hover {
 
 .label {
 	font-size: 24pt;
-	font-weight: 700;
-	margin-bottom: 12px;
+	font-weight: 300;
+	font-family: "Oxygen", "Roboto", "Arial", sans-serif;
 	padding-top: 12px;
 	/*width: 100%;*/
 	transition: 0.2s ease-in-out;
 	text-align: center;
 }
 .label + hr {
-	margin:30px 100px 0px 100px;
+	margin:10px auto 10px auto;
+	width:80%;
 }
 .showcasewrapper {
 	display: flex;
@@ -202,14 +274,14 @@ nav a .navUnderline:hover {
 #modeling {
 	margin-top: 50px;
 }
-
+/*
 #about {
 	padding-left: 100px;
 	padding-right: 100px;
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
-
+*/
 #contact {
 	padding-left: 100px;
 	padding-right: 100px;
@@ -257,7 +329,7 @@ nav a .navUnderline:hover {
 }
 
 footer {
-	background-color: #eaeded;
+	background-color: rgb(220, 220, 220);
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 0.75em;
@@ -369,8 +441,8 @@ textarea:focus {
 
 /* CSS for 3D model showcase */
 
-body {
-    font-family: 'Roboto', 'Open Sans', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+#description {
+    font-family: 'Roboto-Light', 'Open Sans', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     font-size: 1rem;
     line-height: 1.5rem;
     color: hsl(213, 5%, 35%);
@@ -386,7 +458,8 @@ body {
     margin-bottom:20px;
     /*max-width:1000px;*/
     /*min-width:500px;*/
-    box-shadow: 0px 0px 25px #aaa;
+	box-shadow: 0px 0px 15px #aaa;
+	border-radius: 10px;
 }
 
 .clickable {
@@ -423,17 +496,17 @@ body {
 }
 
 .fullscreenViewer3d {
-    position:absolute;
+    position:fixed;
     top:0px;
     left:0px;
-    background-color: #000;
+    background-color: rgb(214,211,202);
     /*border-radius: 3px;
     box-shadow: 0px 1px 5px #222;*/
     height:100%;
     /*width: 100%;*/
     min-width:500px;
-    overflow-x:hidden;
-
+	overflow-x:hidden;
+	z-index:1;
 }
 
 #additionalOptionsContainer {
@@ -479,7 +552,7 @@ ul.specs {
 
 ul.specs li {
     padding-bottom:20px;
-    min-width: 150px;
+    min-width: 177px;
 }
 ul.specs li hr {
     border-top: 1px solid;

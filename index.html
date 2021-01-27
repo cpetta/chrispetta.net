@@ -10,7 +10,7 @@
 
 <body>
 	<header id="home">
-		<img class="logo" alt="Logo" src="images/portlogo.svg" height="50" width="50" />
+		<a href="#"><img class="logo" alt="Logo" src="images/portlogo.svg" height="50" width="50" /></a>
 		<div class="humburgcontainer" onclick="navtoggle()">
 			<div class="hamburg"><!--
 				<div class="hambar top"></div>
@@ -61,142 +61,189 @@
 	
 	<main>
 		<a  href="#home" id="gotoTopBtn"><div class="upArrow"></div></a>
-		<div class="catchImgContainer">
+			<div id="about">
+				<div id="aboutImg">
+					<img src="images/chris.jpg"/ alt="Picture of Chris wearing a blue and white checkered dress shirt.">
+				</div>
+				
+				<div id="aboutText">
+					<p>
+						<strong>Chris Petta</strong> is a web developer living in Grand Rapids, MI. He has worked as the Teacher's Assistant for a Web and Game Development course for the past 8 years.
+						In that role, He assists students as they learn several coding languages including, HTML5, CSS, JavaScript, C++, and C#.
+						In addition to working, he is currently pursuing a B.S. in computer science at Davenport University. <br />
+						Chris loves to read about and experiment with new things. He has hosted and run several Apache, email, and game servers.
+						Built several computers, flashed a custom rom on his phone, and written scripts to automate repetitive tasks.<br />
+						In his free time, Chris enjoys creating 3D models, playing games with friends, and riding his bicycle.<br />
+					</p>
+				</div>
+			</div>
+			<!--
 			<div class="catchText">
 				3D Models by Commission
 			</div>
 			<video id="catchVideo" autoplay muted loop>
 				<source src="images/webIntro3.mp4" type="video/mp4">
 			</video>
-		</div>
+			-->
 
 		<div id="webDev">	
 			<div class="label">Website Development</div>
-			<div class="showcasewrapper">
-				Coming soon&trade;.
-			</div>
+			<hr />
+			<article>
+				<!--Coming soon&trade;.-->
+				
+				<div class="webProject">
+					<div class="webImg">
+						<img clsas="webdisplays" src="images/kcDisplays.png" />
+					</div>
+					<div>
+						<h1 class="websiteTitle">Kuzmaclass - Homepage</h1>
+						<p class="webText">
+							The kuzmaclass website provides useful information for students and parents, displays.
+							I was asked to clean up some aspects of the site. Specifically, to reduce the complexity of the code, add a student showcase, and make the site touchscreen friendly.
+							I reduced the complexity of the code by adding comments, removing anything that was unused, or redundant. The showcase was created using standard HTML5 and CSS3. And the site was made touchscreen friendly by increasing the size of hyperlinks, creating a mobile friendly navigation menu, and modifying the layout to work at mobile resolutions.
+						</p>
+					</div>
+				</div>
+				<div class="webProject">
+					<div class="webImg">
+						<img clsas="webdisplays" src="images/SandboxDisplays.png" />
+					</div>
+					<div>
+						<h1 class="websiteTitle">Kuzmaclass - Sandbox</h1>
+						<p class="webText">
+							The sandbox is a webpage that was created to act as a portal to student projects. It started off very plain, without anything but links to other webpages.
+							After a while, it became hard to find specific projects, and we needed a way to sort what was there. The current sandbox page allows all projects to be searched and sorted.
+							The primary goals of this project were to store the information for each student project in a way that would make them more portable. Allow them the list of student projects to be sorted. And organize the student projects into logical groups.
+							These goals were accomplished by storing the student project information as an array of JSON objects.
+							The display of each project ‘card’ is handled using JavaScript, with a focus on the code being highly reusable.
+						</p>
+					</div>
+				</div>
+			</article>
 		</div>
+
 
 		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 		<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 
-		<div id="webGLViewer">
-			<article>
-				<div class="articleContainer">
-					<div id="viewer3d" class="defautViewer3D">
-						<div id="paddingForImagesAnd3D"
-						style="
-						position: relative;
-						width:100%;
-						height:0px;
-						padding-top: 100%;
-						"
-						></div>
-						<model-viewer 
-						id="modelViewer"
-						src="3DProjects/Redbot/redbot.glb"
-						reveal="interaction"
-						alt="An interactive 3D model of a red robot"
-						auto-rotate
-						camera-controls
-						shadow-intensity="1"
-						exposure="1.2"
-						>
-							<div id="poster" slot="poster"></div>
-							<div id="loadBtn" slot="poster">load 3D model</div>
-						</model-viewer>
-						
-						<div id="viewerImg"></div>
-						<div id="loadingSpinner"></div>
-						<div id="loadingBar"></div>
-						<div id="fullscreenBtn"></div>
-						<div id="previousBtnWrapper" class="clickable" onclick="clickManager('previous')">
-							<div id="previousBtn" class="arrow"></div>
-						</div>
-						<div id="nextBtnWrapper" class="clickable" onclick="clickManager('next')">
-							<div id="nextBtn" class="arrow"></div>
-						</div>
-					</div>
-					<div id="iteminformation">
-						<h1 id="title">
-							Red Robot
-						</h1>
-						<hr />
-						<div id="description"></div>
-						<ul id="specs" class="specs">
-							<li>
-								<strong>Date Finished</strong>
-								<hr />
-								<div id="date"></div>
-							</li>
-							<li>
-								<strong>File Size</strong>
-								<hr />
-								<div id="size"></div>
-							</li>
-							<li>
-								<strong>Texture Resolution</strong>
-								<hr />
-								<div id="textureRez"></div>
-							</li>
-							<li>
-								<strong>Verticies</strong>
-								<hr />
-								<div id="verts"></div>
-							</li>
-							<li>
-								<strong>Faces</strong>
-								<hr />
-								<div id="faces"></div>
-							</li>
-							<li>
-								<strong>Material Sets</strong>
-								<hr />
-								<div id="mats"></div>
-							</li>
-							
-						</ul>
-					</div>
-				</div>
-				<div id="additionalOptionsContainer">
-					<img class="clickable" onclick="clickManager(0)" src="3DProjects/Redbot/images/thumbnails/redBot0.png" alt=""/>
-					<img class="clickable" onclick="clickManager(1)" src="3DProjects/Redbot/images/thumbnails/redBot1.png" alt=""/>
-					<img class="clickable" onclick="clickManager(2)" src="3DProjects/Redbot/images/thumbnails/redBot2.png" alt=""/>
-					<img class="clickable" onclick="clickManager(3)" src="3DProjects/Redbot/images/thumbnails/redBot3.png" alt=""/>
-					<img class="clickable" onclick="clickManager(4)" src="3DProjects/Redbot/images/thumbnails/redBot4.png" alt=""/>
-					<img class="clickable" onclick="clickManager(5)" src="3DProjects/Redbot/images/thumbnails/redBot5.png" alt=""/>
-				</div>
-			</article>
-			<script src="js/custem.js" async defer></script>
-		</div>
-	
-		<div id="modeling">	
+		<div id="modeling">
 			<div class="label">3D Models</div>
 			<hr />
+			<div id="webGLViewer">
+				<article>
+					<div class="articleContainer">
+						<div id="viewer3d" class="defautViewer3D">
+							<div id="paddingForImagesAnd3D"
+							style="
+							position: relative;
+							width:100%;
+							height:0px;
+							padding-top: 100%;
+							"
+							></div>
+							<model-viewer 
+							id="modelViewer"
+							src="3DProjects/Redbot/redbot.glb"
+							
+							alt="An interactive 3D model of a red robot"
+							auto-rotate
+							camera-controls
+							shadow-intensity="1"
+							exposure="1.2"
+							>
+								<div id="poster" slot="poster"></div>
+								<!--<div id="loadBtn" slot="poster">load 3D model</div>-->
+							</model-viewer>
+							
+							<div id="viewerImg"></div>
+							<div id="loadingSpinner"></div>
+							<div id="loadingBar"></div>
+							<div id="fullscreenBtn"></div>
+							<div id="previousBtnWrapper" class="clickable" onclick="clickManager('previous')">
+								<div id="previousBtn" class="arrow"></div>
+							</div>
+							<div id="nextBtnWrapper" class="clickable" onclick="clickManager('next')">
+								<div id="nextBtn" class="arrow"></div>
+							</div>
+						</div>
+						<div id="iteminformation">
+							<h1 id="title">
+								Red Robot
+							</h1>
+							<hr />
+							<div id="description"></div>
+							<ul id="specs" class="specs">
+								<li>
+									<strong>Date Finished</strong>
+									<hr />
+									<div id="date"></div>
+								</li>
+								<li>
+									<strong>File Size</strong>
+									<hr />
+									<div id="size"></div>
+								</li>
+								<li>
+									<strong>Texture Resolution</strong>
+									<hr />
+									<div id="textureRez"></div>
+								</li>
+								<li>
+									<strong>Verticies</strong>
+									<hr />
+									<div id="verts"></div>
+								</li>
+								<li>
+									<strong>Faces</strong>
+									<hr />
+									<div id="faces"></div>
+								</li>
+								<li>
+									<strong>Material Sets</strong>
+									<hr />
+									<div id="mats"></div>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+					<div id="additionalOptionsContainer">
+						<img class="clickable" onclick="clickManager(0)" src="3DProjects/Redbot/images/thumbnails/redBot0.png" alt=""/>
+						<img class="clickable" onclick="clickManager(1)" src="3DProjects/Redbot/images/thumbnails/redBot1.png" alt=""/>
+						<img class="clickable" onclick="clickManager(2)" src="3DProjects/Redbot/images/thumbnails/redBot2.png" alt=""/>
+						<img class="clickable" onclick="clickManager(3)" src="3DProjects/Redbot/images/thumbnails/redBot3.png" alt=""/>
+						<img class="clickable" onclick="clickManager(4)" src="3DProjects/Redbot/images/thumbnails/redBot4.png" alt=""/>
+						<img class="clickable" onclick="clickManager(5)" src="3DProjects/Redbot/images/thumbnails/redBot5.png" alt=""/>
+					</div>
+				</article>
+				<script src="js/custem.js" async defer></script>
+			</div>
 			<div class="showcasewrapper">
 				<a href="#webGLViewer" onclick="modelProjectManager('Chair')">
-					<img src="3DProjects/Chair/chair.jpg" alt="'Chair"/>
+					<img src="3DProjects/chair/chair.jpg" alt="'Chair"/>
 				</a>
 				<a href="#webGLViewer" onclick="modelProjectManager('Redbot')">
-					<img src="3DProjects/Redbot/redBot.jpg" alt="'Red Robot"/>
+					<img src="3DProjects/redbot/redbot.jpg" alt="'Red Robot"/>
 				</a>
 				<a href="#webGLViewer" onclick="modelProjectManager('Stove')">
-					<img src="3DProjects/Stove/Stove.jpg" alt="'Stove"/>
+					<img src="3DProjects/stove/stove.jpg" alt="'Stove"/>
 				</a>
 				<a href="#webGLViewer" onclick="modelProjectManager('CatBed')">
-					<img src="3DProjects/CatBed/catBed.jpg" alt="'CatBed"/>
+					<img src="3DProjects/catbed/catbed.jpg" alt="'CatBed"/>
 				</a>
 				<a href="#webGLViewer" onclick="modelProjectManager('Stairs')">
-					<img src="3DProjects/Staircase/stairs.jpg" alt="'Stairs"/>
+					<img src="3DProjects/staircase/stairs.jpg" alt="'Stairs"/>
 				</a>
 				<a href="#webGLViewer" onclick="modelProjectManager('YellowBot')">
-					<img src="3DProjects/YellowBot/yellowBot0.jpg" alt="'Yellow Robot"/>
+					<img src="3DProjects/yellowbot/yellowbot0.jpg" alt="'Yellow Robot"/>
 				</a>
 				<a href="#webGLViewer" onclick="modelProjectManager('Foods')">
-					<img src="3DProjects/Foods/foods.jpg" alt="'Apple"/>
+					<img src="3DProjects/foods/foods.jpg" alt="'Apple"/>
 				</a>
 			</div>
 		</div>
+		<!--
 		<div id="about">
 			<div class="label" >About</div>
 			<hr />
@@ -210,7 +257,7 @@
 
 			</p>
 		</div>
-		
+		-->
 		<div id="ContactForm">
 			<div class="label">Contact</div>
 			<hr />
@@ -226,12 +273,10 @@
 
 	
 	<footer class="shade2">
-		<p>
-			&copy; Chris Petta 2020
-		</p>
+		<p>&copy; Chris Petta 2020</p>
 		<span style="display:flex;">
 			<a href="https://www.linkedin.com/in/chrispetta/">
-				<img src="images/linkedinLogo.png" height="32" style="padding:5px;" alt="linkedin"/>
+				<img src="images/linkedinLogo.png" style="height:32px;padding:5px;" alt="linkedin"/>
 			</a>
 			<a href="https://github.com/cpetta/chrispetta.net">
 				<img src="images/GitHub-Mark-32px.png" style="padding:5px;" alt="Checkout this site is on Github"/>

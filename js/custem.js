@@ -4,7 +4,7 @@ let LastThumpnailClicked = -1;
 let fullscreen = false;
 let ProjectIndex = 0;
 let viewport = document.getElementById("viewer3d");
-let loadBtn = document.getElementById("loadBtn");
+//let loadBtn = document.getElementById("loadBtn");
 let viewerImg = document.getElementById("viewerImg");
 let fullscreenBtn = document.getElementById("fullscreenBtn");
 let loadingSpinner = document.getElementById("loadingSpinner");
@@ -56,7 +56,8 @@ Image.prototype.load = async function(url){
 	xmlHTTP.send();
 };
 
-loadBtn.addEventListener("click", function() {ModelViewerLoaded = true;});
+//loadBtn.addEventListener("click", function() {ModelViewerLoaded = true;});
+ModelViewerLoaded = true;
 fullscreenBtn.addEventListener("click", fullscreenToggle)
 
 async function modelProjectManager(clicked) {
@@ -88,11 +89,11 @@ async function modelProjectManager(clicked) {
 			fadeOut(imgs[ProjectIndex][LastThumpnailClicked]);
 		}
 		fadeIn(modelViewer);
-		fadeIn(loadBtn);
+		//fadeIn(loadBtn);
 
 		ThumpnailClicked = -1;
 		LastThumpnailClicked = -1;
-		ModelViewerLoaded = false; // Future update, don't reload the viewer, use fadein/fadeout
+		//ModelViewerLoaded = false; // Future update, don't reload the viewer, use fadein/fadeout
 
 		ProjectIndex = findIndex(clicked);
 
@@ -176,14 +177,14 @@ function CanvasManager(clicked) {
 			fadeIn(modelViewer);
 		}
 		else {
-			fadeIn(loadBtn);
+			//fadeIn(loadBtn);
 		}
 	}
 	else {
 		if(ModelViewerLoaded) {
 			fadeOut(modelViewer);
 		}
-		fadeOut(loadBtn);
+		//fadeOut(loadBtn);
 	}
 }
 
@@ -268,6 +269,8 @@ function fullscreenOpen() {
 	viewport.style.minWidth = "100%";
 	viewport.classList.remove("defautViewer3D");
 	fullscreenBtn.style.position = "fixed";
+	document.body.style.overflow = "hidden";
+
 }
 
 function fullscreenClose() {
@@ -278,6 +281,7 @@ function fullscreenClose() {
 		viewport.style.minWidth = "";
 		viewport.classList.remove("fullscreenViewer3d");
 		fullscreenBtn.style.position = "absolute";
+		document.body.style.overflow = "auto";
 	}
 
 	if (document.exitFullscreen) {
