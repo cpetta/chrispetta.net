@@ -3,6 +3,8 @@ let ThumpnailClicked = -1;
 let LastThumpnailClicked = -1;
 let fullscreen = false;
 let ProjectIndex = 0;
+
+let nav = document.getElementById("nav");
 let viewport = document.getElementById("viewer3d");
 //let loadBtn = document.getElementById("loadBtn");
 let viewerImg = document.getElementById("viewerImg");
@@ -22,6 +24,7 @@ let verts = document.getElementById('verts');
 let faces = document.getElementById('faces');
 let mats = document.getElementById('mats');
 let additionalOptionsContainer = document.getElementById('additionalOptionsContainer');
+
 let imgs; // 2D Array
 let imgLoaded;
 
@@ -357,3 +360,28 @@ function fadeIn2(obj){
 function vary(speed) {
 	return Math.floor(Math.random() * ((speed + 30) - (speed - 30)) ) + (speed - 30);
   }
+
+function resizeManager() {
+	navstate = false;
+	if(window.innerWidth >= 1100) {
+		console.log("resizeManager");
+		nav.style.transition = "0s";
+		nav.style.maxHeight = "340px";
+	}
+	else {
+		navtoggle(true);
+		setTimeout(() => {nav.style.transition = "0.2s ease-out";}, 10); // Settimeout is required, otherwise it will animate oddly on a resize.
+	}
+}
+
+let navState = false;
+function navtoggle(closeNav = false) {
+	if (navState || closeNav) { // If mobile nav is not already open.
+		nav.style.maxHeight = "0px";
+		navState = false;
+	}
+	else {
+		nav.style.maxHeight = "340px";
+		navState = true;
+	}
+}

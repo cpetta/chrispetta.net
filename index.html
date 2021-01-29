@@ -8,27 +8,20 @@
 	<link rel="icon" type="image/png" href="images/portlogo.svg" sizes="32x32" />
 </head>
 
-<body>
+<body onresize="resizeManager()" onload="resizeManager()">
 	<header id="home">
 		<a href="#"><img class="logo" alt="Logo" src="images/portlogo.svg" height="50" width="50" /></a>
 		<div class="humburgcontainer" onclick="navtoggle()">
-			<div class="hamburg"><!--
-				<div class="hambar top"></div>
-				<div class="hambar middle" style="background-color: purple"></div>
-				<div class="hambar bottom"></div>
-			--></div>
-			<script>
-				function navtoggle() {
-					var nav = document.getElementById("nav");
-					if (nav.style.display === "grid") {nav.style.removeProperty('display');}
-					else {nav.style.display = "grid";}
-				}
-			</script>
+			<div class="hamburg">
+				<div id="topHamBar" class="hambar"></div>
+				<div id="midHamBar" class="hambar"></div>
+				<div id="botHamBar" class="hambar"></div>
+			</div>
 		</div>
 		<nav id="nav">
-			<a href="#home">
+			<a href="#about">
 				<div class="text">
-					Home
+					About
 					<div class="underline"></div>
 				</div>
 			</a>
@@ -44,12 +37,14 @@
 					<div class="underline"></div>
 				</div>
 			</a>
+			<!--
 			<a href="#about">
 				<div class="text">
 					About
 					<div class="underline"></div>
 				</div>
 			</a>
+			-->
 			<a href="#ContactForm">
 				<div class="text">
 					Contact
