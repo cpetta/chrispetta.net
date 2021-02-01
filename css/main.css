@@ -163,6 +163,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 }
 #hamburg:hover {
 	background-color: rgb(251, 251, 251);
+	border-radius: 10px;
 }
 
 #hamburg.navclosed:hover > #topHamBar{
