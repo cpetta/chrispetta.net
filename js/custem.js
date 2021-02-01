@@ -420,12 +420,14 @@ let navState = false;
 function navtoggle(closeNav = false) {
 	if ((navState || closeNav) && window.innerWidth <= 1100) { // If mobile nav is not already open.
 		nav.style.maxHeight = "0px";
+		hamburg.classList.add("navclosed");
 		hamburg.classList.remove("navopen");
 		navState = false;
 	}
 	else {
 		nav.style.maxHeight = "340px";
 		hamburg.classList.add("navopen");
+		hamburg.classList.remove("navclosed");
 		navState = true;
 	}
 }

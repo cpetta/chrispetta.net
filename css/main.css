@@ -164,6 +164,20 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 #hamburg:hover {
 	background-color: rgb(251, 251, 251);
 }
+
+#hamburg.navclosed:hover > #topHamBar{
+	background-color: rgb(49, 127, 230);
+	transition-delay: 0.2s;
+}
+#hamburg.navclosed:hover > #midHamBar{
+	background-color: rgb(49, 127, 230);
+	transition-delay: 0.1s;
+}
+#hamburg.navclosed:hover > #botHamBar{
+	background-color: rgb(49, 127, 230);
+	transition-delay: 0.0s;
+}
+
 .hambar {
 	background-color: #000;
 	border-radius: 2px;
@@ -172,6 +186,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 }
 
 #topHamBar, #midHamBar, #botHamBar {
+	margin-top:0px;
 	-webkit-backface-visibility: hidden;
 	outline: 1px solid transparent;
 	transition: 0.2s;
