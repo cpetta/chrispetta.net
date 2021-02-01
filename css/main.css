@@ -275,7 +275,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 }
 .webImg {
 	align-items: center;
-	display:flex;
 	height:100%;
 	min-width:200px;
 	padding:25px;
@@ -285,9 +284,13 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	max-width:800px;
 }
 
-/* Select any image that comes after a placeholder */
-.placeholder + img {
-	position:absolute;
+.lazyLoadImgContainer {
+	display:grid;
+}
+
+.lazyLoadImgContainer img {
+	grid-column: 1;
+	grid-row: 1;
 }
 
 .sandpaper {
