@@ -4,6 +4,8 @@ let LastThumpnailClicked = -1;
 let fullscreen = false;
 let ProjectIndex = 0;
 
+let loading = document.getElementById("loading");
+let gotoTopBtn = document.getElementById("gotoTopBtn");
 let nav = document.getElementById("nav");
 let viewport = document.getElementById("viewer3d");
 //let loadBtn = document.getElementById("loadBtn");
@@ -24,6 +26,8 @@ let verts = document.getElementById('verts');
 let faces = document.getElementById('faces');
 let mats = document.getElementById('mats');
 let additionalOptionsContainer = document.getElementById('additionalOptionsContainer');
+
+let fadeInObjs = []; // Array
 
 let imgs; // 2D Array
 let imgLoaded;
@@ -63,6 +67,47 @@ Image.prototype.load = async function(url){
 ModelViewerLoaded = true;
 fullscreenBtn.addEventListener("click", fullscreenToggle)
 
+window.addEventListener("load", (event) => {
+	fadeInObjs = window.document.querySelectorAll(".fadeInOnScroll");
+	createObserver();
+	fadeOut(loading);
+	loading.style.display = "none";
+});
+
+async function init() {
+	await Promise.all([
+		resizeManager(),
+		scrollManager()
+	]);
+	
+}
+
+function createObserver() {
+	let observer;
+
+	let options = {
+		root: null,
+		rootMargin: "0px",
+		threshold: 0.4
+	}
+
+	observer = new IntersectionObserver(handleIntersect, options);
+	fadeInObjs.forEach(async element => {
+		await observer.observe(element);
+	});
+	
+	console.log(fadeInObjs[4]);
+}
+
+async function handleIntersect(entries) {
+	entries.forEach(async (entry) => {
+		if(entry.isIntersecting) {
+			entry.target.classList.remove("fadeInOnScroll");
+			entry.target.classList.add("fadeInOnScroll2");
+		}
+	})
+}
+
 async function modelProjectManager(clicked) {
 	if(hasValue(ModelProjects)) {
 		fadeIn(webGLViewer);
@@ -101,20 +146,20 @@ async function modelProjectManager(clicked) {
 		ProjectIndex = findIndex(clicked);
 
 		poster.style.backgroundImage = `url('3DProjects/${ModelProjects[ProjectIndex].folder}/images/thumbnails/${ModelProjects[ProjectIndex].thumbnails[0]}')`;
-		console.log(ModelProjects[ProjectIndex].thumbnails[0]);
+		//console.log(ModelProjects[ProjectIndex].thumbnails[0]);
 
 		if(hasValue(ProjectIndex)) {
 			modelViewer.src =  `3DProjects/${ModelProjects[ProjectIndex].folder}/${ModelProjects[ProjectIndex].model}`;
 			await Promise.all([
-				setTimeout(() => startTypeOut(title, ModelProjects[ProjectIndex].projectTitle, 30), 300),
-				setTimeout(() => fadeIn2(specs), 619),
-				setTimeout(() => startTypeOut(description, ModelProjects[ProjectIndex].description, 1), 600),
-				setTimeout(() => startTypeOut(date, ModelProjects[ProjectIndex].date, 30), 620),
-				setTimeout(() => startTypeOut(size, ModelProjects[ProjectIndex].size, 30), 620),
-				setTimeout(() => startTypeOut(textureRez, ModelProjects[ProjectIndex].textureRez, 30), 620),
-				setTimeout(() => startTypeOut(verts, ModelProjects[ProjectIndex].verts, 30), 620),
-				setTimeout(() => startTypeOut(faces, ModelProjects[ProjectIndex].faces, 30), 620),
-				setTimeout(() => startTypeOut(mats, ModelProjects[ProjectIndex].mats, 30), 620)
+				setTimeout(async () => startTypeOut(title, ModelProjects[ProjectIndex].projectTitle, 30), 300),
+				setTimeout(async () => fadeIn2(specs), 619),
+				setTimeout(async () => startTypeOut(description, ModelProjects[ProjectIndex].description, 1), 600),
+				setTimeout(async () => startTypeOut(date, ModelProjects[ProjectIndex].date, 30), 620),
+				setTimeout(async () => startTypeOut(size, ModelProjects[ProjectIndex].size, 30), 620),
+				setTimeout(async () => startTypeOut(textureRez, ModelProjects[ProjectIndex].textureRez, 30), 620),
+				setTimeout(async () => startTypeOut(verts, ModelProjects[ProjectIndex].verts, 30), 620),
+				setTimeout(async () => startTypeOut(faces, ModelProjects[ProjectIndex].faces, 30), 620),
+				setTimeout(async () => startTypeOut(mats, ModelProjects[ProjectIndex].mats, 30), 620)
 			]);
 
 			setTimeout(fadeIn(additionalOptionsContainer), 301);
@@ -129,9 +174,11 @@ async function modelProjectManager(clicked) {
 					option.src = `3DProjects/${ModelProjects[ProjectIndex].folder}/images/thumbnails/${ModelProjects[ProjectIndex].thumbnails[z]}`;
 					option.classList.add("clickable");
 					option.onclick = () => clickManager(z - 1);
+					option.loading = "eager";
 					fadeIn(option)
 					z++
 					setTimeout(() => addAdditionalOptions(z), 50);
+					// update to add all right away but fade in at a different speeds
 				}
 			}
 			setTimeout(() => addAdditionalOptions(), 400);
@@ -273,7 +320,7 @@ function fullscreenOpen() {
 	viewport.classList.remove("defautViewer3D");
 	fullscreenBtn.style.position = "fixed";
 	document.body.style.overflow = "hidden";
-
+	gotoTopBtn.style.display = "none";
 }
 
 function fullscreenClose() {
@@ -285,6 +332,7 @@ function fullscreenClose() {
 		viewport.classList.remove("fullscreenViewer3d");
 		fullscreenBtn.style.position = "absolute";
 		document.body.style.overflow = "auto";
+		gotoTopBtn.style.display = "flex";
 	}
 
 	if (document.exitFullscreen) {
@@ -333,14 +381,14 @@ function fadeOut(obj){
 		obj.classList.remove("fadeIn");
 		setTimeout(() => {obj.style.display = "none";}, 300);
 	}
-};
+}
 
 function fadeIn(obj){
 	obj.style.display = "block";
 	obj.style.opacity = 1;
 	obj.classList.add("fadeIn");
 	obj.classList.remove("fadeOut");
-};
+}
 
 function fadeOut2(obj){
 	obj.style.opacity = 0;
@@ -349,22 +397,16 @@ function fadeOut2(obj){
 		obj.classList.add("fadeOut");
 		obj.classList.remove("fadeIn");
 	}
-};
+}
 
 function fadeIn2(obj){
 	obj.style.opacity = 1;
 	obj.classList.add("fadeIn");
 	obj.classList.remove("fadeOut");
-};
-
-function vary(speed) {
-	return Math.floor(Math.random() * ((speed + 30) - (speed - 30)) ) + (speed - 30);
-  }
-
-function resizeManager() {
+}
+async function resizeManager() {
 	navstate = false;
 	if(window.innerWidth >= 1100) {
-		console.log("resizeManager");
 		nav.style.transition = "0s";
 		nav.style.maxHeight = "340px";
 	}
@@ -376,7 +418,7 @@ function resizeManager() {
 
 let navState = false;
 function navtoggle(closeNav = false) {
-	if (navState || closeNav) { // If mobile nav is not already open.
+	if ((navState || closeNav) && window.innerWidth <= 1100) { // If mobile nav is not already open.
 		nav.style.maxHeight = "0px";
 		navState = false;
 	}

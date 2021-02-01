@@ -8,9 +8,18 @@
 	<link rel="icon" type="image/png" href="images/portlogo.svg" sizes="32x32" />
 </head>
 
-<body onresize="resizeManager()" onload="resizeManager()">
+<body onresize="resizeManager()" onload="init()">
+	<div id="loading">
+		<h1>loading...</h1>
+			<noscript>
+				This site makes heavy use of javascript, please consider enabling it.
+			</noscript>
+	</div>
 	<header id="home">
-		<a href="#"><img class="logo" alt="Logo" src="images/portlogo.svg" height="50" width="50" /></a>
+		<a class="logoContainer" href="#">
+			<img class="logo" alt="Logo" src="images/portlogo.svg" />
+			<img class="signature" alt="" src="images/sig.svg" />
+		</a>
 		<div class="humburgcontainer" onclick="navtoggle()">
 			<div class="hamburg">
 				<div id="topHamBar" class="hambar"></div>
@@ -19,34 +28,26 @@
 			</div>
 		</div>
 		<nav id="nav">
-			<a href="#about">
-				<div class="text">
+			<a href="#about" onclick="navtoggle()">
+				<div class="text fadeInOnScroll">
 					About
 					<div class="underline"></div>
 				</div>
 			</a>
-			<a href="#webDev">
-				<div class="text">
+			<a href="#webDev" onclick="navtoggle()">
+				<div class="text fadeInOnScroll">
 					Web Dev
 					<div class="underline"></div>
 				</div>
 			</a>
-			<a href="#modeling">
-				<div class="text">
+			<a href="#modeling" onclick="navtoggle()">
+				<div class="text fadeInOnScroll">
 					3D Modeling
 					<div class="underline"></div>
 				</div>
 			</a>
-			<!--
-			<a href="#about">
-				<div class="text">
-					About
-					<div class="underline"></div>
-				</div>
-			</a>
-			-->
-			<a href="#ContactForm">
-				<div class="text">
+			<a href="#ContactForm" onclick="navtoggle()">
+				<div class="text fadeInOnScroll">
 					Contact
 					<div class="underline"></div>
 				</div>
@@ -55,54 +56,50 @@
 	</header>
 	
 	<main>
+		<!-- About Section -->
 		<a  href="#home" id="gotoTopBtn"><div class="upArrow"></div></a>
 			<div id="about">
-				<div id="aboutImg">
-					<img src="images/chris.jpg"/ alt="Picture of Chris wearing a blue and white checkered dress shirt.">
+				<div id="aboutImg" class="fadeInOnScroll">
+					<img src="images/chris.jpg" alt="Picture of Chris wearing a blue and white checkered dress shirt." loading="eager" />
 				</div>
 				
-				<div id="aboutText">
+				<div id="aboutText" class="fadeInOnScroll">
 					<p>
-						<strong>Chris Petta</strong> is a web developer living in Grand Rapids, MI. He has worked as the Teacher's Assistant for a Web and Game Development course for the past 8 years.
-						In that role, He assists students as they learn several coding languages including, HTML5, CSS, JavaScript, C++, and C#.
-						In addition to working, he is currently pursuing a B.S. in computer science at Davenport University. <br />
-						Chris loves to read about and experiment with new things. He has hosted and run several Apache, email, and game servers.
-						Built several computers, flashed a custom rom on his phone, and written scripts to automate repetitive tasks.<br />
-						In his free time, Chris enjoys creating 3D models, playing games with friends, and riding his bicycle.<br />
+						Hey there, I'm Chris Petta a web developer living in Grand Rapids, MI.
+						I'm currently working as the Teacher's Assistant for a Web and Game Development course where I assist students as they learn several coding languages including, <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>C#</strong>, and <strong>C++</strong>.<br />
+						In addition to working, I'm also <strong>pursuing a B.S. in computer science at Davenport University</strong>. <br />
+						I love to read about and experiment with new things. a short list of things I've experimented with for fun include hosting and runing several web, email, and game servers.
+						I've Built several computers, flashed a custom rom on my phone, and written scripts to automate repetitive tasks.<br />
+						In my free time, I enjoy 3D modeling, playing games with friends, and riding my bicycle.<br />
 					</p>
 				</div>
 			</div>
-			<!--
-			<div class="catchText">
-				3D Models by Commission
-			</div>
-			<video id="catchVideo" autoplay muted loop>
-				<source src="images/webIntro3.mp4" type="video/mp4">
-			</video>
-			-->
+
+		<!-- Web Dev Section -->	
 
 		<div id="webDev">	
-			<div class="label">Website Development</div>
+			<div class="label fadeInOnScroll">Website Development</div>
 			<hr />
 			<article>
-				<!--Coming soon&trade;.-->
-				
-				<div class="webProject">
+				<div class="webProject fadeInOnScroll">
 					<div class="webImg">
-						<img clsas="webdisplays" src="images/kcDisplays.png" />
+						<!-- <img class="placeholder" src="images/placeholders/webDisplays-placeholder.png" loading="eager" alt=""/> -->
+						<img class="webdisplays" src="images/kcDisplays.png" loading="lazy" alt="Kuzmaclass.org's homepage displayed on desktop, ipad, and mobile"/>
 					</div>
 					<div>
 						<h1 class="websiteTitle">Kuzmaclass - Homepage</h1>
 						<p class="webText">
 							The kuzmaclass website provides useful information for students and parents, displays.
 							I was asked to clean up some aspects of the site. Specifically, to reduce the complexity of the code, add a student showcase, and make the site touchscreen friendly.
-							I reduced the complexity of the code by adding comments, removing anything that was unused, or redundant. The showcase was created using standard HTML5 and CSS3. And the site was made touchscreen friendly by increasing the size of hyperlinks, creating a mobile friendly navigation menu, and modifying the layout to work at mobile resolutions.
+							I reduced the complexity of the code by adding comments, removing anything that was unused, or redundant. The showcase was created using standard HTML5 and CSS3. 
+							And the site was made touchscreen friendly by increasing the size of hyperlinks, creating a mobile friendly navigation menu, and modifying the layout to work at mobile resolutions.
 						</p>
 					</div>
 				</div>
-				<div class="webProject">
+				<div class="webProject fadeInOnScroll">
 					<div class="webImg">
-						<img clsas="webdisplays" src="images/SandboxDisplays.png" />
+						<!-- <img class="placeholder" src="images/placeholders/webDisplays-placeholder.png" loading="eager" alt=""/> -->
+						<img class="webdisplays" src="images/SandboxDisplays.png" loading="lazy" alt="Kuzmaclass.org's sandbox displayed on desktop, ipad, and mobile"/>
 					</div>
 					<div>
 						<h1 class="websiteTitle">Kuzmaclass - Sandbox</h1>
@@ -115,15 +112,31 @@
 						</p>
 					</div>
 				</div>
+				<div class="webProject fadeInOnScroll">
+					<div class="webImg">
+						<!-- <img class="placeholder" src="images/placeholders/sandpaper-placeholder.png" loading="eager" alt=""/> -->
+						<img class="sandpaper" src="images/sandpaper.gif" loading="lazy" alt="Kuzmaclass.org's sandbox displayed on desktop, ipad, and mobile"/>
+					</div>
+					<div>
+						<h1 class="websiteTitle">Sandpaper</h1>
+						<p class="webText">
+							Sandpaper is a tool I developed to make building and optimizing websites easier and faster.
+							It was heavily inspired by a code quality checking tool called XO.
+							Sandpaper automates the process of checking code quality, which can help developers avoid common errors in HTML, CSS, and JavaScript.
+							It optimizes assets to improve page load times by up to 30%. Additionally, it automatically substitutes newer code that is not supported in older browsers with code that is supported by older browsers.
+						</p>
+					</div>
+				</div>
 			</article>
 		</div>
 
+		<!-- 3D Modeling Section -->
 
-		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-		<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+		<script async defer type="module" src="js/model-viewer.min.js"></script>
+		<script async defer nomodule src="js/model-viewer-legacy.js"></script>
 
 		<div id="modeling">
-			<div class="label">3D Models</div>
+			<div class="label fadeInOnScroll">3D Models</div>
 			<hr />
 			<div id="webGLViewer">
 				<article>
@@ -139,13 +152,11 @@
 							></div>
 							<model-viewer 
 							id="modelViewer"
-							src="3DProjects/Redbot/redbot.glb"
-							
-							alt="An interactive 3D model of a red robot"
 							auto-rotate
 							camera-controls
 							shadow-intensity="1"
 							exposure="1.2"
+							loading="lazy0"
 							>
 								<div id="poster" slot="poster"></div>
 								<!--<div id="loadBtn" slot="poster">load 3D model</div>-->
@@ -203,59 +214,47 @@
 							</ul>
 						</div>
 					</div>
-					<div id="additionalOptionsContainer">
-						<img class="clickable" onclick="clickManager(0)" src="3DProjects/Redbot/images/thumbnails/redBot0.png" alt=""/>
-						<img class="clickable" onclick="clickManager(1)" src="3DProjects/Redbot/images/thumbnails/redBot1.png" alt=""/>
-						<img class="clickable" onclick="clickManager(2)" src="3DProjects/Redbot/images/thumbnails/redBot2.png" alt=""/>
-						<img class="clickable" onclick="clickManager(3)" src="3DProjects/Redbot/images/thumbnails/redBot3.png" alt=""/>
-						<img class="clickable" onclick="clickManager(4)" src="3DProjects/Redbot/images/thumbnails/redBot4.png" alt=""/>
-						<img class="clickable" onclick="clickManager(5)" src="3DProjects/Redbot/images/thumbnails/redBot5.png" alt=""/>
-					</div>
+					<div id="additionalOptionsContainer"></div>
 				</article>
-				<script src="js/custem.js" async defer></script>
+				<script async defer src="js/custem.js"></script>
 			</div>
-			<div class="showcasewrapper">
-				<a href="#webGLViewer" onclick="modelProjectManager('Chair')">
-					<img src="3DProjects/chair/chair.jpg" alt="'Chair"/>
-				</a>
-				<a href="#webGLViewer" onclick="modelProjectManager('Redbot')">
-					<img src="3DProjects/redbot/redbot.jpg" alt="'Red Robot"/>
-				</a>
-				<a href="#webGLViewer" onclick="modelProjectManager('Stove')">
-					<img src="3DProjects/stove/stove.jpg" alt="'Stove"/>
-				</a>
-				<a href="#webGLViewer" onclick="modelProjectManager('CatBed')">
-					<img src="3DProjects/catbed/catbed.jpg" alt="'CatBed"/>
-				</a>
-				<a href="#webGLViewer" onclick="modelProjectManager('Stairs')">
-					<img src="3DProjects/staircase/stairs.jpg" alt="'Stairs"/>
-				</a>
-				<a href="#webGLViewer" onclick="modelProjectManager('YellowBot')">
-					<img src="3DProjects/yellowbot/yellowbot0.jpg" alt="'Yellow Robot"/>
-				</a>
-				<a href="#webGLViewer" onclick="modelProjectManager('Foods')">
-					<img src="3DProjects/foods/foods.jpg" alt="'Apple"/>
-				</a>
-			</div>
-		</div>
-		<!--
-		<div id="about">
-			<div class="label" >About</div>
-			<hr />
-			<p>
-				Christopher Petta is a web developer living in Grand Rapids, MI He has worked as the teacher's assistant for a web and game development course for 7 years.
-				He assists students in learning several coding languages including, HTML5, CSS, JavaScript, C++, and C#.
-				In addition to working, he is currently pursuing a B.S. in computer science at Davenport University. <br />
-				Christopher loves to read about and experiment with new things. He has hosted and run several Apache, email, and game servers.
-				Built several computers, flashed a custom rom on his phone, and written scripts to automate repetitive tasks.<br />
-				In his free time, Christopher enjoys creating 3D models, playing video games with friends, and riding his bicycle.<br />
 
-			</p>
+			<!-- 3D Projects Selection -->
+
+			<div class="showcasewrapper">
+				<a href="#webGLViewer" onclick="modelProjectManager('Chair')" class="fadeInOnScroll">
+					<!-- <img class="placeholder" src="images/placeholders/3DModel-placeholder.png" loading="eager" alt=""/> -->
+					<img src="3DProjects/chair/chair.jpg" alt="'Chair" loading="lazy"/>
+				</a>
+				<a href="#webGLViewer" onclick="modelProjectManager('Redbot')" class="fadeInOnScroll">
+					<img src="3DProjects/redbot/redbot.jpg" alt="'Red Robot" loading="lazy"/>
+				</a>
+				<a href="#webGLViewer" onclick="modelProjectManager('Stove')" class="fadeInOnScroll">
+					<img src="3DProjects/stove/stove.jpg" alt="'Stove" loading="lazy"/>
+				</a>
+				<a href="#webGLViewer" onclick="modelProjectManager('CatBed')" class="fadeInOnScroll">
+					<img src="3DProjects/catbed/catbed.jpg" alt="'CatBed" loading="lazy"/>
+				</a>
+				<a href="#webGLViewer" onclick="modelProjectManager('Stairs')" class="fadeInOnScroll">
+					<img src="3DProjects/staircase/stairs.jpg" alt="'Stairs" loading="lazy"/>
+				</a>
+				<a href="#webGLViewer" onclick="modelProjectManager('YellowBot')" class="fadeInOnScroll">
+					<img src="3DProjects/yellowbot/yellowbot0.jpg" alt="'Yellow Robot" loading="lazy"/>
+				</a>
+				<a href="#webGLViewer" onclick="modelProjectManager('Foods')" class="fadeInOnScroll">
+					<img src="3DProjects/foods/foods.jpg" alt="'Apple" loading="lazy"/>
+				</a>
+			</div>
 		</div>
-		-->
-		<div id="ContactForm">
+
+		<!-- Contact Section -->
+
+		<div id="ContactForm" class="fadeInOnScroll">
 			<div class="label">Contact</div>
 			<hr />
+			Send me an email at: <a href="mailto:cpetta@protonmail.com"><strong>cpetta@protonmail.com</strong></a><br />
+			Or, send me a message on <a href="https://www.linkedin.com/in/chrispetta/"><strong>linkedin</strong></a>
+			<!-- 
 			<form onsubmit="" name="contact" action="post" method="post">
 				<input name="name" class="" value="" placeholder="Name" type="text" required=""/>
 				<input name="email" value="" placeholder="Email Address" type="text" required=""/>
@@ -263,9 +262,11 @@
 				<textarea name="message" placeholder="Message, Commision Request, or Whatever"></textarea>
 				<input class="submitButton" type="submit" name="submit" value="Send" />
 			</form>
+			-->
 		</div>
 	</main>
 
+	<!-- Footer -->
 	
 	<footer class="shade2">
 		<p>&copy; Chris Petta 2020</p>
