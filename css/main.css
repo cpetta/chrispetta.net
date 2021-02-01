@@ -29,8 +29,30 @@ html {
 	font-size: 14pt;
 	letter-spacing: 1px;
 	margin: 0;
+	scrollbar-width: thin; /* Fireforx Scrollbar */
 	/*overflow-x: hidden;*/
 }
+
+/* Chrome Scrollbar */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+  }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
 #loading {
 	background-color: rgb(49, 127, 230);
 	display: flex;
@@ -566,6 +588,7 @@ textarea:focus {
     /*width: 100%;*/
     min-width:500px;
 	overflow-x:hidden;
+	scrollbar-width: thin;
 	z-index:1;
 }
 
