@@ -7,6 +7,7 @@ let ProjectIndex = 0;
 let loading = document.getElementById("loading");
 let gotoTopBtn = document.getElementById("gotoTopBtn");
 let nav = document.getElementById("nav");
+let hamburg = document.getElementById("hamburg");
 let viewport = document.getElementById("viewer3d");
 //let loadBtn = document.getElementById("loadBtn");
 let viewerImg = document.getElementById("viewerImg");
@@ -76,8 +77,7 @@ window.addEventListener("load", (event) => {
 
 async function init() {
 	await Promise.all([
-		resizeManager(),
-		scrollManager()
+		resizeManager()
 	]);
 	
 }
@@ -420,10 +420,12 @@ let navState = false;
 function navtoggle(closeNav = false) {
 	if ((navState || closeNav) && window.innerWidth <= 1100) { // If mobile nav is not already open.
 		nav.style.maxHeight = "0px";
+		hamburg.classList.remove("navopen");
 		navState = false;
 	}
 	else {
 		nav.style.maxHeight = "340px";
+		hamburg.classList.add("navopen");
 		navState = true;
 	}
 }

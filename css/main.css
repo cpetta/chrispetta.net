@@ -149,7 +149,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	grid-column: 2;
 	grid-row: 1;
 }
-.hamburg {
+#hamburg {
 	border-radius: 3px;
 	display:flex;
 	flex-direction: column;
@@ -159,9 +159,9 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	width: 30px;
 	margin-right:10px;
 	padding:15px;
-	transition: 0.1s;
+	transition: 0.2s;
 }
-.hamburg:hover {
+#hamburg:hover {
 	background-color: rgb(251, 251, 251);
 }
 .hambar {
@@ -170,15 +170,33 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	height:6px;
 	width:100%;
 }
+
+#topHamBar, #midHamBar, #botHamBar {
+	-webkit-backface-visibility: hidden;
+	outline: 1px solid transparent;
+	transition: 0.2s;
+}
+
 #topHamBar, #midHamBar {
 	margin-bottom: 5px;
 }
+
+#hamburg.navopen #topHamBar {
+	transform: translate(0px, 180%) scale(1.25,1.25) rotate(45deg);
+}
+#hamburg.navopen #midHamBar {
+	opacity: 0;
+}
+#hamburg.navopen #botHamBar {
+	transform: translate(0px, -180%) scale(1.25,1.25) rotate(-45deg);
+}
+
 @media only screen and (max-width: 1100px) {
 	.humburgcontainer {
 		display: flex;
 		align-items: center;
 	}
-	.hamburg {
+	#hamburg {
 		position:absolute;
 		right:0px;
 	}
