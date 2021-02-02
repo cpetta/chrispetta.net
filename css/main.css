@@ -104,6 +104,10 @@ nav {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
 	}
+	#about, #webDev {
+		padding-bottom: 100px;
+	}
+
 }
 nav a {
 	align-items: center;
@@ -219,14 +223,15 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 		border-top: 1px solid #555
 	}
 }
+
 #about {
+	align-items: center;
 	display:flex;
 	flex-wrap:nowrap;
-	padding:20px;
+	padding-left:20px;
+	padding-right:20px;
 	padding-top: 100px;
-	padding-bottom: 100px;
 	margin-top: 50px;
-	min-height:50%;
 	justify-content: center;
 }
 @media only screen and (max-width: 860px) {
@@ -242,7 +247,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	max-height:80%;
 	height:100%;
 	min-width:200px;
-	min-height:500px;
 }
 #aboutImg img{
 	width:100%;
@@ -267,8 +271,8 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	align-items: center;
 	display:flex;
 	flex-wrap:nowrap;
-	padding:20px;
-	padding-bottom:100px;
+	padding-left:20px;
+	padding-right:20px;
 	min-height:50%;
 	justify-content: center;
 }
@@ -302,7 +306,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 }
 .webImg img{
 	width:100%;
-	max-width:800px;
+	max-width:700px;
 }
 
 .lazyLoadImgContainer {
@@ -320,7 +324,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 }
 
 .webText {
-	max-width: 800px;
+	max-width: 700px;
 	padding:25px;
 }
 
@@ -377,17 +381,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	}
 }
 
-#modeling {
-	margin-top: 50px;
-}
-/*
-#about {
-	padding-left: 100px;
-	padding-right: 100px;
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-*/
 #contact {
 	padding-left: 100px;
 	padding-right: 100px;
