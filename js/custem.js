@@ -71,8 +71,11 @@ fullscreenBtn.addEventListener("click", fullscreenToggle)
 window.addEventListener("load", (event) => {
 	fadeInObjs = window.document.querySelectorAll(".fadeInOnScroll");
 	createObserver();
-	fadeOut(loading);
-	loading.style.display = "none";
+	setTimeout(() => {
+		loading.classList.add("fadeOutSlow");
+		loading.style.opacity = 0;
+		setTimeout(() => {loading.style.display = "none";}, 701); // after the animation has completed.
+	}, 500);
 });
 
 async function init() {
@@ -379,8 +382,8 @@ function fadeOut(obj){
 	if(obj.classList.contains("fadeIn")) {
 		obj.classList.add("fadeOut");
 		obj.classList.remove("fadeIn");
-		setTimeout(() => {obj.style.display = "none";}, 300);
 	}
+	setTimeout(() => {obj.style.display = "none";}, 300);
 }
 
 function fadeIn(obj){

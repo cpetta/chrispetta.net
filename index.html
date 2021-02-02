@@ -6,11 +6,78 @@
 	<title>Portfolio</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	<link rel="icon" type="image/png" href="images/portlogo.svg" sizes="32x32" />
+	<style>
+		body,html {
+			margin:0;
+		}
+		#loading {
+			font-family: "Oxygen", "Roboto", "Arial", sans-serif;
+			color: #FFF;
+			background-color: rgb(49, 127, 230);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			text-align: center;
+			text-shadow: 0px 0px 2px white;
+			position:fixed;
+			height:100%;
+			width: 100%;
+			z-index: 10;
+		}
+		#loading h1 {
+			margin-bottom:0px;
+		}
+		.loadingDotsContainer {
+			align-items:center;
+			display:flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-evenly;
+			min-width: 150px;
+			min-height:50px;
+		}
+		.loadingDot {
+			animation: pulse 2s linear infinite;
+			background-color: white;
+			box-shadow: 0px 0px 6px 0px rgba(255, 255, 255,1);
+			border-radius: 100%;
+			max-height:50px;
+			height:25px;
+			width:25px;
+		}
+		#loadingDot1 {
+			animation-delay: 0.5s;
+		}
+		#loadingDot2 {
+			animation-delay: 1s;
+		}
+		#loadingDot3 {
+			animation-delay: 1.5s;
+		}
+		@keyframes loadingFadeIn {
+			0% {background-color:#ddd}
+			100% {background-color: rgb(49, 127, 230);}
+		}
+		@keyframes pulse {
+			0% {opacity: 1;}
+			20% {opacity: 1;}
+			40% {opacity: 0;}
+			60% {opacity: 0;}
+			80% {opacity: 0;}
+			100% {opacity: 1;}
+		}
+	</style>
 </head>
 
 <body onresize="resizeManager()" onload="init()">
 	<div id="loading">
-		<h1>loading...</h1>
+		<h1>Loading</h1>
+		<div class="loadingDotsContainer">
+			<div id="loadingDot1" class="loadingDot"></div>
+			<div id="loadingDot2" class="loadingDot"></div>
+			<div id="loadingDot3" class="loadingDot"></div>
+		</div>
 			<noscript>
 				This site makes heavy use of javascript, please consider enabling it.
 			</noscript>

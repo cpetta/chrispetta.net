@@ -28,7 +28,6 @@ html {
 	font-family: 'Roboto-Light', "Arial", sans-serif;
 	font-size: 14pt;
 	letter-spacing: 1px;
-	margin: 0;
 	scrollbar-width: thin; /* Fireforx Scrollbar */
 	/*overflow-x: hidden;*/
 }
@@ -53,18 +52,6 @@ html {
 	background: #555;
 }
 
-#loading {
-	background-color: rgb(49, 127, 230);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	text-align: center;
-	position:fixed;
-	height:100%;
-	width: 100%;
-	z-index: 10;
-}
 nav, main {
 	line-height: 150%;
 }
@@ -903,14 +890,18 @@ model-viewer{
     animation: fadeout 0.3s linear;
 }
 
+.fadeOutSlow {
+    animation: fadeout 0.7s linear;
+}
+
 @keyframes fadein {
     0% {opacity: 0;}
     100% { opacity: 1;}
 }
 
 @keyframes fadeout {
-    100% {opacity: 0;}
-    0% { opacity: 1;}
+	0% { opacity: 1;}
+	100% {opacity: 0;}
 }
 
 @keyframes lds-dual-ring {
