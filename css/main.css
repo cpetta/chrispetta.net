@@ -29,7 +29,6 @@ html {
 	font-size: 14pt;
 	letter-spacing: 1px;
 	scrollbar-width: thin; /* Fireforx Scrollbar */
-	/*overflow-x: hidden;*/
 }
 
 /* Chrome Scrollbar */
@@ -107,7 +106,6 @@ nav {
 	#about, #webDev {
 		padding-bottom: 100px;
 	}
-
 }
 nav a {
 	align-items: center;
@@ -141,7 +139,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	grid-row: 1;
 }
 #hamburg {
-	border-radius: 3px;
+	border-radius: 5px;
 	display:flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -154,7 +152,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 }
 #hamburg:hover {
 	background-color: rgb(251, 251, 251);
-	border-radius: 10px;
+	border-radius: 15px;
 }
 
 #hamburg.navclosed:hover > #topHamBar{
@@ -207,9 +205,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 		position:absolute;
 		right:0px;
 	}
-	.logo {
-		grid-column: 1;
-	}
 	nav {
 		display: block; /* None*/
 		grid-column: 1 / 3 !important;
@@ -259,7 +254,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	align-items: center;
 	padding:50px;
 	margin:0px;
-	/*min-width:400px;*/
 	width:100%;
 	max-width: 900px;
 }
@@ -340,7 +334,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	font-weight: 300;
 	font-family: "Oxygen", "Roboto", "Arial", sans-serif;
 	padding-top: 12px;
-	/*width: 100%;*/
 	transition: 0.2s ease-in-out;
 	text-align: center;
 }
@@ -393,14 +386,11 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	background-image: radial-gradient(rgba(50,50,50,0.3), rgba(0,0,0,0), rgba(0,0,0,0));
 	background-position-x: center;
 	background-position-y: center;
-	/*background-image: url(../images/upArrow11.png);*/
 	background-size: 100%;
 	background-repeat: no-repeat;
-	/*background-position: center;*/
 	border-radius: 100%;
 	box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
 	position: sticky;
-	/*top: calc(100% - 90px) ; /* 90px comes from the height of the element + the margin on top and bottom. */
 	bottom: 20px;
 	left: 100%;
 	padding:0px;
@@ -425,7 +415,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
     padding: 5px;
 	border-radius: 2px;
 	transform: rotate(225deg);
-	/*-webkit-transform: rotate(225deg);*/
 }
 
 footer {
@@ -527,10 +516,6 @@ textarea:focus {
 }
 
 .submitButton:hover, .submitButton:focus {
-	/*
-	background: -webkit-linear-gradient(rgba(0,128,128,1), rgba(0,100,100,1));
-	background: -o-linear-gradient(rgba(0,128,128,1), rgba(0,100,100,1));
-	background: -moz-linear-gradient(rgba(0,128,128,1), rgba(0,100,100,1));*/
 	background: linear-gradient(rgba(0,128,128,1), rgba(0,100,100,1));
 	transition: background 0.3s;
 }
@@ -556,8 +541,6 @@ textarea:focus {
     margin-left: 5%;
     margin-right:5%;
     margin-bottom:20px;
-    /*max-width:1000px;*/
-    /*min-width:500px;*/
 	box-shadow: 0px 0px 15px #aaa;
 	border-radius: 10px;
 }
@@ -581,18 +564,10 @@ textarea:focus {
 }
 
 .defautViewer3D {
-    grid-column: 1 / 2;
-    grid-row:1;
     flex-grow:1;
     flex-basis: 50%;
     background-color: rgb(214,211,202);
-    /*border-radius: 3px;
-    box-shadow: 0px 1px 5px #222;*/
-    /*height:500px;*/
     position:relative;
-    /*width: 500px;*/
-    /*min-width:500px;*/
-    /*overflow: hidden;*/
 }
 
 .fullscreenViewer3d {
@@ -600,10 +575,7 @@ textarea:focus {
     top:0px;
     left:0px;
     background-color: rgb(214,211,202);
-    /*border-radius: 3px;
-    box-shadow: 0px 1px 5px #222;*/
     height:100%;
-    /*width: 100%;*/
     min-width:500px;
 	overflow-x:hidden;
 	scrollbar-width: thin;
@@ -630,7 +602,6 @@ textarea:focus {
     width: 100px;
     height:100px;
     margin-right:10px;
-    /*padding-right:10px;*/
     margin-bottom:10px;
     transition: 0.05s ease-in-out;
 }
@@ -647,7 +618,6 @@ ul.specs {
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    /*max-height: 275px;*/
     height: 300px;
 }
 
@@ -674,7 +644,6 @@ ul.specs li hr {
 
 #nextBtn {
     transform: rotate(-45deg);
-    /*-webkit-transform: rotate(-45deg);*/
 }
 
 #nextBtnWrapper {
@@ -746,12 +715,8 @@ ul.specs li hr {
     flex-grow:1;
     flex-basis: 50%;
     background: #fafafa;
-    /*height: 480px;*/
     padding:20px;
     padding-top:0px;
-    grid-column: 2 / 2;
-    grid-row:1;
-    /*width: 460px;*/
 }
 #iteminformation h1 {
     text-align: center;
@@ -810,7 +775,7 @@ ul.specs li hr {
     bottom:0px;
     background-color:rgb(49, 127, 230);
     height: 5px;
-    width: 0%;/*calc(100% - 32px - 10px);*/
+    width: 0%;
     transition: width 0.4s ease-out;
 }
 
@@ -858,7 +823,6 @@ model-viewer{
   }
 #loadingSpinner:after {
     animation: lds-dual-ring 2.5s linear infinite;
-    /*box-shadow: 0px 0px 2px #000;*/
     position: absolute;
     content: " ";
     display: block;
