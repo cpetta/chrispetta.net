@@ -152,7 +152,6 @@ async function modelProjectManager(clicked) {
 		//console.log(ModelProjects[ProjectIndex].thumbnails[0]);
 
 		if(hasValue(ProjectIndex)) {
-			modelViewer.src =  `3DProjects/${ModelProjects[ProjectIndex].folder}/${ModelProjects[ProjectIndex].model}`;
 			await Promise.all([
 				setTimeout(async () => startTypeOut(title, ModelProjects[ProjectIndex].projectTitle, 30), 300),
 				setTimeout(async () => fadeIn2(specs), 619),
@@ -162,10 +161,14 @@ async function modelProjectManager(clicked) {
 				setTimeout(async () => startTypeOut(textureRez, ModelProjects[ProjectIndex].textureRez, 30), 620),
 				setTimeout(async () => startTypeOut(verts, ModelProjects[ProjectIndex].verts, 30), 620),
 				setTimeout(async () => startTypeOut(faces, ModelProjects[ProjectIndex].faces, 30), 620),
-				setTimeout(async () => startTypeOut(mats, ModelProjects[ProjectIndex].mats, 30), 620)
+				setTimeout(async () => startTypeOut(mats, ModelProjects[ProjectIndex].mats, 30), 620),
+				
+				// The line below delays the loading of a model in order to avoid the framerate drop that comes with trying to load it.
+				setTimeout(async () => {modelViewer.src =  `3DProjects/${ModelProjects[ProjectIndex].folder}/${ModelProjects[ProjectIndex].model}`;}, 1100),
+				setTimeout(fadeIn(additionalOptionsContainer), 301),
+				setTimeout(async () => addAdditionalOptions(), 400)
 			]);
 
-			setTimeout(fadeIn(additionalOptionsContainer), 301);
 			additionalOptionsContainer.style.display = "flex"
 			function addAdditionalOptions(z = 0) {
 				if(z < ModelProjects[ProjectIndex].thumbnails.length) {
@@ -184,7 +187,6 @@ async function modelProjectManager(clicked) {
 					// update to add all right away but fade in at a different speeds
 				}
 			}
-			setTimeout(() => addAdditionalOptions(), 400);
 		}
 	}
 	else {
