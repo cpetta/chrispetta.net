@@ -423,7 +423,7 @@ let navState = false;
 function navtoggle(closeNav = false) {
 	if ((navState || closeNav) && window.innerWidth <= 1100) { // If mobile nav is not already open.
 		nav.style.maxHeight = "0px";
-		hamburg.classList.add("navclosed");
+		setTimeout(() => {hamburg.classList.add("navclosed")},201); // using settimeout here to allow the proper animation to play. avoiding an animation delay on the top bar.
 		hamburg.classList.remove("navopen");
 		navState = false;
 	}
