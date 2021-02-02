@@ -406,9 +406,10 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	/*background-position: center;*/
 	border-radius: 100%;
 	box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
-	position: fixed;
-	bottom: 50px;
-	right: 0px;
+	position: sticky;
+	/*top: calc(100% - 90px) ; /* 90px comes from the height of the element + the margin on top and bottom. */
+	bottom: 20px;
+	left: 100%;
 	padding:0px;
 	margin: 20px;
 	height:50px;
