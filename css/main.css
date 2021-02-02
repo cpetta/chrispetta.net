@@ -404,7 +404,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	z-index:2;
 }
 #gotoTopBtn:hover, #gotoTopBtn:focus { 
-	box-shadow: 0px 0px 4px rgba(0,0,0,0.9);
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
 	filter: brightness(110%);
 }
 
@@ -415,6 +415,11 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
     padding: 5px;
 	border-radius: 2px;
 	transform: rotate(225deg);
+	transition: 0.2s ease-in-out;
+}
+
+#gotoTopBtn:hover > .upArrow {
+	margin-top:-5px;
 }
 
 footer {
