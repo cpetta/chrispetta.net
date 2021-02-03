@@ -12,6 +12,7 @@ let viewport = document.getElementById("viewer3d");
 //let loadBtn = document.getElementById("loadBtn");
 let viewerImg = document.getElementById("viewerImg");
 let fullscreenBtn = document.getElementById("fullscreenBtn");
+let fullscreenCloseBtn = document.getElementById("fullscreenCloseBtn");
 let loadingSpinner = document.getElementById("loadingSpinner");
 let loadingBar = document.getElementById("loadingBar");
 let webGLViewer = document.getElementById("webGLViewer");
@@ -67,6 +68,7 @@ Image.prototype.load = async function(url){
 //loadBtn.addEventListener("click", function() {ModelViewerLoaded = true;});
 ModelViewerLoaded = true;
 fullscreenBtn.addEventListener("click", fullscreenToggle)
+fullscreenCloseBtn.addEventListener("click", fullscreenClose)
 
 window.addEventListener("load", (event) => {
 	fadeInObjs = window.document.querySelectorAll(".fadeInOnScroll");
@@ -300,11 +302,9 @@ function loadAndAddImage(imgContainer, number) {
 function fullscreenToggle() {
 	if (fullscreen) {
 		fullscreenClose();
-		fullscreen = false
 	}
 	else {
 		fullscreenOpen();
-		fullscreen = true;
 	}
 }
 
@@ -323,9 +323,12 @@ function fullscreenOpen() {
 	viewport.style.width = `${window.innerWidth}px`;
 	viewport.style.minWidth = "100%";
 	viewport.classList.remove("defautViewer3D");
-	fullscreenBtn.style.position = "fixed";
+	//fullscreenBtn.style.position = "fixed";
+	fullscreenBtn.style.display = "none";
+	fullscreenCloseBtn.style.display = "flex";
 	document.body.style.overflow = "hidden";
 	gotoTopBtn.style.display = "none";
+	fullscreen = true;
 }
 
 function fullscreenClose() {
@@ -335,9 +338,12 @@ function fullscreenClose() {
 		viewport.style.width = "";
 		viewport.style.minWidth = "";
 		viewport.classList.remove("fullscreenViewer3d");
-		fullscreenBtn.style.position = "absolute";
+		//fullscreenBtn.style.position = "absolute";
+		fullscreenBtn.style.display = "initial";
+		fullscreenCloseBtn.style.display = "none";
 		document.body.style.overflow = "auto";
 		gotoTopBtn.style.display = "flex";
+		fullscreen = false;
 	}
 
 	if (document.exitFullscreen) {

@@ -587,6 +587,49 @@ textarea:focus {
 	z-index:1;
 }
 
+#fullscreenCloseBtn {
+	background-color: rgba(255,255,255,0.75);
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+	border-radius: 100%;
+	display:flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	cursor: pointer;
+	width: 30px;
+	height:30px;
+	top:0px;
+	right:5px;
+	margin-top:10px;
+	margin-right:10px;
+	padding:15px;
+	position:fixed;
+	transition: 0.2s;
+	z-index:2;
+}
+
+#fullscreenCloseBtn:hover {
+	background-color: rgba(255,255,255,0.95);
+}
+
+.xTop, .xBot {
+	background-color: rgba(30,30,30,1.0);
+	border-radius: 2px;
+	height:6px;
+	width:100%;
+	-webkit-backface-visibility: hidden;
+	outline: 1px solid transparent;
+	transition: 0.2s;
+}
+
+.xTop {
+	transform: translate(0px, 50%) scale(1.20,1.20) rotate(45deg);
+}
+
+.xBot {
+	transform: translate(0px, -50%) scale(1.20,1.20) rotate(-45deg);
+}
+
 #additionalOptionsContainer {
 	display:flex;
     flex-flow: row wrap;
