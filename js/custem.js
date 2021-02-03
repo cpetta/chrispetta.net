@@ -34,6 +34,19 @@ let additionalOptionsContainer = document.getElementById('additionalOptionsConta
 
 let fadeInObjs = []; // Array
 
+let modelInfo = [
+	new Elm(specs),
+	new Elm(title),
+	new Elm(description),
+	new Elm(date),
+	new Elm(size),
+	new Elm(textureRez),
+	new Elm(verts),
+	new Elm(faces),
+	new Elm(mats),
+	new Elm(additionalOptionsContainer)
+];
+
 let imgs; // 2D Array
 let imgLoaded;
 
@@ -67,6 +80,11 @@ Image.prototype.load = async function(url){
 	};
 	xmlHTTP.send();
 };
+
+function Elm(element, typer = null) {
+	this.elm = element;
+	this.typer = typer;
+}
 
 //loadBtn.addEventListener("click", function() {ModelViewerLoaded = true;});
 ModelViewerLoaded = true;
@@ -120,26 +138,14 @@ async function modelProjectManager(clicked) {
 	if(hasValue(ModelProjects)) {
 		fadeIn(webGLViewer);
 		
-		// Clear/Reset
-		fadeOut2(title);
-		fadeOut2(description);
-		fadeOut2(date);
-		fadeOut2(size);
-		fadeOut2(textureRez);
-		fadeOut2(verts);
-		fadeOut2(faces);
-		fadeOut2(mats);
-		fadeOut2(additionalOptionsContainer);
-		title.innerHTML = "";
-		description.innerHTML = "";
-		date.innerHTML = "";
-		size.innerHTML = "";
-		textureRez.innerHTML = "";
-		verts.innerHTML = "";
-		faces.innerHTML = "";
-		mats.innerHTML = "";
-		additionalOptionsContainer.innerHTML = "";
-		fadeOut2(specs);
+		// Clear/Reset each item in the specs section of the viewer.
+		modelInfo.forEach((item, index) => {
+			clearTimeout(item.typer);
+			fadeOut2(item.elm);
+			if(index != 0) { // if not specs
+				item.elm.innerHTML = "";
+			}
+		});
 
 		if(LastThumpnailClicked != -1) {
 			fadeOut(imgs[ProjectIndex][LastThumpnailClicked]);
@@ -158,20 +164,20 @@ async function modelProjectManager(clicked) {
 
 		if(hasValue(ProjectIndex)) {
 			await Promise.all([
-				setTimeout(async () => startTypeOut(title, ModelProjects[ProjectIndex].projectTitle, 30), 300),
-				setTimeout(async () => fadeIn2(specs), 619),
-				setTimeout(async () => startTypeOut(description, ModelProjects[ProjectIndex].description, 1), 600),
-				setTimeout(async () => startTypeOut(date, ModelProjects[ProjectIndex].date, 30), 620),
-				setTimeout(async () => startTypeOut(size, ModelProjects[ProjectIndex].size, 30), 620),
-				setTimeout(async () => startTypeOut(textureRez, ModelProjects[ProjectIndex].textureRez, 30), 620),
-				setTimeout(async () => startTypeOut(verts, ModelProjects[ProjectIndex].verts, 30), 620),
-				setTimeout(async () => startTypeOut(faces, ModelProjects[ProjectIndex].faces, 30), 620),
-				setTimeout(async () => startTypeOut(mats, ModelProjects[ProjectIndex].mats, 30), 620),
+				modelInfo[0].typer = setTimeout(async () => fadeIn2(specs), 619),			
+				modelInfo[1].typer = setTimeout(async () => startTypeOut(modelInfo[1], ModelProjects[ProjectIndex].projectTitle, 30), 300),
+				modelInfo[2].typer = setTimeout(async () => startTypeOut(modelInfo[2], ModelProjects[ProjectIndex].description, 1), 600),
+				modelInfo[3].typer = setTimeout(async () => startTypeOut(modelInfo[3], ModelProjects[ProjectIndex].date, 30), 620),
+				modelInfo[4].typer = setTimeout(async () => startTypeOut(modelInfo[4], ModelProjects[ProjectIndex].size, 30), 620),
+				modelInfo[5].typer = setTimeout(async () => startTypeOut(modelInfo[5], ModelProjects[ProjectIndex].textureRez, 30), 620),
+				modelInfo[6].typer = setTimeout(async () => startTypeOut(modelInfo[6], ModelProjects[ProjectIndex].verts, 30), 620),
+				modelInfo[7].typer = setTimeout(async () => startTypeOut(modelInfo[7], ModelProjects[ProjectIndex].faces, 30), 620),
+				modelInfo[8].typer = setTimeout(async () => startTypeOut(modelInfo[8], ModelProjects[ProjectIndex].mats, 30), 620),
 				
 				// The line below delays the loading of a model in order to avoid the framerate drop that comes with trying to load it.
 				setTimeout(async () => {modelViewer.src =  `3DProjects/${ModelProjects[ProjectIndex].folder}/${ModelProjects[ProjectIndex].model}`;}, 1100),
 				setTimeout(fadeIn(additionalOptionsContainer), 301),
-				setTimeout(async () => addAdditionalOptions(), 400)
+				modelInfo[9].typer = setTimeout(async () => addAdditionalOptions(), 400)
 			]);
 
 			additionalOptionsContainer.style.display = "flex"
@@ -378,18 +384,18 @@ function loadingBarUpdate(width) {
 }
 
 async function startTypeOut(elm, txt, speed, i = 0) { 
-	fadeIn(elm);
+	fadeIn(elm.elm);
 	if(txt.length < 50)
-		setTimeout(async () => await typeOut(elm, txt, speed, i), speed);
+	elm.typer = setTimeout(async () => await typeOut(elm, txt, speed, i), speed);
 	else
-		elm.innerHTML = txt;
+		elm.elm.innerHTML = txt;
 }
 
 async function typeOut(elm, txt, speed, i) {
 	if (i < txt.length) {
-		elm.innerHTML += txt.charAt(i);
+		elm.elm.innerHTML += txt.charAt(i);
 		i++;
-		setTimeout(async () => await typeOut(elm, txt, speed, i), speed);
+		elm.typer = setTimeout(async () => await typeOut(elm, txt, speed, i), speed);
 	}
 }
 
