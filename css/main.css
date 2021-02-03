@@ -753,7 +753,7 @@ ul.specs li hr {
     transition: filter 0.1s ease-in-out;
     background-color: white;
     opacity: 0.6;
-    z-index:2;
+    z-index:3;
 }
 #fullscreenBtn:hover {
     filter: invert(90%);
@@ -768,6 +768,18 @@ ul.specs li hr {
 }
 #iteminformation h1 {
     text-align: center;
+}
+
+#modelCopyright {
+	bottom:0px;
+	font-family: "Roboto", "Arial", sans-serif;
+	font-size: 8pt;
+	opacity: 0.5;
+	user-select: none;
+	position:absolute;
+	text-align: center;
+	width:100%;
+	z-index: 2;
 }
 
 #purchaseInformation {

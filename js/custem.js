@@ -13,6 +13,7 @@ let viewport = document.getElementById("viewer3d");
 let viewerImg = document.getElementById("viewerImg");
 let fullscreenBtn = document.getElementById("fullscreenBtn");
 let fullscreenCloseBtn = document.getElementById("fullscreenCloseBtn");
+let modelCopyright = document.getElementById("modelCopyright");
 let preBtn = document.getElementById("previousBtnWrapper");
 let nxtBtn = document.getElementById("nextBtnWrapper");
 let loadingSpinner = document.getElementById("loadingSpinner");
@@ -330,6 +331,7 @@ function fullscreenOpen() {
 	fullscreenCloseBtn.style.display = "flex";
 	nxtBtn.style.position = "fixed";
 	preBtn.style.position = "fixed";
+	modelCopyright.style.position = "fixed";
 	document.body.style.overflow = "hidden";
 	gotoTopBtn.style.display = "none";
 	fullscreen = true;
@@ -347,6 +349,7 @@ function fullscreenClose() {
 		fullscreenCloseBtn.style.display = "none";
 		nxtBtn.style.position = "absolute";
 		preBtn.style.position = "absolute";
+		modelCopyright.style.position = "absolute";
 		document.body.style.overflow = "auto";
 		gotoTopBtn.style.display = "flex";
 		fullscreen = false;
