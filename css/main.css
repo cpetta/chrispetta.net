@@ -409,6 +409,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	border-radius: 2px;
 	transform: rotate(225deg);
 	transition: 0.2s ease-in-out;
+	margin-top:3px;
 }
 
 #gotoTopBtn:hover > .upArrow {
