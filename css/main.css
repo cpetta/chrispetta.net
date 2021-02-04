@@ -338,7 +338,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	text-align: center;
 }
 .label + hr {
-	margin:10px auto 10px auto;
+	margin:15px auto 10px auto;
 	width:80%;
 }
 .showcasewrapper {
@@ -372,13 +372,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 		margin: 25px;
 		width: 350px;
 	}
-}
-
-#contact {
-	padding-left: 100px;
-	padding-right: 100px;
-	padding-top: 50px;
-	padding-bottom: 100px;
 }
 
 #gotoTopBtn {
@@ -439,7 +432,7 @@ footer {
   
 #ContactForm {
 	position: relative;
-	border-radius: 3px;
+	border-radius: 5px;
 	background-color: #fefefe;
 	padding: 35px;
 	padding-top: 30px;
@@ -454,80 +447,31 @@ footer {
 	box-shadow: 0px 1px 5px rgba(0,0,0, 0.5);
 }
 
-#ContactForm form {
-	font-family: 'Roboto', "Arial", sans-serif;
-	font-size:16pt;
-}
-
-#ContactForm hr {
+.contactTypes {
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 	margin-bottom: 50px;
-	margin-left: 30px;
-	margin-right: 30px;
-}
-input {
-	background-color: #ecf0f1;
-	border: 1px solid #eee;
-	border-radius: 3px;
-	color: #707070;
-	font-size: 0.8em;
-	height:45px;
-	margin-bottom: 20px;
-	min-height: 30px;
-	min-width: 300px;
-	padding-left:8px;
-	width:100%;
+	margin-top: 50px;
 }
 
-input:hover, textarea:hover {
-	box-shadow: 0px 0px 3px #8f8f8f;
-	transition: 0.2s;
+.contactMethod {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
 }
 
-input:focus {
-	border: 1px solid #aaa;
-	color: #404040;
+.contactMethod hr {
+	height:100%;
+	margin:0px;
+	margin-right:10px;
+	margin-left: 10px;
 }
 
-textarea {
-	background-color: #ecf0f1;
-	border: 1px solid #eee;
-	border-radius: 3px;
-	color: #707070;
-	font-size: 1em;
-	margin-bottom: 20px;
-	min-height: 200px;
-	min-width: 300px;
-	padding:8px;
-	width: 100%;
+.contactImg {
+	width:50px;
 }
-
-textarea:focus {
-	border: 1px solid #aaa;
-	color: #404040;
-}
-
-.submitButton {
-	position: relative;
-	right: 0px;
-	min-width: 100px;
-	max-width: 100px;
-	height: 43px;
-	background-color: teal;
-	color: white;
-	font-weight: bold;
-	border: none;
-	border-radius: 3px;
-	cursor: pointer;
-}
-
-.submitButton:hover, .submitButton:focus {
-	background: linear-gradient(rgba(0,128,128,1), rgba(0,100,100,1));
-	transition: background 0.3s;
-}
-.submitButton:focus {
-	color: white;
-}
-
 
 /* CSS for 3D model showcase */
 
