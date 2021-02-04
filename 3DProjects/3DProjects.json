@@ -154,11 +154,11 @@
         ]
     },
     {
-        "uniqueName": "Foods",
-        "projectTitle": "Various Foods",
-        "folder": "foods",
-        "titleImage": "foods.jpg",
-        "model": "foods.glb",
+        "uniqueName": "Apple",
+        "projectTitle": "Apple",
+        "folder": "apple",
+        "titleImage": "apple.jpg",
+        "model": "apple.glb",
         "date": "05/20/20 - 06/06/20",
         "size": "58KB - 110MB",
         "textureRez": "1024x1024",
@@ -167,23 +167,53 @@
         "mats": "1 per food item",
         "description": "These foods were created by commission for a game. The primary goals were to have a variaty of low polygon foods. The model was created and rendered in Blender, the textures were painted in blender using projection from real life pictures. the entire process took aproximately 2-5 hours per food item.",
         "images": [
-            "apple.jpg",
-            "banana.jpg",
-            "bread.jpg",
-            "carrot.jpg",
-            "chicken.jpg",
-            "choco.jpg",
-            "orange.jpg"
+            "apple.jpg"
         ],
         "thumbnails": [
-            "foodmodels.png",
-            "apple.png",
-            "banana.png",
-            "bread.png",
-            "carrot.png",
-            "chicken.png",
-            "choco.png",
-            "orange.png"
+            "apple0.gif",
+            "apple.png"
+        ]
+    },
+    {
+        "uniqueName": "Bananas",
+        "projectTitle": "Bananas",
+        "folder": "bananas",
+        "titleImage": "bananas.jpg",
+        "model": "bananas.glb",
+        "date": "05/20/20 - 06/06/20",
+        "size": "58KB - 110MB",
+        "textureRez": "1024x1024",
+        "verts": "Various",
+        "faces": "Various",
+        "mats": "1 per food item",
+        "description": "These foods were created by commission for a game. The primary goals were to have a variaty of low polygon foods. The model was created and rendered in Blender, the textures were painted in blender using projection from real life pictures. the entire process took aproximately 2-5 hours per food item.",
+        "images": [
+            "bananas.jpg"
+        ],
+        "thumbnails": [
+            "bananas0.gif",
+            "bananas.jpg"
+        ]
+    },
+    {
+        "uniqueName": "Bread",
+        "projectTitle": "Bread",
+        "folder": "bread",
+        "titleImage": "bread.jpg",
+        "model": "bread.glb",
+        "date": "05/20/20 - 06/06/20",
+        "size": "58KB - 110MB",
+        "textureRez": "1024x1024",
+        "verts": "Various",
+        "faces": "Various",
+        "mats": "1 per food item",
+        "description": "These foods were created by commission for a game. The primary goals were to have a variaty of low polygon foods. The model was created and rendered in Blender, the textures were painted in blender using projection from real life pictures. the entire process took aproximately 2-5 hours per food item.",
+        "images": [
+            "bread.jpg"
+        ],
+        "thumbnails": [
+            "bread0.gif",
+            "bread.jpg"
         ]
     }
     
