@@ -235,7 +235,39 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 	width:100%;
 	max-width: 900px;
 }
-
+#skills {
+	display:grid;
+	
+	padding:50px;
+}
+.skillItem {
+	align-items: center;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	text-align: center;
+	min-width:80px;
+	padding:45px;
+}
+.skillItemImg {
+	width:100%;
+	min-width: 50px;
+	max-width: 130px
+}
+.skillItem:hover {
+	background-color: rgb(251, 251, 251);
+	border-radius: 10px;
+}
+@media only screen and (min-width: 1100px) {
+	#skills {
+		grid-template-columns: repeat(5, minmax(50px, 1fr));
+	}
+}
+@media only screen and (max-width: 1100px) {
+	#skills {
+		grid-template-columns: repeat(2, minmax(50px, 1fr));
+	}
+}
 #webDev {
 	display:flex;
 	flex-wrap: nowrap;
