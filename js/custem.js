@@ -92,14 +92,9 @@ ModelViewerLoaded = true;
 fullscreenBtn.addEventListener("click", fullscreenToggle)
 fullscreenCloseBtn.addEventListener("click", fullscreenClose)
 
-window.addEventListener("load", (event) => {
+window.addEventListener("load", () => {
 	fadeInObjs = window.document.querySelectorAll(".fadeInOnScroll");
 	createObserver();
-	setTimeout(() => { // Dismis the loading screen when finished loading
-		loading.classList.add("fadeOutSlow");
-		loading.style.opacity = 0;
-		setTimeout(() => {loading.style.display = "none";}, 701); // after the animation has completed.
-	}, 500);
 });
 
 async function init() {

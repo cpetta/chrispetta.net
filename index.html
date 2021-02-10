@@ -5,7 +5,7 @@
 	<meta charset="utf-8"/>
 	<title>Portfolio</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css"/>
-	<link rel="icon" type="image/png" href="images/portlogo.svg" sizes="32x32" />
+	<link rel="icon" type="image/svg" href="images/portlogo.svg" sizes="32x32" />
 
 	<!-- Open Graph -->
 	<meta name="og:type" content="website" />
@@ -110,6 +110,31 @@
 			100% {opacity: 1;}
 		}
 	</style>
+	<script>
+		window.addEventListener("DOMContentLoaded", (event) => {
+			let loading = document.getElementById("loading");
+			let aboutImg = document.getElementById("aboutImg");
+			let custemJS = document.getElementById("custemJS");
+			let aboutImgLoaded = false;
+			let custemJSLoaded = false;
+			
+			aboutImg.onload = () => {aboutImgLoaded = true;}
+			custemJS.onload = () => {custemJSLoaded = true;}
+
+			let loadedAboveFold = setInterval(()=> {
+				if(aboutImgLoaded && custemJSLoaded) {
+					loading.classList.add("fadeOutSlow");
+					loading.style.opacity = 0;
+					setTimeout(() => { // Dismis the loading screen when finished loading
+						loading.classList.add("fadeOutSlow");
+						loading.style.opacity = 0;
+						setTimeout(() => {loading.style.display = "none";}, 701); // after the animation has completed.
+					}, 500);
+					clearInterval(loadedAboveFold);
+				}
+			}, 100);
+		});
+	</script>
 </head>
 
 <body onresize="resizeManager()" onload="init()">
@@ -126,7 +151,7 @@
 	</div>
 	<header id="home">
 		<a class="logoContainer" href="#">
-			<img class="logo" alt="Logo" src="images/portlogo.svg" />
+			<img id="logo" alt="Logo" src="images/portlogo.svg" />
 			<img class="signature" alt="" src="images/sig.svg" />
 		</a>
 		<div class="humburgcontainer" onclick="navtoggle()">
@@ -138,25 +163,25 @@
 		</div>
 		<nav id="nav">
 			<a href="#about" onclick="navtoggle()">
-				<div class="text fadeInOnScroll">
+				<div class="text">
 					About
 					<div class="underline"></div>
 				</div>
 			</a>
 			<a href="#webDev" onclick="navtoggle()">
-				<div class="text fadeInOnScroll">
+				<div class="text">
 					Web Dev
 					<div class="underline"></div>
 				</div>
 			</a>
 			<a href="#modeling" onclick="navtoggle()">
-				<div class="text fadeInOnScroll">
+				<div class="text">
 					3D Modeling
 					<div class="underline"></div>
 				</div>
 			</a>
 			<a href="#ContactForm" onclick="navtoggle()">
-				<div class="text fadeInOnScroll">
+				<div class="text">
 					Contact
 					<div class="underline"></div>
 				</div>
@@ -169,11 +194,11 @@
 		<!-- About Section -->
 		
 			<div id="about">
-				<div id="aboutImg" class="fadeInOnScroll">
-					<img src="images/chris.jpg" alt="Picture of Chris wearing a blue and white checkered dress shirt." loading="eager" />
+				<div id="aboutImgContainer">
+					<img id="aboutImg" src="images/chris.jpg" alt="Picture of Chris wearing a blue and white checkered dress shirt." loading="eager" />
 				</div>
 				
-				<div id="aboutText" class="fadeInOnScroll">
+				<div id="aboutText">
 					<p>
 						Hey there, I'm Chris Petta a web developer living in Grand Rapids, MI.
 						I'm currently working as the Teacher's Assistant for a Web and Game Development course where I assist students as they learn several coding languages including, <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>C#</strong>, and <strong>C++</strong>.<br />
@@ -184,47 +209,47 @@
 					</p>
 				</div>
 			</div>
-			<div class="label fadeInOnScroll">Skills</div>
+			<div class="label">Skills</div>
 			<hr />
-			<div id="skills" class="fadeInOnScroll">
+			<div id="skills">
 				
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="HTML 5" src="images/skills/html.svg" />
 					<div class="skillItemText">HTML5</div>
 				</div>
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="CSS 3" src="images/skills/css.svg" />
 					<div class="skillItemText">CSS3</div>
 				</div>
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="Javascript" src="images/skills/javascript.svg" />
 					<div class="skillItemText">Javascript</div>
 				</div>
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="PHP" src="images/skills/php.svg" />
 					<div class="skillItemText">PHP</div>
 				</div>
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="MySQL" src="images/skills/mysql.svg" />
 					<div class="skillItemText">MySQL</div>
 				</div>
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="Gulp JS" src="images/skills/gulp.svg" />
 					<div class="skillItemText">GulpJS</div>
 				</div>
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="C Sharp" src="images/skills/c_sharp.svg" />
 					<div class="skillItemText">C#</div>
 				</div>
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="Photoshop" src="images/skills/photoshop.svg" />
 					<div class="skillItemText">Photoshop</div>
 				</div>
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="Blender" src="images/skills/blender.svg" />
 					<div class="skillItemText">Blender</div>
 				</div>
-				<div class="skillItem">
+				<div class="skillItem fadeInOnScroll">
 					<img class="skillItemImg" alt="Substance Painter" src="images/skills/substance_painter.svg" />
 					<div class="skillItemText">Substance Painter</div>
 				</div>
@@ -459,6 +484,6 @@
 			</a>
 		</span>
 	</footer>
-	<script async defer src="js/custem.js"></script>
+	<script id="custemJS" async defer src="js/custem.js"></script>
 </body>
 </html>
