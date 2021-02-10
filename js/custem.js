@@ -8,6 +8,8 @@ let loading = document.getElementById("loading");
 let gotoTopBtn = document.getElementById("gotoTopBtn");
 let nav = document.getElementById("nav");
 let hamburg = document.getElementById("hamburg");
+let modelingSection = document.getElementById("modeling");
+let modelingLabel = document.getElementById("modelingLabel");
 let viewport = document.getElementById("viewer3d");
 //let loadBtn = document.getElementById("loadBtn");
 let viewerImg = document.getElementById("viewerImg");
@@ -60,7 +62,6 @@ fetch('3DProjects/3DProjects.json')
 	imgs = new Array(ModelProjects.length);
 	imgLoaded = new Array(ModelProjects.length);
 	ModelProjects.forEach(prepareProjects); 
-
 });
 
 Image.prototype.load = async function(url){
@@ -94,7 +95,7 @@ fullscreenCloseBtn.addEventListener("click", fullscreenClose)
 window.addEventListener("load", (event) => {
 	fadeInObjs = window.document.querySelectorAll(".fadeInOnScroll");
 	createObserver();
-	setTimeout(() => {
+	setTimeout(() => { // Dismis the loading screen when finished loading
 		loading.classList.add("fadeOutSlow");
 		loading.style.opacity = 0;
 		setTimeout(() => {loading.style.display = "none";}, 701); // after the animation has completed.
@@ -121,17 +122,40 @@ function createObserver() {
 	fadeInObjs.forEach(async element => {
 		await observer.observe(element);
 	});
-	
-	console.log(fadeInObjs[4]);
+	observer.observe(modelingSection);
+	observer.observe(modelingLabel);
+	observer.observe(viewport);
 }
 
-async function handleIntersect(entries) {
+async function handleIntersect(entries, observer) {
 	entries.forEach(async (entry) => {
 		if(entry.isIntersecting) {
+
+			if(entry.target === modelingSection || entry.target === modelingLabel || entry.target === viewport) {
+				loadScript('js/model-viewer.min.js', true);
+				loadScript('js/model-viewer-legacy.js', false);
+				observer.unobserve(modelingSection);
+				observer.unobserve(modelingLabel);
+				observer.unobserve(viewport);
+			}
+
 			entry.target.classList.remove("fadeInOnScroll");
 			entry.target.classList.add("fadeInOnScroll2");
+			observer.unobserve(entry.target);
 		}
 	})
+}
+
+async function loadScript(scriptSrc, module = false) {
+	let script = document.createElement('script');
+	script.src = scriptSrc;
+	if(module) {
+		script.type = "module";
+	}
+	else {
+		script.setAttribute("nomodule", "");
+	}
+	document.body.appendChild(script);
 }
 
 async function modelProjectManager(clicked) {
