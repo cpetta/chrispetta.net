@@ -1,10 +1,10 @@
 [
-    {
-        "uniqueName": "Chair",
+    {   "uniqueName": "Chair",
         "projectTitle": "Chair",
         "folder": "chair",
         "titleImage": "chair.jpg",
         "model": "chair.glb",
+        "initialOrbit": "-220.8deg 73.14deg 2.205m",
         "date": "11/28/20",
         "size": "2.31MB",
         "textureRez": "4K (4096x4096)",
@@ -20,12 +20,12 @@
             "chair1.png"
         ]
     },
-    {
-        "uniqueName": "Redbot",
+    {   "uniqueName": "Redbot",
         "projectTitle": "Red Robot",
         "folder": "redbot",
         "titleImage": "redbot.jpg",
         "model": "redbot.glb",
+        "initialOrbit": "29.23deg 71.28deg 2.215m",
         "date": "08/13/20",
         "size": "3.97MB",
         "textureRez": "4K (4096x4096)",
@@ -49,12 +49,12 @@
             "redbot5.png"
         ]
     },
-	{
-        "uniqueName": "Stove",
+	{   "uniqueName": "Stove",
         "projectTitle": "Cast Iron Stove",
         "folder": "stove",
         "titleImage": "stove.jpg",
         "model": "stove.glb",
+        "initialOrbit": "36.65deg 77.78deg 3.539m",
         "date": "6/25/20",
         "size": "5.88MB",
         "textureRez": "4K (4096x4096)",
@@ -72,12 +72,12 @@
             "stove2.png"
         ]
     },
-    {
-        "uniqueName": "CatBed",
+    {   "uniqueName": "CatBed",
         "projectTitle": "Cat Bed",
         "folder": "catbed",
         "titleImage": "catbed.jpg",
         "model": "catbed.glb",
+        "initialOrbit": "-79.79deg 72.22deg 4.66m",
         "date": "06/30/20",
         "size": "1.99MB",
         "textureRez": "4K (4096x4096)",
@@ -97,12 +97,12 @@
             "catbed3.png"
         ]
     },
-    {
-        "uniqueName": "Stairs",
+    {   "uniqueName": "Stairs",
         "projectTitle": "Industrial Stairs",
         "folder": "staircase",
         "titleImage": "stairs.jpg",
         "model": "stairs.glb",
+        "initialOrbit": "63.56deg 65.72deg 27.5m",
         "date": "06/14/20",
         "size": "1.62MB",
         "textureRez": "1024x1024",
@@ -122,12 +122,12 @@
             "stairs3.png"
         ]
     },
-    {
-        "uniqueName": "YellowBot",
+    {   "uniqueName": "YellowBot",
         "projectTitle": "Yellow Robot",
         "folder": "yellowbot",
         "titleImage": "yellowbot0.jpg",
         "model": "yellowbot.glb",
+        "initialOrbit": "-56.13deg 79.18deg 5.768m",
         "date": "04/29/20",
         "size": "1.86MB",
         "textureRez": "Procedural",
@@ -153,12 +153,12 @@
             "yellowbot5.png"
         ]
     },
-    {
-        "uniqueName": "Apple",
+    {   "uniqueName": "Apple",
         "projectTitle": "Apple",
         "folder": "apple",
         "titleImage": "apple.jpg",
         "model": "apple.glb",
+        "initialOrbit": "146.6deg 69.43deg 3.891m",
         "date": "06/17/20",
         "size": "640KB",
         "textureRez": "1024x1024",
@@ -174,12 +174,12 @@
             "apple.png"
         ]
     },
-    {
-        "uniqueName": "Bananas",
+    {   "uniqueName": "Bananas",
         "projectTitle": "Bananas",
         "folder": "bananas",
         "titleImage": "bananas.jpg",
         "model": "bananas.glb",
+        "initialOrbit": "103deg 61.54deg 0.1067m",
         "date": "08/10/20",
         "size": "1.48MB",
         "textureRez": "1024x1024",
@@ -195,12 +195,12 @@
             "bananas.jpg"
         ]
     },
-    {
-        "uniqueName": "Bread",
+    {   "uniqueName": "Bread",
         "projectTitle": "Bread",
         "folder": "bread",
         "titleImage": "bread.jpg",
         "model": "bread.glb",
+        "initialOrbit": "47.78deg 55.05deg 5.369m",
         "date": "05/26/20",
         "size": "1.40MB",
         "textureRez": "4K (4096x4096)",
@@ -216,5 +216,4 @@
             "bread.jpg"
         ]
     }
-    
 ]

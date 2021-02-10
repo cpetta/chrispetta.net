@@ -194,7 +194,18 @@ async function modelProjectManager(clicked) {
 				modelInfo[8].typer = setTimeout(async () => startTypeOut(modelInfo[8], ModelProjects[ProjectIndex].mats, 30), 620),
 				
 				// The line below delays the loading of a model in order to avoid the framerate drop that comes with trying to load it.
-				setTimeout(async () => {modelViewer.src =  `3DProjects/${ModelProjects[ProjectIndex].folder}/${ModelProjects[ProjectIndex].model}`;}, 1100),
+				setTimeout(async () => {
+
+					modelViewer.src =  `3DProjects/${ModelProjects[ProjectIndex].folder}/${ModelProjects[ProjectIndex].model}`;
+					let checkload = setInterval(()=> {
+						if(modelViewer.loaded) {
+							modelViewer.resetTurntableRotation();
+							modelViewer.cameraOrbit = ModelProjects[ProjectIndex].initialOrbit;
+							clearInterval(checkload);
+						}
+					}, 50);
+
+				}, 1100),
 				setTimeout(fadeIn(additionalOptionsContainer), 301),
 				modelInfo[9].typer = setTimeout(async () => addAdditionalOptions(), 400)
 			]);
