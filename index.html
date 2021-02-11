@@ -89,13 +89,13 @@
 			width:25px;
 		}
 		#loadingDot1 {
-			animation-delay: 0.5s;
+			animation-delay: 0.4s;
 		}
 		#loadingDot2 {
-			animation-delay: 1s;
+			animation-delay: 0.8s;
 		}
 		#loadingDot3 {
-			animation-delay: 1.5s;
+			animation-delay: 1.2s;
 		}
 		@keyframes loadingFadeIn {
 			0% {background-color:#ddd}
@@ -111,29 +111,45 @@
 		}
 	</style>
 	<script>
+		let aboutImgLoaded = false;
+		let custemJSLoaded = false;
+		let DOMContentLoadedStatus = false;
+		let DocumentLoaded = false;
+		let displayUnfinished = false;
 		window.addEventListener("DOMContentLoaded", (event) => {
 			let loading = document.getElementById("loading");
 			let aboutImg = document.getElementById("aboutImg");
 			let custemJS = document.getElementById("custemJS");
-			let aboutImgLoaded = false;
-			let custemJSLoaded = false;
 			
 			aboutImg.onload = () => {aboutImgLoaded = true;}
 			custemJS.onload = () => {custemJSLoaded = true;}
+			DOMContentLoadedStatus = true;
+		});
 
-			let loadedAboveFold = setInterval(()=> {
-				if(aboutImgLoaded && custemJSLoaded) {
+		// This is a failsafe to dismiss the loading screen if the DOMContentLoaded event fails.
+		window.addEventListener("load", () => {
+			DocumentLoaded = true;
+		});
+		
+		// After 5 seconds, dismiss the loading screen and just display whatever has loaded.
+		let loadingTimeout = setTimeout(() => {
+			console.log("Loading timed out, displaying page as is...");
+			displayUnfinished = true;
+		}, 5000);
+
+		let loadedAboveFold = setInterval(()=> {
+				if((aboutImgLoaded && custemJSLoaded) || DocumentLoaded || displayUnfinished) {
 					loading.classList.add("fadeOutSlow");
 					loading.style.opacity = 0;
-					setTimeout(() => { // Dismis the loading screen when finished loading
+					setTimeout(() => { // Dismiss the loading screen when finished loading
 						loading.classList.add("fadeOutSlow");
 						loading.style.opacity = 0;
 						setTimeout(() => {loading.style.display = "none";}, 701); // after the animation has completed.
 					}, 500);
 					clearInterval(loadedAboveFold);
+					clearTimeout(loadingTimeout);
 				}
 			}, 100);
-		});
 	</script>
 </head>
 
@@ -199,14 +215,17 @@
 				</div>
 				
 				<div id="aboutText">
+					<div>
+					<h1>Hello there,</h1>
 					<p>
-						Hey there, I'm Chris Petta a web developer living in Grand Rapids, MI.
+						I'm Chris Petta a web developer living in Grand Rapids, MI.
 						I'm currently working as the Teacher's Assistant for a Web and Game Development course where I assist students as they learn several coding languages including, <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>C#</strong>, and <strong>C++</strong>.<br />
 						In addition to working, I'm also <strong>pursuing a B.S. in computer science at Davenport University</strong>. <br />
 						I love to read about and experiment with new things. a short list of things I've experimented with for fun include hosting and runing several web, email, and game servers.
 						I've Built several computers, flashed a custom rom on my phone, and written scripts to automate repetitive tasks.<br />
 						In my free time, I enjoy 3D modeling, playing games with friends, and riding my bicycle.<br />
 					</p>
+				</div>
 				</div>
 			</div>
 			<div class="label">Skills</div>
