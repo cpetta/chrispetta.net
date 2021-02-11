@@ -89,13 +89,13 @@
 			width:25px;
 		}
 		#loadingDot1 {
-			animation-delay: 0.5s;
+			animation-delay: 0.4s;
 		}
 		#loadingDot2 {
-			animation-delay: 1s;
+			animation-delay: 0.8s;
 		}
 		#loadingDot3 {
-			animation-delay: 1.5s;
+			animation-delay: 1.2s;
 		}
 		@keyframes loadingFadeIn {
 			0% {background-color:#ddd}
@@ -111,21 +111,37 @@
 		}
 	</style>
 	<script>
+		let aboutImgLoaded = false;
+		let custemJSLoaded = false;
+		let DOMContentLoadedStatus = false;
+		let DocumentLoaded = false;
+		let displayUnfinished = false;
 		window.addEventListener("DOMContentLoaded", (event) => {
 			let loading = document.getElementById("loading");
 			let aboutImg = document.getElementById("aboutImg");
 			let custemJS = document.getElementById("custemJS");
-			let aboutImgLoaded = false;
-			let custemJSLoaded = false;
 			
 			aboutImg.onload = () => {aboutImgLoaded = true;}
 			custemJS.onload = () => {custemJSLoaded = true;}
+			DOMContentLoadedStatus = true;
+		});
 
-			let loadedAboveFold = setInterval(()=> {
-				if(aboutImgLoaded && custemJSLoaded) {
+		// This is a failsafe to dismiss the loading screen if the DOMContentLoaded event fails.
+		window.addEventListener("load", () => {
+			DocumentLoaded = true;
+		});
+		
+		// After 5 seconds, dismiss the loading screen and just display whatever has loaded.
+		setTimeout(() => {
+			console.log("Loading timed out, displaying page as is...");
+			displayUnfinished = true;
+		}, 5000);
+
+		let loadedAboveFold = setInterval(()=> {
+				if((aboutImgLoaded && custemJSLoaded) || DocumentLoaded || displayUnfinished) {
 					loading.classList.add("fadeOutSlow");
 					loading.style.opacity = 0;
-					setTimeout(() => { // Dismis the loading screen when finished loading
+					setTimeout(() => { // Dismiss the loading screen when finished loading
 						loading.classList.add("fadeOutSlow");
 						loading.style.opacity = 0;
 						setTimeout(() => {loading.style.display = "none";}, 701); // after the animation has completed.
@@ -133,7 +149,6 @@
 					clearInterval(loadedAboveFold);
 				}
 			}, 100);
-		});
 	</script>
 </head>
 
