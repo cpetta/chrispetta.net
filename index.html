@@ -132,7 +132,7 @@
 		});
 		
 		// After 5 seconds, dismiss the loading screen and just display whatever has loaded.
-		setTimeout(() => {
+		let loadingTimeout = setTimeout(() => {
 			console.log("Loading timed out, displaying page as is...");
 			displayUnfinished = true;
 		}, 5000);
@@ -147,6 +147,7 @@
 						setTimeout(() => {loading.style.display = "none";}, 701); // after the animation has completed.
 					}, 500);
 					clearInterval(loadedAboveFold);
+					clearTimeout(loadingTimeout);
 				}
 			}, 100);
 	</script>

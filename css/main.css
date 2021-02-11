@@ -240,8 +240,6 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 }
 #skills {
 	display:grid;
-	
-	padding:50px;
 }
 .skillItem {
 	align-items: center;
@@ -265,6 +263,7 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 @media only screen and (min-width: 1100px) {
 	#skills {
 		grid-template-columns: repeat(5, minmax(50px, 1fr));
+		padding:50px;
 	}
 }
 @media only screen and (max-width: 1100px) {
