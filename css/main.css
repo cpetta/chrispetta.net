@@ -71,8 +71,6 @@ header {
 /* navigation */
 nav {
 	background-color: rgb(220, 220, 220);
-	font-size: 16pt;
-	font-family: "Oxygen", "Roboto", "Arial", sans-serif;
 	grid-column: 2 / 9;
 	grid-row: 1;
 	grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
