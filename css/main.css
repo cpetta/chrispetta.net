@@ -231,11 +231,16 @@ nav a:hover > .text .underline, nav a:focus > .text .underline {
 #aboutText {
 	display:flex;
 	align-items: center;
-	padding:50px;
 	margin:0px;
 	width:100%;
 	max-width: 900px;
 }
+@media only screen and (min-width: 860px) {
+	#aboutText {
+		margin:50px;
+	}
+}
+
 #skills {
 	display:grid;
 }
