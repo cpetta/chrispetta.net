@@ -150,6 +150,7 @@ nav a:focus > .text .underline {
 #botHamBar {
 	margin-top:0px;
 	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 	outline: 1px solid transparent;
 	transition: 0.2s;
 }
@@ -548,6 +549,7 @@ footer {
 	height:6px;
 	width:100%;
 	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 	outline: 1px solid transparent;
 	transition: 0.2s;
 }
