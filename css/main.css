@@ -6,7 +6,7 @@ html {
 	font-family: 'Roboto-Light', "Arial", sans-serif;
 	font-size: 14pt;
 	letter-spacing: 1px;
-	scrollbar-width: thin; /* Fireforx Scrollbar */
+	scrollbar-width: thin; /* Firefox Scrollbar */
 	text-shadow:0px 0px 2px rgba(255,255,255,0.5) /* added text clarity */
 }
 /* Chrome Scrollbar */
@@ -105,13 +105,13 @@ nav a:focus > .text .underline {
 	width:65%;
 	transition: 0.2s ease-out;
 }
-.humburgcontainer {
+.hamburgerContainer {
 	display: none;
 	position:relative;
 	grid-column: 2;
 	grid-row: 1;
 }
-#hamburg {
+#hamburger {
 	border-radius: 5px;
 	display:flex;
 	flex-direction: column;
@@ -123,19 +123,19 @@ nav a:focus > .text .underline {
 	padding:15px;
 	transition: 0.2s;
 }
-#hamburg:hover {
+#hamburger:hover {
 	background-color: rgb(251, 251, 251);
 	border-radius: 15px;
 }
-#hamburg.navclosed:hover > #topHamBar{
+#hamburger.navClosed:hover > #topHamBar{
 	background-color: rgb(49, 127, 230);
 	transition-delay: 0.2s;
 }
-#hamburg.navclosed:hover > #midHamBar{
+#hamburger.navClosed:hover > #midHamBar{
 	background-color: rgb(49, 127, 230);
 	transition-delay: 0.1s;
 }
-#hamburg.navclosed:hover > #botHamBar{
+#hamburger.navClosed:hover > #botHamBar{
 	background-color: rgb(49, 127, 230);
 	transition-delay: 0.0s;
 }
@@ -157,21 +157,21 @@ nav a:focus > .text .underline {
 #midHamBar {
 	margin-bottom: 5px;
 }
-#hamburg.navopen #topHamBar {
+#hamburger.navOpen #topHamBar {
 	transform: translate(0px, 180%) scale(1.25,1.25) rotate(45deg);
 }
-#hamburg.navopen #midHamBar {
+#hamburger.navOpen #midHamBar {
 	opacity: 0;
 }
-#hamburg.navopen #botHamBar {
+#hamburger.navOpen #botHamBar {
 	transform: translate(0px, -180%) scale(1.25,1.25) rotate(-45deg);
 }
 @media only screen and (max-width: 1100px) {
-	.humburgcontainer {
+	.hamburgerContainer {
 		display: flex;
 		align-items: center;
 	}
-	#hamburg {
+	#hamburger {
 		position:absolute;
 		right:0px;
 	}
@@ -339,26 +339,26 @@ nav a:focus > .text .underline {
 	margin:15px auto 10px auto;
 	width:80%;
 }
-.showcasewrapper {
+.showcaseWrapper {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	padding: 15px;
 }
-.showcasewrapper a:hover > img,
-.showcasewrapper a:focus > img,
-.showcasewrapper a:hover > svg,
-.showcasewrapper a:focus > svg {
+.showcaseWrapper a:hover > img,
+.showcaseWrapper a:focus > img,
+.showcaseWrapper a:hover > svg,
+.showcaseWrapper a:focus > svg {
 	filter: contrast(110%) brightness(105%);
 	border-radius: 30px;
 }
-.showcasewrapper a {
+.showcaseWrapper a {
 	margin: 35px;
 	min-width: 100px;
 	width: 350px;
 }
-.showcasewrapper a img,
-.showcasewrapper a svg {
+.showcaseWrapper a img,
+.showcaseWrapper a svg {
 	border-radius: 25px;
 	box-shadow: 0px 1px 5px 0px rgba(0, 0, 0,0.2);
 	margin: 0px;
@@ -366,10 +366,10 @@ nav a:focus > .text .underline {
 	transition: 0.2s;
 }
 @media only screen and (max-width: 1100px) {
-	.showcasewrapper {
+	.showcaseWrapper {
 		flex-wrap: wrap;
 	}
-	.showcasewrapper img{
+	.showcaseWrapper img{
 		margin: 25px;
 		width: 350px;
 	}
@@ -501,7 +501,7 @@ footer {
         flex-flow: row;
     }
 }
-.defautViewer3D {
+.defaultViewer3D {
     flex-grow:1;
     flex-basis: 50%;
     background-color: rgb(214,211,202);
@@ -674,14 +674,14 @@ ul.specs li hr {
 #fullscreenBtn:hover {
     filter: invert(90%);
 }
-#iteminformation {
+#itemInformation {
     flex-grow:1;
     flex-basis: 50%;
     background: #fafafa;
     padding:20px;
     padding-top:0px;
 }
-#iteminformation h1 {
+#itemInformation h1 {
     text-align: center;
 }
 #modelCopyright {
@@ -755,13 +755,13 @@ model-viewer{
     border-color: #fff transparent #fff transparent;
 }
 .fadeIn {
-    animation: fadein 0.3s linear;
+    animation: fadeIn 0.3s linear;
 }
 .fadeInOnScroll {
 	opacity: 0;
 }
 .fadeInOnScroll2 {
-	animation: fadein 0.5s linear;
+	animation: fadeIn 0.5s linear;
 	opacity:1;
 }
 .fadeOut {
@@ -770,7 +770,7 @@ model-viewer{
 .fadeOutSlow {
     animation: fadeout 0.7s linear;
 }
-@keyframes fadein {
+@keyframes fadeIn {
     0% {opacity: 0;}
     100% { opacity: 1;}
 }

@@ -7,7 +7,7 @@ let projectIndex = 0;
 let loading = document.getElementById("loading");
 let gotoTopBtn = document.getElementById("gotoTopBtn");
 let nav = document.getElementById("nav");
-let hamburg = document.getElementById("hamburg");
+let hamburger = document.getElementById("hamburger");
 let modelingSection = document.getElementById("modeling");
 let modelingLabel = document.getElementById("modelingLabel");
 let viewport = document.getElementById("viewer3d");
@@ -127,14 +127,14 @@ async function resizeManager() {
 function navToggle(closeNav = false) {
 	if ((navState || closeNav) && window.innerWidth <= 1100) { // If mobile nav is not already open
 		nav.style.maxHeight = "0px";
-		setTimeout(() => {hamburg.classList.add("navclosed")},201); // using setTimeout here to allow the proper animation to play. avoiding an animation delay on the top bar
-		hamburg.classList.remove("navopen");
+		setTimeout(() => {hamburger.classList.add("navClosed")},201); // using setTimeout here to allow the proper animation to play. avoiding an animation delay on the top bar
+		hamburger.classList.remove("navOpen");
 		navState = false;
 	}
 	else {
 		nav.style.maxHeight = "340px";
-		hamburg.classList.add("navopen");
-		hamburg.classList.remove("navclosed");
+		hamburger.classList.add("navOpen");
+		hamburger.classList.remove("navClosed");
 		navState = true;
 	}
 }
@@ -422,7 +422,7 @@ function fullscreenOpen() {
 	viewport.classList.add("fullscreenViewer3d");
 	viewport.style.width = `${window.innerWidth}px`;
 	viewport.style.minWidth = "100%";
-	viewport.classList.remove("defautViewer3D");
+	viewport.classList.remove("defaultViewer3D");
 	//fullscreenBtn.style.position = "fixed";
 	fullscreenBtn.style.display = "none";
 	fullscreenCloseBtn.style.display = "flex";
@@ -439,7 +439,7 @@ function fullscreenOpen() {
 function fullscreenClose() {
 
 	function fullscreenCloseHelper() {
-		viewport.classList.add("defautViewer3D");
+		viewport.classList.add("defaultViewer3D");
 		viewport.style.width = "";
 		viewport.style.minWidth = "";
 		viewport.classList.remove("fullscreenViewer3d");
