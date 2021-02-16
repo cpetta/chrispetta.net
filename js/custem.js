@@ -289,7 +289,6 @@ function addAdditionalOptions(z = 0) {
 		link.appendChild(option)
 		additionalOptionsContainer.appendChild(link);
 		option.src = `3DProjects/${modelProjects[projectIndex].folder}/images/thumbnails/${modelProjects[projectIndex].thumbnails[z]}`;
-		option.classList.add("clickable");
 		option.onclick = () => clickManager(z - 1);
 		option.loading = "eager";
 		fadeIn(option)
