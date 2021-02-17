@@ -1,6 +1,7 @@
 let navState = false;
 let modelViewerLoaded = false;
 let thumbnailClicked = -1;
+let lastModelLoaded = null;
 let lastThumbnailClicked = -1;
 let projectIndex = 0;
 
@@ -200,32 +201,35 @@ async function loadScript(scriptSrc, module = false) {
  * @param {sting} clicked The uniqueName of a model project from the 3DProjects.json file
  */
 async function modelProjectManager(clicked) {
-	// modelProjects will evaluate false when the JSON file containing all the information hasn't been loaded yet
-	if(modelProjects) {
-		fadeIn(webGLViewer);
-		if(lastThumbnailClicked != -1) { // If the last thumbnail clicked was not the modelviewer
-			fadeOut(imgs[projectIndex][lastThumbnailClicked]);
+	if(clicked != lastModelLoaded) {
+		lastModelLoaded = clicked;
+		// modelProjects will evaluate false when the JSON file containing all the information hasn't been loaded yet
+		if(modelProjects) {
+			fadeIn(webGLViewer);
+			if(lastThumbnailClicked != -1) { // If the last thumbnail clicked was not the modelviewer
+				fadeOut(imgs[projectIndex][lastThumbnailClicked]);
+			}
+			fadeIn(modelViewer);
+			// When a new project is being loaded, default to the model viewer
+			thumbnailClicked = -1;
+			lastThumbnailClicked = -1;
+
+			const uniqueName = (element) => {return element.uniqueName === clicked}
+			projectIndex = modelProjects.findIndex(uniqueName);
+
+			// Set the 3D model poster as it's loading to the low rez screenshot.
+			poster.style.backgroundImage = `url('3DProjects/${modelProjects[projectIndex].folder}/images/thumbnails/${modelProjects[projectIndex].thumbnails[0]}')`;
+
+			if(projectIndex !== -1) {
+				removeModelInfo();
+				startTypingNewModelInfo();
+				loadNewModelIntoModelViewer();
+				additionalOptionsContainer.style.display = "flex"
+			}
 		}
-		fadeIn(modelViewer);
-		// When a new project is being loaded, default to the model viewer
-		thumbnailClicked = -1;
-		lastThumbnailClicked = -1;
-
-		const uniqueName = (element) => {return element.uniqueName === clicked}
-		projectIndex = modelProjects.findIndex(uniqueName);
-
-		// Set the 3D model poster as it's loading to the low rez screenshot.
-		poster.style.backgroundImage = `url('3DProjects/${modelProjects[projectIndex].folder}/images/thumbnails/${modelProjects[projectIndex].thumbnails[0]}')`;
-
-		if(projectIndex !== -1) {
-			removeModelInfo();
-			startTypingNewModelInfo();
-			loadNewModelIntoModelViewer();
-			additionalOptionsContainer.style.display = "flex"
+		else { // if modelProjects is false, try again after the specified time to see if the JSON file has finished loading.
+			setTimeout(modelProjectManager(clicked), 100);
 		}
-	}
-	else { // if modelProjects is false, try again after the specified time to see if the JSON file has finished loading.
-		setTimeout(modelProjectManager(clicked), 100);
 	}
 }
 /**
