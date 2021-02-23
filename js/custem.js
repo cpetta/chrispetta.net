@@ -5,6 +5,8 @@ let lastModelLoaded = null;
 let lastThumbnailClicked = -1;
 let projectIndex = 0;
 
+let passiveSupported = false;
+
 let loading = document.getElementById("loading");
 let gotoTopBtn = document.getElementById("gotoTopBtn");
 let nav = document.getElementById("nav");
@@ -95,17 +97,34 @@ function TypingText(element, delay) {
 	this.typingDelay = delay;
 }
 
-modelViewerLoaded = true;
-fullscreenBtn.addEventListener("click", fullscreenOpen);
-fullscreenCloseBtn.addEventListener("click", fullscreenClose);
+/**
+ * Detect if passive for event listeners is supported.
+ */
+try {
+  const options = {
+    get passive() { // This function will be called when the browser
+                    //   attempts to access the passive property.
+      passiveSupported = true;
+      return false;
+    }
+  };
 
+  window.addEventListener("test", null, options);
+  window.removeEventListener("test", null, options);
+} catch(err) {
+  passiveSupported = false;
+}
+
+modelViewerLoaded = true;
+fullscreenBtn.addEventListener("click", fullscreenOpen, passiveSupported?{passive:true}:false);
+fullscreenCloseBtn.addEventListener("click", fullscreenClose, passiveSupported?{passive:true}:false);
 window.addEventListener("load", () => {
 	resizeManager();
 	fadeInObjects = window.document.querySelectorAll(".fadeInOnScroll");
 	createObserver();
-});
+}, passiveSupported?{once:true, passive:true}:false);
 
-window.addEventListener("resize", resizeManager);
+window.addEventListener("resize", resizeManager, passiveSupported?{passive:true}:false);
 
 /**
  * Applies css styles to the navigation when the screen is resized
