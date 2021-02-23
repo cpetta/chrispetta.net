@@ -98,12 +98,11 @@ function TypingText(element, delay) {
 }
 
 /**
- * Detect if passive for event listeners is supported.
+ * Detect if passive event listeners are supported.
  */
 try {
   const options = {
-    get passive() { // This function will be called when the browser
-                    //   attempts to access the passive property.
+    get passive() { // This function will be called when the browser attempts to access the passive property.
       passiveSupported = true;
       return false;
     }
