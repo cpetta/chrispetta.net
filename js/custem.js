@@ -1,5 +1,6 @@
 let navState = false;
-let modelViewerLoaded = false;
+let modelViewerLoaded = true;
+let loadingBarWidth = 0;
 let thumbnailClicked = -1;
 let lastModelLoaded = null;
 let lastThumbnailClicked = -1;
@@ -57,8 +58,6 @@ let modelInfoTypingTextContainer = [
 let imgs; // 2D Array
 let imgLoaded;
 
-Image.prototype.completedPercentage = 0;
-
 let modelProjects;
 fetch('3DProjects/3DProjects.json')
 .then(response => response.json())
@@ -69,23 +68,6 @@ fetch('3DProjects/3DProjects.json')
 	modelProjects.forEach(prepareProjects); 
 });
 
-Image.prototype.load = async function(url){
-	let thisImg = this;
-	let xmlHTTP = new XMLHttpRequest();
-	xmlHTTP.open('GET', url, true);
-	xmlHTTP.responseType = 'arraybuffer';
-	xmlHTTP.onloadstart = function() {
-		thisImg.completedPercentage = 0;
-	};
-	xmlHTTP.onprogress = function(e) {
-		thisImg.completedPercentage = parseInt((e.loaded / e.total) * 100);
-	};
-	xmlHTTP.onload = function(e) {
-		let blob = new Blob([this.response]);
-		thisImg.src = window.URL.createObjectURL(blob);
-	};
-	xmlHTTP.send();
-};
 /**
  * Creates an object which can hold a DOM element and a setTimeout, used for controlling the typing animation
  * @param {Element} element The text element that will be animated
@@ -114,7 +96,6 @@ try {
   passiveSupported = false;
 }
 
-modelViewerLoaded = true;
 fullscreenBtn.addEventListener("click", fullscreenOpen, passiveSupported?{passive:true}:false);
 fullscreenCloseBtn.addEventListener("click", fullscreenClose, passiveSupported?{passive:true}:false);
 window.addEventListener("load", () => {
@@ -401,29 +382,49 @@ function prepareDisplayImgs(item, imageIndex, projIndex) {
  */
 async function loadAndAddImage(imgContainer, number) {
 	let img = imgs[projectIndex][number];
-	img.load(`3DProjects/${modelProjects[projectIndex].folder}/images/${modelProjects[projectIndex].images[number]}`);
-	
-	let promiseToLoadImg = new Promise((resolve) => {
-		let progress = 5;
-		fadeIn(loadingBar);
-		fadeIn(loadingSpinner);
-		let checkProgress = setInterval(frame, 10);
-		function frame() {
-			progress = img.completedPercentage;
-			if (progress >= 100) {
-				clearInterval(checkProgress);
-				fadeOut(loadingBar);
-				fadeOut(loadingSpinner);
-				resolve();
-			} else {
-				loadingBarUpdate(progress);
-			}
+	modelImg = `3DProjects/${modelProjects[projectIndex].folder}/images/${modelProjects[projectIndex].images[number]}`;
+	loadingBarWidth = 0;
+	await Promise.all([
+		fetchImg(modelImg)
+		.then((url) => {img.src = url}),
+		startLoadingBarUpdate()
+	]).then(() => {
+		imgContainer.appendChild(img);
+		fadeIn(img);
+	});
+}
+/**
+ * Asynchronously loads an image from the provided source.
+ * @param {sting} src file path to the image that should be fetched
+ * @returns {Promise} Blob URL that can be added to a src attribute of an image
+ */
+async function fetchImg(src) {
+	return new Promise(async (resolve) => {
+		let response = await fetch(src);
+		reader = response.body.getReader();
+		const contentLength = +response.headers.get('Content-Length');
+		let receivedLength = 0; // received that many bytes at the moment
+		let chunks = []; // array of received binary chunks (comprises the body)
+
+		let blob = await imgStreamReader();
+		resolve(window.URL.createObjectURL(blob));
+
+		/**
+		 * Helper function that reads the data stream of the fetched image
+		 * @returns {Blob} Blob image data
+		 */
+		function imgStreamReader() {
+			return  reader.read().then(({value, done}) => {
+				if (done) {
+					return new Blob(chunks);
+				  }
+				chunks.push(value);
+				receivedLength += value.length;
+				loadingBarWidth = parseInt((receivedLength / contentLength) * 100);
+				return imgStreamReader();
+			})
 		}
 	});
-	promiseToLoadImg.then(() => {
-		fadeIn(img);
-		imgContainer.appendChild(img);
-	});	
 }
 /**
  * Open the fullscreen view for the model viewer
@@ -498,6 +499,25 @@ function fullscreenClose() {
 function loadingBarUpdate(width) {
 	loadingBar.style.width = `calc(${width}% - 32px - 10px`;
 }
+
+async function startLoadingBarUpdate() {
+	new Promise((resolve) => {
+		fadeIn(loadingBar);
+		fadeIn(loadingSpinner);
+		let checkProgress = setInterval(frame, 10);
+		function frame() {
+			if (loadingBarWidth >= 100) {
+				clearInterval(checkProgress);
+				fadeOut(loadingBar);
+				fadeOut(loadingSpinner);
+				resolve();
+			} else {
+				loadingBarUpdate(loadingBarWidth);
+			}
+		}
+	});
+}
+
 /**
  * Start typing out the element that's passed in to textTypingObj
  * @param {element} textTypingObj the element which will contain the typed out text
