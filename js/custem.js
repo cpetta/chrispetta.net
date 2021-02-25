@@ -499,7 +499,11 @@ function fullscreenClose() {
 function loadingBarUpdate(width) {
 	loadingBar.style.width = `calc(${width}% - 32px - 10px`;
 }
-
+/**
+ * starts a periodic update to the loading bar based on the value of the global variable loadingBarWidth. Ends when loadingBarWidth >= 100
+ * @returns {Promise}
+ * @todo make this function accept a loading bar object that will allow it to be reused in more areas.
+ */
 async function startLoadingBarUpdate() {
 	new Promise((resolve) => {
 		fadeIn(loadingBar);
