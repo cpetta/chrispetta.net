@@ -364,6 +364,7 @@ nav a:focus > .text .underline {
 	margin: 35px;
 	min-width: 100px;
 	width: 350px;
+	cursor: pointer;
 }
 .showcaseWrapper a img,
 .showcaseWrapper a svg {
