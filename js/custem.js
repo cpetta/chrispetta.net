@@ -149,9 +149,9 @@ function createObserver() {
 		threshold: 0.4
 	}
 	observer = new IntersectionObserver(handleIntersect, options);
-	fadeInObjects.forEach(async element => {
-		await observer.observe(element);
-	});
+	for (const element of fadeInObjects) {
+		observer.observe(element);
+	}
 	observer.observe(modelingSection);
 	observer.observe(modelingLabel);
 	observer.observe(viewport);
@@ -161,8 +161,8 @@ function createObserver() {
  * @param {*} entries item that the observer is observing
  * @param {*} observer IntersectionObserver object
  */
-async function handleIntersect(entries, observer) {
-	entries.forEach(async (entry) => {
+function handleIntersect(entries, observer) {
+	for (entry of entries) {
 		if(entry.isIntersecting) {
 
 			if(entry.target === modelingSection || entry.target === modelingLabel || entry.target === viewport) {
@@ -177,7 +177,7 @@ async function handleIntersect(entries, observer) {
 			entry.target.classList.add("fadeInOnScroll2");
 			observer.unobserve(entry.target);
 		}
-	})
+	}
 }
 /**
  * Add a script tag to an html file. Called by the intersection observer to lazy load modelviewer.js
