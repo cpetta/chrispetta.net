@@ -1,0 +1,24 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "Chris Petta's Portfolio",
+    "short_name": "Portfolio",
+    "description": "Chris Petta, a Web Developer and 3D Modeler Portfolio",
+    "icons": [{
+      "src": "images/icons/apple-touch-icon.png",
+      "sizes": "180x180"
+    },{
+        "src": "images/portlogo.svg",
+        "sizes": "72x72 96x96 128x128 256x256",
+        "purpose": "maskable"
+      },{
+        "src": "images/icons/icon-512.png",
+        "sizes": "512x512"
+      }],
+    "scope": "https://chrispetta.net/",
+    "start_url": "index.html",
+    "display": "standalone",
+    "orientation": "any",
+    "theme_color": "rgb(49, 127, 230)",
+    "background_color": "rgb(49, 127, 230)"
+  }
