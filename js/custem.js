@@ -395,7 +395,17 @@ function prepareDisplayImgs(item, imageIndex, projIndex) {
  */
 async function loadAndAddImage(imgContainer, number) {
 	let img = imgs[projectIndex][number];
-	modelImg = `3DProjects/${modelProjects[projectIndex].folder}/images/${modelProjects[projectIndex].images[number]}`;
+	let projectFolder = modelProjects[projectIndex].folder;
+	let imageSrc;
+
+	if(avifSupported) {
+		imageSrc = modelProjects[projectIndex].avifImages[number];
+	}
+	else {
+		imageSrc = modelProjects[projectIndex].images[number];
+	}
+	
+	modelImg = `3DProjects/${projectFolder}/images/${imageSrc}`;
 	loadingBarWidth = 0;
 	await Promise.all([
 		fetchImg(modelImg)

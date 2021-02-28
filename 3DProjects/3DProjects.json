@@ -16,6 +16,9 @@
         "images": [
             "chair1.jpg"
         ],
+        "avifImages": [
+            "chair1.avif"
+        ],
         "thumbnails": [
             "chair0.png",
             "chair1.png"
@@ -41,6 +44,13 @@
             "redbot3.jpg",
             "redbot4.jpg",
             "redbot5.jpg"
+        ],
+        "avifImages": [
+            "redbot1.avif",
+            "redbot2.avif",
+            "redbot3.avif",
+            "redbot4.avif",
+            "redbot5.avif"
         ],
         "thumbnails": [
             "redbot0.png",
@@ -69,6 +79,10 @@
             "stove1.jpg",
             "stove2.jpg"
         ],
+        "avifImages": [
+            "stove1.avif",
+            "stove2.avif"
+        ],
         "thumbnails": [
             "stove0.png",
             "stove1.png",
@@ -93,6 +107,11 @@
             "catbed1.jpg",
             "catbed2.jpg",
             "catbed3.jpg"
+        ],
+        "avifImages": [
+            "catbed1.avif",
+            "catbed2.avif",
+            "catbed3.avif"
         ],
         "thumbnails": [
             "catbed0.png",
@@ -119,6 +138,11 @@
             "stairs1.jpg",
             "stairs2.jpg",
             "stairs3.jpg"
+        ],
+        "avifImages": [
+            "stairs1.avif",
+            "stairs2.avif",
+            "stairs3.avif"
         ],
         "thumbnails": [
             "stairs0.png",
@@ -149,6 +173,14 @@
             "yellowbot4.jpg",
             "yellowbot5.jpg"
         ],
+        "avifImages": [
+            "yellowbot0.avif",
+            "yellowbot1.avif",
+            "yellowbot2.avif",
+            "yellowbot3.avif",
+            "yellowbot4.avif",
+            "yellowbot5.avif"
+        ],
         "thumbnails": [
             "yellowbot00.png",
             "yellowbot0.png",
@@ -176,6 +208,9 @@
         "images": [
             "apple.jpg"
         ],
+        "avifImages": [
+            "apple.avif"
+        ],
         "thumbnails": [
             "apple0.png",
             "apple.png"
@@ -196,6 +231,9 @@
         "initialOrbit": "103deg 61.54deg 0.1067m",
         "exposure": "0.85",
         "images": [
+            "bananas.jpg"
+        ],
+        "avifImages": [
             "bananas.jpg"
         ],
         "thumbnails": [
@@ -219,6 +257,9 @@
         "exposure": "0.7",
         "images": [
             "bread.jpg"
+        ],
+        "avifImages": [
+            "bread.avif"
         ],
         "thumbnails": [
             "bread0.jpg",
