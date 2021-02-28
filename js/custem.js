@@ -232,7 +232,7 @@ async function modelProjectManager(clicked) {
 	}
 	// Fix for failure to scroll the model viewer into view when clicking on a project.
 	// Delay the scroll for 2 frames to avoid attempting to scroll while the content is being repainted.
-	setTimeout(() => {requestAnimationFrame(webGLViewer.scrollIntoView())}, 32);
+	setTimeout(() => {requestAnimationFrame(() => {webGLViewer.scrollIntoView()})}, 32);
 }
 /**
  * Clear out the information for each item in the specs section of the viewer
