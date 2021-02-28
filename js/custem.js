@@ -7,6 +7,7 @@ let lastThumbnailClicked = -1;
 let projectIndex = 0;
 
 let passiveSupported = false;
+let avifSupported = false; // avifSupport()
 
 let loading = document.getElementById("loading");
 let gotoTopBtn = document.getElementById("gotoTopBtn");
@@ -95,6 +96,15 @@ try {
 } catch(err) {
   passiveSupported = false;
 }
+/**
+ * Detect if the AVIF image format is supported.
+ */
+function avifSupport(){
+	let avif = new Image();
+	avif.src = "data:image/avif;base64,AAAAFGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAC8AAAAGwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAARWlwcnAAAAAoaXBjbwAAABRpc3BlAAAAAAAAAAQAAAAEAAAADGF2MUOBAAAAAAAAFWlwbWEAAAAAAAAAAQABAgECAAAAI21kYXQSAAoIP8R8hAQ0BUAyDWeeUy0JG+QAACANEkA=";
+	avif.onload=()=>{avifSupported = true};
+}
+avifSupport();
 
 fullscreenBtn.addEventListener("click", fullscreenOpen, passiveSupported?{passive:true}:false);
 fullscreenCloseBtn.addEventListener("click", fullscreenClose, passiveSupported?{passive:true}:false);
