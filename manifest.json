@@ -9,13 +9,13 @@
       "sizes": "180x180"
     },{
         "src": "images/portlogo.svg",
-        "sizes": "72x72 96x96 128x128 256x256",
+        "sizes": "150x150",
         "purpose": "maskable"
       },{
         "src": "images/icons/icon-512.png",
         "sizes": "512x512"
       }],
-    "scope": "https://chrispetta.net/",
+    "scope": "/chrispetta.net/",
     "start_url": "index.html",
     "display": "standalone",
     "orientation": "any",
