@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Kuzma Classroom</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAMFBMVEUEBAQ6Ojp6enoRrB2urq5804POzs6k4Ki46bzK7c3l5eXf9ODw8PDo9+n5+fn///9L3HGHAAAA6klEQVR42tRS4c7DIAgEilSdH7z/247TrO2yZPt+bpe0FTjuUEvxAfQNhC7Sw0SGq2jkijkTIYDmgoxIQ4j6IOJQmrBYX5JJsElwJk4SMWcAggiozwRFED2fZEVAlDp0MrSMVJAOM/VJQCPNIgSz2xcBHheCEx0TCSbGe1k4LBZtTu8BKT50lVGImR0CgXhsE5M9tglPlhjMHQdnDA02nrAvuc3/ENyvmVZKaQ6chLP6V7ZtK3v+GtrHq4WjXAeT2JNCtNpa3cvsNslbh61fh9y3hRLryM8RDotb3WvLnA+PS/8PHfVb3AUYAJp1LKWizmFqAAAAAElFTkSuQmCC" sizes="32x32">
+</head>
+
+<body>
+	<header id="Home">
+		<img class="logo" alt="Web and Game Development Logo" src="images/logo.png">
+		<div class="humburgcontainer" onclick="navtoggle()">
+			<div class="hamburg">
+				<div class="hambar top"></div>
+				<div class="hambar middle" style="background-color: purple"></div>
+				<div class="hambar bottom"></div>
+			</div>
+			<script>
+				function navtoggle() {
+					var x = document.getElementById("nav");
+					if (x.style.display === "grid") {x.style.removeProperty('display');}
+					else {x.style.display = "grid";}
+				}
+			</script>
+		</div>
+		<nav id="nav">
+			<a href="#home">Home</a>
+			<a href="#parents">Parents</a>
+			<a href="#students">Students</a>
+			<a href="#gallery">Gallery</a>
+			<a href="#news">News</a>
+			<a href="#">Forums</a>
+			<a href="#about">About</a>
+		</nav>
+		
+	</header>
+	<div class=""> <!-- Slide Show div -->
+		<div class="slideshow">
+			<img class="hiddenSlide" src="images/main1_sm.jpg" alt="Picture of person on keyboard." style="opacity: 1;">
+			<img class="hiddenSlide" src="images/main2_sm.jpg" alt="Slideshow picture of girl with virtual reality headset outside during the season of fall." style="opacity: 0;">
+			<img class="hiddenSlide" src="images/main3_sm.jpg" alt="Slideshow picture of a group of people collaborating in an office environment." style="opacity: 0;">
+			<img src="images/main3_sm.jpg" alt="Slideshow picture of guy on keyboard.">
+		</div>
+		<script> // slideshow code
+			var i = 0;
+			slideshow();
+			function slideshow() {
+				var x = document.getElementsByClassName("hiddenSlide");
+				x[i].style.opacity = "0";
+				if(i >= 2) { i = 0; }
+				else { i++; }
+				x[i].style.opacity = "1";
+				setTimeout(slideshow, 5000);
+			}
+		</script>
+	</div>
+	<main>
+		<div class="flexbox_parent">
+			<div id="parents" class="flexbox_child_250">
+				<div class="label">Parents</div>
+					Parents can access their student's grade through <a href="#">Infinite Campus</a>, using the credentials provided to them by the district.<br><br>
+					For attendance reporting, please call toll free <a href="#">1.8xx.xxx.xxxx</a>, ext.xxxx or direct <a href="x">1.xxx.xxx.xxxx</a>.<br><br>
+			</div>
+			<div id="news" class="flexbox_child_250">
+				<div class="label">News</div>
+					Important upcoming dates:
+					<blockquote>
+						March 29 Spring Break<br>
+						April 25 Field Trip: All Day<br>
+						May 9 Tradeshow: Required Evening Event<br>
+						June 7 Last day of Tech
+					</blockquote>
+			</div>
+			<div id="students" class="flexbox_child_250">
+				<div class="label">Students</div>
+				<a href="#">Hallway Form</a>
+				<a href="#">Study Group Request</a>
+				<a href="#">Grade Question</a>
+				<a href="#">Google Classroom</a>
+				<a href="#">Quiz Request</a>
+				<a href="#">CIW Ucertify</a>
+				<a href="#">Infinite Campus</a>
+				<a href="#">Google Keep</a>
+				<a href="../sandbox/index.html">Student Sandbox</a>
+			</div>
+		</div>
+		
+		<div id="showcase">	
+			<div class="label">Showcase</div>
+			<div class="showcasewrapper">
+				<a href="#">
+					<img src="images/showcase1o2.png" alt="'The Game Realm' website">
+				</a>
+				<a href="#">
+					<img src="images/showcase2o2.png" alt="'Flipside' website">
+				</a>
+				<a href="#">
+					<img src="images/showcase3o2.png" alt="'coffee.i.o.' website">
+				</a>
+				<a href="#">
+					<img src="images/showcase4o2.png" alt="'Right on Red' website">
+				</a>
+			</div>
+		</div>
+		<div id="about">
+			<div class="label">About</div>
+			<p>
+				"Careerline Tech Center prepares students for tomorrow's workforce 
+by providing career and technical education for employment and 
+post-secondary opportunities while promoting life-long learning and 
+personal success."
+			</p>
+			<hr class="grad">
+			<p>
+				<strong>Program Mission: </strong>
+				Students in the Software and Game Development program learn 
+fundamental knowledge in IT Core while developing skills in Software and
+ Game Development using HTML5, CSS3, JavaScript, Gamemaker V2, C#, and 
+C++. Students have the opportunity to earn Industry Certifications 
+during their time in the program while also earning college credits.
+			</p> 
+			<p>
+				<strong>Nancy Kuzma</strong> brings 20 years of professional 
+experience into the classroom! Her knowledge in Computer Science, 
+project management, application deployment, and training development 
+enriches the classroom experience for her students. Her passion for 
+youth, combined with her management skills, creates a rich learning 
+environment that students thrive in. Nancy holds a B.S. in Computer 
+Science and Education from Aquinas College (deans list, cum laude) and a
+ M.S. in Training and Development from the Ferris State University 
+School of Education (deans list, magna cum laude). Nancy is a CIW 
+Professional, Certified Microsoft Educator, Certified as a Project 
+Manager from George Washington University, and has 20 years of corporate
+ experience in IT.
+			</p>
+			<p>
+				<strong>Christopher Petta</strong> is pursuing a B.S. in Computer 
+Science from Davenport University. He is a CIW Professional, 
+				Certified in Site Development, Network Technologies, and Internet 
+Business. He also holds an IC3 certification and an ETA Customer 
+				Service certification. Christopher Petta has been working at the 
+Careerline Tech Center for the last five years, where he has provided 
+assistance 
+				for the teacher, collaborated with support staff, and worked 
+one-on-one with students to boost their comprehension and application of
+ knowledge learned.
+			</p>
+		</div>
+	</main>
+	<footer class="shade2">
+		<span>
+			© Kuzma 2015
+		</span>
+		<span>
+			<a href="http://www.oaisd.org/ctc/"> Careerline Tech Center Website</a><br>
+			<a href="#">Scholarship Information</a><br>
+			<a href="#">College Credit Information</a><br>
+		</span>
+		<span>
+			<a href="#">Email Instructor</a><br>
+			<a href="#">Email Paraprofessional</a><br>
+		</span>
+		<span style="display:flex;">
+			<a href="#"><span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoBAMAAAB+0KVeAAAAMFBMVEXDz+fk6vRsicP////p7vZWd7qoudtFabP3+fyCm81Lbra/zOVCZ7L09vru8fjX3+9eauB0AAAAcklEQVQoz2M4gwUw0F4wNBRDcNFnY2MLNMFTwsZAgCZ4zhiL4GcsgkeNsQieBIqYCAqiCp4GCuqgu/MgULAGXfAIUPcZLIKGZAtuYOAAepyBgRNZ0BgKzLAJWmITNCJa0BRZMC0tw9jYNi0tnYo+GoGCABjmHla0q7d5AAAAAElFTkSuQmCC" style="padding:10px;" alt="facebook"></span></a>
+			<a href="#"><span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAGFBMVEWu3fo4rPT///9UuPXO6/zq9v58yPcdofK3jpPjAAAArUlEQVR42uyUzRKEIAyDm/7E939jHXUFobBedvZiTh35CGFoleWh5AV/CwJPQIiqBreCHQgvFgjd5a7WgdRCin5Eogc1zu3QIukcbf+Mqzwdk8scuXw7qwKzW/NajVIlIMW1kyegaSJZhhnvYgZaQiJ9Qvjk5Bqkt56Wg4iJ4a17mpSBYZuBVcywST+aj7iqH2G1n2M0CqwDBmczQznYEPs+XGhn6v33/AtcBRgAUYElTqM3J6gAAAAASUVORK5CYII=" style="padding:10px;" alt="twitter"></span></a>
+			<a href="#"><span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAElBMVEX////MzMyZmZlmZmYzMzMAAADzj3ppAAABBUlEQVR42pSVQRbDIAhEA4z3v3KNRUQRa1kljy8MIMnzTEYsQCmAMD25NahbhfcUiaOUlU1YDlhDOWQtiS35UVLDJTeRUo5m2bm9cii7Fq0u7Uvzg76l1/ZVqw1tBTtfT6xKrHHk1Yt7xn4MzqmVYDtbwqgHNyDmM7t7YmG4nCRaQu5HJL163W8nErOMCqb3mTpY7iKWe/Bfjb+qxng491FMw3kyVRrdzZrGvoAPOwwtC+8WhHV3u8EqV+wqW1iWsIj81YC5pmkzeXRAVDevE/G9e5EaskryBTmO/OnQx5A4I3dc7xGzRJD3rV3BOAYd1gJuB9uCTiCyW0r++y44/Rdy+wgwABh/DQoNkXsFAAAAAElFTkSuQmCC" style="padding:10px;" alt="Checkout this site is on Github"></span></a>
+		</span>
+	</footer>
+
+</body></html>

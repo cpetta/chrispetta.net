@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="Keyword" content="Sandbox"/>
+		<meta name="Description" content="Kuzma Class Sandbox"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="icon" href="images/favico.png" type="image/png" sizes="32x32"/>
+		<link rel="stylesheet" type="text/css" href="css/sandbox.css"/>
+		<title>Sandbox</title>
+	</head>
+	<body>
+		<div id="site">
+		
+			<header>
+				<a href="../kuzmaclass/index.html">&#8592; Kuzmaclass.org</a><br />
+				*All student names have been replaced.
+				<form method="get" action="#determineSort()"  class="search box">
+					<input id="search" type="text" name="search" placeholder="Search" oninput="determineSort()" autofocus/>
+				</form>
+				<div class="box sort">
+					<select id="selectFirstSecond" name="selectFirstSecond" onchange="determineSort()">
+						<option value="0">1st and 2nd Year projects</option>
+						<option value="1">1st Year projects</option>
+						<option value="2">2nd Years projects</option>
+					</select>
+					<select id="selectYear" name="selectYear" onchange="determineSort()">
+						<option value="0">All Years</option>
+					</select>
+					<select id="selectSort" name="selectSort" onchange="determineSort()">
+						<option value="none">Sort by upload order</option>
+						<option value="firstname">Sort by First Name</option>
+						<option value="lastname">Sort by Last Name</option>
+					</select>
+				</div>
+			</header>
+			
+			<main id="content">
+				<noscript>
+					<a href="studentsandboxnojs.html">A non-javascript version of this site can be accessed here.</a>
+				</noscript>
+			</main>
+			<footer class="box">
+				<article>   
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" src="images/sandbox/88x31.png" /></a>
+				</article>	
+				<article>
+					Last Updated: May 17, 2019
+				</article>
+			</footer>
+		</div>
+		<script type="text/javascript" src="sandboxData.json"></script>
+		<script type="text/javascript" src="sandbox.js" onload="drawYearOptions();drawContent(data);"></script>
+	</body>
+</html>
