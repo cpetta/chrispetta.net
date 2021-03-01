@@ -47,9 +47,7 @@
 #webDev article{
  width:100%;
 }
-.websiteTitle {
-	text-align: center;
-}
+
 .webProject {
 	display:flex;
 	flex-direction: row;
@@ -58,8 +56,33 @@
 	align-items: center;
 	padding-top:30px;
 }
-.webProject p{
-	margin: 0px;
+.websiteTitle {
+	align-items: center;
+	box-sizing: content-box;
+	display: flex;
+	justify-content: center;
+}
+.websiteTitle .centered .text{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	width:100%;
+}
+.websiteTitle .text h1 {
+margin:0px;
+}
+.external {
+	height:auto;
+	padding-left:7px;
+	padding-top:2px;
+	width:16px;
+}
+.websiteTitle:hover .text ~ .underline {
+	background-color: #000;
+	width:100%;
+	opacity: 100%;
 }
 .website {
 	width:100%;
