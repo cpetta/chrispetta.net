@@ -211,19 +211,8 @@ margin:0px;
 #gotoTopBtn:hover > .upArrow {
 	margin-top:-5px;
 }
-footer {
-	background-color: rgb(220, 220, 220);
-	display: flex;
-	flex-wrap: wrap;
-	font-size: 0.75em;
-	height: auto;
-	justify-content: space-between;
-	align-items: center;
-	min-width: 50px;
-	padding: 15px 15px 15px 15px;
-}
 
-/* Contact form */
+/* Contact Section */
   
 #ContactForm {
 	position: relative;
@@ -254,14 +243,32 @@ footer {
 	align-items: center;
 	margin: 20px;
 }
-.contactMethod hr {
-	height:100%;
-	margin:0px;
+.virticalLine {
+	background-color: #000;
+	height:40px;
 	margin-right:10px;
 	margin-left: 10px;
+	width:2px;
 }
 .contactImg {
 	width:50px;
+}
+
+/* Footer */
+
+footer {
+	background-color: rgb(220, 220, 220);
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0.75em;
+	height: auto;
+	justify-content: space-between;
+	align-items: center;
+	min-width: 50px;
+	padding: 15px 15px 15px 15px;
+}
+.footerLinks {
+	display:flex;
 }
 
 /* CSS for 3D model showcase */
