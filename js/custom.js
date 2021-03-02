@@ -2,7 +2,7 @@
 //navigator.serviceWorker.register('serviceworker.js', {scope: '/chrispetta.net/'});
 
 let navState = false;
-let modelViewerLoaded = true;
+let modelViewerLoaded = false;
 let loadingBarWidth = 0;
 let thumbnailClicked = -1;
 let lastModelLoaded = null;
@@ -120,6 +120,23 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", resizeManager, passiveSupported?{passive:true}:false);
 
 /**
+ * load modelviewer script when the user interacts with the page.
+ * This defered loading increases page load speed and interactive time.
+ */
+const loadmv = () => {
+	if (!modelViewerLoaded) {
+		modelViewerLoaded = true;
+		loadScript('js/model-viewer.min.js', true);
+		loadScript('js/model-viewer-legacy.js', false);
+	}
+};
+
+document.body.addEventListener('mouseover', loadmv, {once:true});
+document.body.addEventListener('touchmove', loadmv, {once:true});
+document.body.addEventListener('scroll', loadmv, {once:true});
+document.body.addEventListener('keydown', loadmv, {once:true});
+
+/**
  * Applies css styles to the navigation when the screen is resized
  */
 async function resizeManager() {
@@ -177,15 +194,6 @@ function createObserver() {
 function handleIntersect(entries, observer) {
 	for (entry of entries) {
 		if(entry.isIntersecting) {
-
-			if(entry.target === modelingSection || entry.target === modelingLabel || entry.target === viewport) {
-				loadScript('js/model-viewer.min.js', true);
-				loadScript('js/model-viewer-legacy.js', false);
-				observer.unobserve(modelingSection);
-				observer.unobserve(modelingLabel);
-				observer.unobserve(viewport);
-			}
-
 			entry.target.classList.remove("fadeInOnScroll");
 			entry.target.classList.add("fadeInOnScroll2");
 			observer.unobserve(entry.target);
@@ -206,6 +214,8 @@ async function loadScript(scriptSrc, module = false) {
 	else {
 		script.setAttribute("nomodule", "");
 	}
+	script.setAttribute("async", "");
+	script.setAttribute("defer", "");
 	document.body.appendChild(script);
 }
 /**
@@ -344,14 +354,10 @@ function clickManager(number) {
  */
 function CanvasManager(clicked) {
 	if(clicked === -1) {
-		if(modelViewerLoaded) {
-			fadeIn(modelViewer);
-		}
+		fadeIn(modelViewer);
 	}
 	else {
-		if(modelViewerLoaded) {
-			fadeOut(modelViewer);
-		}
+		fadeOut(modelViewer);
 	}
 }
 /**
