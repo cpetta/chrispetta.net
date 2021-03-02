@@ -283,7 +283,7 @@ function startTypingNewModelInfo() {
  */
 function loadNewModelIntoModelViewer() {
 	modelViewer.removeAttribute("auto-rotate");
-	modelViewer.showPoster(),
+	modelViewer.showPoster();
 	setTimeout(async () => { // Delay the loading of a model in order to avoid the framerate drop that comes with trying to load it.
 		modelViewer.src =  `3DProjects/${modelProjects[projectIndex].folder}/${modelProjects[projectIndex].model}`;
 		let checkLoad = setInterval(()=> {
