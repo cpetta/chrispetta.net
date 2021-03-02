@@ -70,8 +70,9 @@
 	align-items: center;
 	width:100%;
 }
-.websiteTitle .text h1 {
-margin:0px;
+.websiteTitle .text h3 {
+	margin:0px;
+	font-size: 1.5em;
 }
 .external {
 	height:auto;
@@ -132,6 +133,7 @@ margin:0px;
 	font-weight: 300;
 	font-family: "Oxygen", "Roboto", "Arial", sans-serif;
 	padding-top: 12px;
+	margin:0;
 	transition: 0.2s ease-in-out;
 	text-align: center;
 }
@@ -485,7 +487,7 @@ ul.specs li hr {
     padding:20px;
     padding-top:0px;
 }
-#itemInformation h1 {
+#itemInformation h2 {
     text-align: center;
 }
 #modelCopyright {
