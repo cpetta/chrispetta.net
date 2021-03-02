@@ -236,7 +236,8 @@ async function modelProjectManager(clicked) {
 				removeModelInfo();
 				startTypingNewModelInfo();
 				loadNewModelIntoModelViewer();
-				additionalOptionsContainer.style.display = "flex"
+				additionalOptionsContainer.style.display = "flex";
+				setTimeout(()=>{modelViewer.setAttribute("auto-rotate", "")}, 1300);
 			}
 		}
 		else { // if modelProjects is false, try again after the specified time to see if the JSON file has finished loading.
@@ -281,6 +282,7 @@ function startTypingNewModelInfo() {
  * Loads or switches the model that is displayed in the modelviewer window.
  */
 function loadNewModelIntoModelViewer() {
+	modelViewer.removeAttribute("auto-rotate");
 	modelViewer.showPoster(),
 	setTimeout(async () => { // Delay the loading of a model in order to avoid the framerate drop that comes with trying to load it.
 		modelViewer.src =  `3DProjects/${modelProjects[projectIndex].folder}/${modelProjects[projectIndex].model}`;
