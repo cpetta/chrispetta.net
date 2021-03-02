@@ -127,7 +127,6 @@ const loadmv = () => {
 	if (!modelViewerLoaded) {
 		modelViewerLoaded = true;
 		loadScript('js/model-viewer.min.js', true);
-		loadScript('js/model-viewer-legacy.js', false);
 	}
 };
 
