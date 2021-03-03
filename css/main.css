@@ -240,6 +240,9 @@
 #gotoTopBtn:hover > .upArrow {
 	margin-top:-5px;
 }
+.zoomOut {
+	transform: scale(0);
+}
 
 /* Contact Section */
   

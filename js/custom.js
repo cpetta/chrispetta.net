@@ -184,6 +184,7 @@ function createObserver() {
 	observer.observe(modelingSection);
 	observer.observe(modelingLabel);
 	observer.observe(viewport);
+	observer.observe(nav);
 }
 /**
  * handleIntersect is run when the intersection observer passes an intersection threshold
@@ -193,9 +194,19 @@ function createObserver() {
 function handleIntersect(entries, observer) {
 	for (entry of entries) {
 		if(entry.isIntersecting) {
-			entry.target.classList.remove("fadeInOnScroll");
-			entry.target.classList.add("fadeInOnScroll2");
-			observer.unobserve(entry.target);
+			if(entry.target.classList.contains("fadeInOnScroll")) {
+				entry.target.classList.remove("fadeInOnScroll");
+				entry.target.classList.add("fadeInOnScroll2");
+				observer.unobserve(entry.target);
+			}
+			if(entry.target === nav) {
+				gotoTopBtn.classList.add("zoomOut");
+				console.log("SeeNav");
+			}
+		}
+		else if(entry.target === nav) {
+			gotoTopBtn.classList.remove("zoomOut");
+			console.log("NoNav");
 		}
 	}
 }
