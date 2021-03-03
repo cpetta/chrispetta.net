@@ -201,12 +201,10 @@ function handleIntersect(entries, observer) {
 			}
 			if(entry.target === nav) {
 				gotoTopBtn.classList.add("zoomOut");
-				console.log("SeeNav");
 			}
 		}
 		else if(entry.target === nav) {
 			gotoTopBtn.classList.remove("zoomOut");
-			console.log("NoNav");
 		}
 	}
 }
@@ -631,6 +629,5 @@ function fadeIn(element, add = true){
  */
 function showMore(id) {
 	element = document.querySelector(id);
-	console.log(id);
 	element.style.maxHeight = "1000px";
 }
