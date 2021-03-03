@@ -11,12 +11,13 @@
 	color: white;
 	cursor: pointer;
 	display: block;
-	font-family: 'Roboto-Light', "Arial", sans-serif;
+	font-family: 'Oxygen', "Arial", sans-serif;
 	font-size: 14pt;
 	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
-    margin: 30px auto 30px auto;
+	margin: 30px auto 30px auto;
+	font-weight: bold;
 }
 .moreButton:hover{
 	filter: contrast(110%) brightness(115%);
