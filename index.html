@@ -367,14 +367,18 @@
 				<div id="aboutText">
 					<div>
 					<h1 style="font-size:32pt;font-family: 'Oxygen';">Hello there,</h1>
-					<p>
-						I'm Chris Petta, a software developer living in Grand Rapids, MI.<br />
+						<h3>I'm Chris Petta, a Software and Web Developer living in Grand Rapids, MI.</h3>
+						<p id="aboutMore" class="showMoreHidden" style="max-height: 15px;">
 						Currently, I work as the Teaching Assistant for a Software and Game Development Program. In this role, I assist students as they learn several coding languages including
 						<strong>HTML, CSS, JavaScript, C#, and C++.</strong>
 						I'm also <strong>pursuing a B.S. in Computer Science at Davenport University.</strong>
 						I love to tinker and experiment with new technology. Over the years, I've hosted several web, email, and game servers. I've built several computers, flashed a custom ROM on my phone, and written scripts to automate repetitive tasks.
 						When I have free time, I enjoy 3D modeling, playing games with friends, and riding my bicycle.
 					</p>
+					<button class="moreButton" type="button" onclick="showMore('#aboutMore')">
+						More
+						<span class="buttonDownArrow"></span>
+					</button>
 				</div>
 				</div>
 			</section>
@@ -451,12 +455,16 @@
 								<div class="underline"></div>
 							</div>
 						</a>
-						<p class="webText">
+						<p id="aboutKuzmaclass" class="webText showMoreHidden" style="max-height: 72px;">
 							The Kuzmaclass website provides useful information for our students and their parents.
 							I worked on a prototype version of the site that reduced code complexity, added a student showcase, and made the site touchscreen-friendly.
 							I reduced code complexity by adding comments and removing unused or redundant code. I created the showcase section using flexbox in HTML and CSS.
 							Finally, I made the site touchscreen-friendly by increasing the size of links, creating a mobile-friendly navigation menu, and modifying the layout to work at mobile resolutions.
 						</p>
+						<button class="moreButton" type="button" onclick="showMore('#aboutKuzmaclass')">
+							More
+							<span class="buttonDownArrow"></span>
+						</button>
 					</div>
 				</div>
 				<div class="webProject">
@@ -478,7 +486,7 @@
 								<div class="underline"></div>
 							</div>
 						</a>
-						<p class="webText">
+						<p id="aboutSandbox" class="webText showMoreHidden" style="max-height: 72px;">
 							The sandbox is a page on Kuzmaclass that we created to act as a portal to student projects.
 							Initially, it just contained a bunch of links to various student projects. After a while, it became quite hard to find specific projects.
 							We needed a way to search and filter them all.
@@ -486,6 +494,10 @@
 							Finally, we organized the student projects into logical groups for easier sorting. We accomplished these goals by storing the project data as an array of JSON objects.
 							Since there are so many student projects, code reusability was vital. We utilized Javascript to accomplish many of these goals.
 						</p>
+						<button class="moreButton" type="button" onclick="showMore('#aboutSandbox')">
+							More
+							<span class="buttonDownArrow"></span>
+						</button>
 					</div>
 				</div>
 				<div class="webProject">
@@ -503,13 +515,17 @@
 								<div class="underline"></div>
 							</div>
 						</a>
-						<p class="webText">
+						<p id="aboutSandpaper" class="webText showMoreHidden" style="max-height: 72px;">
 							Sandpaper is a tool I developed to improve the work involved with building and optimizing websites.
 							It started as a gulp file that automates linting, fixing, running, and minifying code.
 							As things progressed, it needed to be easy to use by a less technical audience, so it became a stand-alone program.
 							Sandpaper helps developers avoid common errors in HTML, CSS, and JavaScript. It optimizes assets to improve page load times by up to 30%.
 							Additionally, it automatically substitutes vendor-specific CSS and polyfills new javascript features to support older browsers.
 						</p>
+						<button class="moreButton" type="button" onclick="showMore('#aboutSandpaper')">
+							More
+							<span class="buttonDownArrow"></span>
+						</button>
 					</div>
 				</div>
 			</article>

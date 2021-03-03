@@ -614,3 +614,12 @@ function fadeIn(element, add = true){
 		element.style.display = "block";
 	}
 }
+/**
+ * Change the max height of an element to show more.
+ * @param {string} id the ID of the text element to show more.
+ */
+function showMore(id) {
+	element = document.querySelector(id);
+	console.log(id);
+	element.style.maxHeight = "1000px";
+}
