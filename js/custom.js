@@ -235,7 +235,7 @@ async function modelProjectManager(clicked) {
 		lastModelLoaded = clicked;
 		// modelProjects will evaluate false when the JSON file containing all the information hasn't been loaded yet
 		if(modelProjects) {
-			fadeIn(webGLViewer);
+			fadeIn(webGLViewer, true, 'grid');
 			if(lastThumbnailClicked != -1) { // If the last thumbnail clicked was not the modelviewer
 				fadeOut(imgs[projectIndex][lastThumbnailClicked]);
 			}
@@ -614,13 +614,13 @@ function fadeOut(element, remove = true){
  * @param {element} element DOM Element to be faded in 
  * @param {boolean} remove if set to false, will not change display to block
  */
-function fadeIn(element, add = true){
+function fadeIn(element, add = true, displayType = "block"){
 	
 	element.style.opacity = 1;
 	element.classList.add("fadeIn");
 	element.classList.remove("fadeOut");
 	if(add) {
-		element.style.display = "block";
+		element.style.display = displayType;
 	}
 }
 /**

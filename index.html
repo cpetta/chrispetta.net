@@ -516,85 +516,81 @@
 			<h2 id="modelingLabel" class="label fadeInOnScroll">3D Models</h2>
 			<hr />
 			<div id="webGLViewer">
-				<article>
-					<div class="articleContainer">
-						<div id="viewer3d" class="defaultViewer3D">
-							<div id="paddingForImagesAnd3D"
-							style="
-							position: relative;
-							width:100%;
-							height:0px;
-							padding-top: 100%;
-							"
-							></div>
-							<model-viewer 
-							id="modelViewer"
-							rotation-per-second="65%"
-							camera-controls
-							shadow-intensity="1"
-							interaction-prompt="when-focused"
-							interaction-prompt-threshold="5000"
-							loading="lazy"
-							>
-								<div id="poster" slot="poster"></div>
-							</model-viewer>
-							
-							<div id="viewerImg"></div>
-							<div id="loadingSpinner"></div>
-							<div id="loadingBar"></div>
-							<div id="fullscreenBtn"></div>
-							<div id="fullscreenCloseBtn" style="display:none;">
-								<div class="xTop"></div>
-								<div class="xBot"></div>
-							</div>
-							<div id="previousBtnWrapper" onclick="clickManager('previous')">
-								<div id="previousBtn" class="arrow"></div>
-							</div>
-							<div id="nextBtnWrapper" onclick="clickManager('next')">
-								<div id="nextBtn" class="arrow"></div>
-							</div>
-							<div id="modelCopyright">Copyright &copy; Christopher Petta - All Rights Reserved</div>
-						</div>
-						<div id="itemInformation">
-							<h2 id="title">Model Title</h2>
-							<hr />
-							<div id="description"></div>
-							<ul id="specs" class="specs">
-								<li>
-									<strong>Date Finished</strong>
-									<hr />
-									<div id="date"></div>
-								</li>
-								<li>
-									<strong>File Size</strong>
-									<hr />
-									<div id="size"></div>
-								</li>
-								<li>
-									<strong>Texture Resolution</strong>
-									<hr />
-									<div id="textureRez"></div>
-								</li>
-								<li>
-									<strong>Vertices</strong>
-									<hr />
-									<div id="verts"></div>
-								</li>
-								<li>
-									<strong>Faces</strong>
-									<hr />
-									<div id="faces"></div>
-								</li>
-								<li>
-									<strong>Material Sets</strong>
-									<hr />
-									<div id="mats"></div>
-								</li>
-							</ul>
-						</div>
+				<div id="viewer3d" class="defaultViewer3D">
+					<div id="paddingForImagesAnd3D"
+					style="
+					position: relative;
+					width:100%;
+					height:0px;
+					padding-top: 100%;
+					"
+					></div>
+					<model-viewer 
+					id="modelViewer"
+					rotation-per-second="65%"
+					camera-controls
+					shadow-intensity="1"
+					interaction-prompt="when-focused"
+					interaction-prompt-threshold="5000"
+					loading="lazy"
+					>
+						<div id="poster" slot="poster"></div>
+					</model-viewer>
+					
+					<div id="viewerImg"></div>
+					<div id="loadingSpinner"></div>
+					<div id="loadingBar"></div>
+					<div id="fullscreenBtn"></div>
+					<div id="fullscreenCloseBtn" style="display:none;">
+						<div class="xTop"></div>
+						<div class="xBot"></div>
 					</div>
-					<div id="additionalOptionsContainer"></div>
-				</article>
+					<div id="previousBtnWrapper" onclick="clickManager('previous')">
+						<div id="previousBtn" class="arrow"></div>
+					</div>
+					<div id="nextBtnWrapper" onclick="clickManager('next')">
+						<div id="nextBtn" class="arrow"></div>
+					</div>
+					<div id="modelCopyright">Copyright &copy; Christopher Petta - All Rights Reserved</div>
+				</div>
+				<div id="itemInformation">
+					<h2 id="title">Model Title</h2>
+					<hr />
+					<div id="description"></div>
+					<ul id="specs" class="specs">
+						<li>
+							<strong>Date Finished</strong>
+							<hr />
+							<div id="date"></div>
+						</li>
+						<li>
+							<strong>File Size</strong>
+							<hr />
+							<div id="size"></div>
+						</li>
+						<li>
+							<strong>Texture Resolution</strong>
+							<hr />
+							<div id="textureRez"></div>
+						</li>
+						<li>
+							<strong>Vertices</strong>
+							<hr />
+							<div id="verts"></div>
+						</li>
+						<li>
+							<strong>Faces</strong>
+							<hr />
+							<div id="faces"></div>
+						</li>
+						<li>
+							<strong>Material Sets</strong>
+							<hr />
+							<div id="mats"></div>
+						</li>
+					</ul>
+				</div>
+				<div id="additionalOptionsContainer"></div>
 			</div>
 
 			<!-- 3D Projects Selection -->
