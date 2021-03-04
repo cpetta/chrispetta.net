@@ -545,13 +545,19 @@ ul.specs li hr {
 }
 #viewerImg img {
     position: absolute;
-    top: 50%;
-    left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%);
     height: auto;
     width: 100%;
     z-index:1;
+}
+.defaultViewer3D #viewerImg img {
+	top: 50%;
+    left: 50%;
+	transform: translate(-50%, -50%);
+}
+.fullscreenViewer3d #viewerImg img {
+	top:0px;
+	left:0px;
 }
 model-viewer{
 	height: 100%;
