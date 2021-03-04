@@ -601,12 +601,17 @@ async function typeLetter(elm, txt, speed, i = 0) {
 function fadeOut(element, remove = true){
 	element.style.opacity = 0;
 	element.classList.remove("fadeOut");
+	element.classList.add("fadeOut");
 	if(element.classList.contains("fadeIn")) {
-		element.classList.add("fadeOut");
 		element.classList.remove("fadeIn");
 	}
 	if(remove) {
-		setTimeout(() => {element.style.display = "none";}, 300);
+		setTimeout(() => {
+			if(element.classList.contains("fadeOut")) {
+				element.style.display = "none";
+			}
+			}, 300);
+			
 	}
 }
 /**
