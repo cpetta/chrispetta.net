@@ -78,15 +78,8 @@
 			scroll-behavior: smooth;
 			text-shadow:0px 0px 2px rgba(255,255,255,0.5) /* added text clarity */
 		}
-		.logoContainer {
-			align-items: center;
-			display:flex;
-		}
 		#logo {
-			grid-column: 1;
-			grid-row: 1;
 			padding: 15px;
-			height: 50px;
 			width:50px;
 		}
 		nav {
@@ -94,9 +87,7 @@
 			font-family: "Oxygen", "Roboto", "Arial", sans-serif;
 			font-size: 16pt;
 			grid-column: 2 / 9;
-			grid-row: 1;
 			grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-			height:auto;
 		}
 		/* Chrome Scrollbar */
 		::-webkit-scrollbar {
@@ -126,11 +117,9 @@
 			text-decoration: none;
 		}
 		header {
-			align-content: center;
 			display: grid;
 			position:absolute;
 			width:100%;
-			grid-gap: 5px;
 			border-bottom: 3px solid rgb(49, 127, 230);
 			background-color: rgb(220, 220, 220);
 			user-select: none;
@@ -151,7 +140,6 @@
 			box-sizing: content-box;
 			display: flex;
 			justify-content: center;
-			max-height: 75px;
 			padding: 15px;
 		}
 		nav a:hover,
@@ -174,21 +162,20 @@
 		}
 		.hamburgerContainer {
 			display: none;
-			position:relative;
 			grid-column: 2;
 			grid-row: 1;
 		}
 		#hamburger {
 			border-radius: 5px;
+			cursor: pointer;
 			display:flex;
 			flex-direction: column;
 			flex-wrap: nowrap;
 			justify-content: center;
-			cursor: pointer;
-			width: 30px;
 			margin-right:10px;
 			padding:15px;
 			transition: 0.2s;
+			width: 30px;
 		}
 		#hamburger:hover {
 			background-color: rgb(251, 251, 251);
@@ -244,13 +231,10 @@
 				right:0px;
 			}
 			nav {
-				display: block; /* None*/
-				grid-column: 1 / 3 !important;
-				grid-template-columns: none;
+				grid-column: 1 / 3;
 				grid-row: 2;
 				max-height:0px;
 				overflow: hidden;
-				position:relative;
 			}
 			nav a {
 				border-top: 1px solid #555
@@ -311,9 +295,7 @@
 
 <body>
 	<header id="home">
-		<a class="logoContainer" href="#">
-			<img id="logo" alt="Logo" src="images/portlogo.svg" />
-		</a>
+		<img id="logo" alt="Logo" src="images/portlogo.svg" />
 		<div class="hamburgerContainer" onclick="navToggle()">
 			<div id="hamburger" class="navClosed">
 				<div id="topHamBar" class="hambar"></div>
@@ -434,100 +416,98 @@
 		<section id="webDev">
 			<h2 class="label fadeInOnScroll">Website Development</h2>
 			<hr />
-			<article>
-				<div class="webProject">
-					<div class="webImg lazyLoadImgContainer">
-						<svg class="placeholderImg" baseProfile="tiny" viewBox="0 0 800 394"><path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z"/></svg>
-						<picture class="fullImg fadeInOnScroll">
-							<source srcset="images/kcDisplays.avif" type="image/avif">
-							<source srcset="images/kcDisplays.png" type="image/png">
-							<img src="images/kcDisplays2.png" loading="lazy" alt="Kuzmaclass.org's homepage displayed on desktop, iPad, and mobile"/>
-						</picture>
-					</div>
-					<div>
-						<a class="websiteTitle" href="webprojects/kuzmaclass/index.html" target="_blank">
-							<div class="centered">
-								<div class="text">
-									<h3>Kuzmaclass - Homepage</h3>
-									<img class="external" src="images/external.svg" alt="See Demo" width="32"/>
-								</div>
-								<div class="underline"></div>
-							</div>
-						</a>
-						<p id="aboutKuzmaclass" class="webText showMoreHidden" style="max-height: 72px;">
-							The Kuzmaclass website provides useful information for our students and their parents.
-							I worked on a prototype version of the site that reduced code complexity, added a student showcase, and made the site touchscreen-friendly.
-							I reduced code complexity by adding comments and removing unused or redundant code. I created the showcase section using flexbox in HTML and CSS.
-							Finally, I made the site touchscreen-friendly by increasing the size of links, creating a mobile-friendly navigation menu, and modifying the layout to work at mobile resolutions.
-						</p>
-						<button class="moreButton" type="button" onclick="showMore('#aboutKuzmaclass')">
-							More
-							<span class="buttonDownArrow"></span>
-						</button>
-					</div>
+			<div class="webProject">
+				<div class="webImg lazyLoadImgContainer">
+					<svg class="placeholderImg" baseProfile="tiny" viewBox="0 0 800 394"><path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z"/></svg>
+					<picture class="fullImg fadeInOnScroll">
+						<source srcset="images/kcDisplays.avif" type="image/avif">
+						<source srcset="images/kcDisplays.png" type="image/png">
+						<img src="images/kcDisplays2.png" loading="lazy" alt="Kuzmaclass.org's homepage displayed on desktop, iPad, and mobile"/>
+					</picture>
 				</div>
-				<div class="webProject">
-					<div class="webImg lazyLoadImgContainer">
-						<svg class="placeholderImg" baseProfile="tiny" viewBox="0 0 800 394"><path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z"/></svg>
-						<picture class="fullImg fadeInOnScroll">
-							<source srcset="images/SandboxDisplays.avif" type="image/avif">
-							<source srcset="images/SandboxDisplays.png" type="image/png">
-							<img src="images/SandboxDisplays.png" loading="lazy" alt="Kuzmaclass.org's sandbox displayed on desktop, iPad, and mobile"/>
-						</picture>
-					</div>
-					<div>
-						<a class="websiteTitle" href="webprojects/sandbox/index.html" target="_blank">
-							<div class="centered">
-								<div class="text">
-									<h3>Kuzmaclass - Sandbox</h3>
-									<img class="external" src="images/external.svg" alt="See Demo" width="32"/>
-								</div>
-								<div class="underline"></div>
+				<div>
+					<a class="websiteTitle" href="webprojects/kuzmaclass/index.html" target="_blank">
+						<div class="centered">
+							<div class="text">
+								<h3>Kuzmaclass - Homepage</h3>
+								<img class="external" src="images/external.svg" alt="See Demo" width="32"/>
 							</div>
-						</a>
-						<p id="aboutSandbox" class="webText showMoreHidden" style="max-height: 72px;">
-							The sandbox is a page on Kuzmaclass that we created to act as a portal to student projects.
-							Initially, it just contained a bunch of links to various student projects. After a while, it became quite hard to find specific projects.
-							We needed a way to search and filter them all.
-							When redesigning the sandbox page, We decided that our primary goal would be to allow every project to be searched and sorted. Along the way, we also changed how data for each project is stored to make future updates easier.
-							Finally, we organized the student projects into logical groups for easier sorting. We accomplished these goals by storing the project data as an array of JSON objects.
-							Since there are so many student projects, code reusability was vital. We utilized Javascript to accomplish many of these goals.
-						</p>
-						<button class="moreButton" type="button" onclick="showMore('#aboutSandbox')">
-							More
-							<span class="buttonDownArrow"></span>
-						</button>
-					</div>
+							<div class="underline"></div>
+						</div>
+					</a>
+					<p id="aboutKuzmaclass" class="webText showMoreHidden" style="max-height: 72px;">
+						The Kuzmaclass website provides useful information for our students and their parents.
+						I worked on a prototype version of the site that reduced code complexity, added a student showcase, and made the site touchscreen-friendly.
+						I reduced code complexity by adding comments and removing unused or redundant code. I created the showcase section using flexbox in HTML and CSS.
+						Finally, I made the site touchscreen-friendly by increasing the size of links, creating a mobile-friendly navigation menu, and modifying the layout to work at mobile resolutions.
+					</p>
+					<button class="moreButton" type="button" onclick="showMore('#aboutKuzmaclass')">
+						More
+						<span class="buttonDownArrow"></span>
+					</button>
 				</div>
-				<div class="webProject">
-					<div class="webImg lazyLoadImgContainer">
-						<svg class="placeholderImg sandpaper" baseProfile="tiny" viewBox="0 0 1258 1220"><path fill="rgba(150,150,150,0.4)" d="M0 0h1258v1220H0z"/></svg>
-						<img class="fullImg sandpaper fadeInOnScroll" src="images/sandpaper.png" loading="lazy" alt="Kuzmaclass.org's sandbox displayed on desktop, iPad, and mobile"/>
-					</div>
-					<div>
-						<a class="websiteTitle" href="https://github.com/cpetta/sandpaper" target="_blank" rel="noreferrer">
-							<div class="centered">
-								<div class="text">
-									<h3>Sandpaper</h3>
-									<img class="external" src="images/external.svg" alt="See Demo" width="32"/>
-								</div>
-								<div class="underline"></div>
+			</div>
+			<div class="webProject">
+				<div class="webImg lazyLoadImgContainer">
+					<svg class="placeholderImg" baseProfile="tiny" viewBox="0 0 800 394"><path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z"/></svg>
+					<picture class="fullImg fadeInOnScroll">
+						<source srcset="images/SandboxDisplays.avif" type="image/avif">
+						<source srcset="images/SandboxDisplays.png" type="image/png">
+						<img src="images/SandboxDisplays.png" loading="lazy" alt="Kuzmaclass.org's sandbox displayed on desktop, iPad, and mobile"/>
+					</picture>
+				</div>
+				<div>
+					<a class="websiteTitle" href="webprojects/sandbox/index.html" target="_blank">
+						<div class="centered">
+							<div class="text">
+								<h3>Kuzmaclass - Sandbox</h3>
+								<img class="external" src="images/external.svg" alt="See Demo" width="32"/>
 							</div>
-						</a>
-						<p id="aboutSandpaper" class="webText showMoreHidden" style="max-height: 72px;">
-							Sandpaper is a tool I developed to improve the work involved with building and optimizing websites.
-							It started as a gulp file that automates linting, fixing, running, and minifying code.
-							As things progressed, it needed to be easy to use by a less technical audience, so it became a stand-alone program.
-							Sandpaper helps developers avoid common errors in HTML, CSS, and JavaScript. It optimizes assets to improve page load times by up to 30%.
-							Additionally, it automatically substitutes vendor-specific CSS and polyfills new javascript features to support older browsers.
-						</p>
-						<button class="moreButton" type="button" onclick="showMore('#aboutSandpaper')">
-							More
-							<span class="buttonDownArrow"></span>
-						</button>
-					</div>
+							<div class="underline"></div>
+						</div>
+					</a>
+					<p id="aboutSandbox" class="webText showMoreHidden" style="max-height: 72px;">
+						The sandbox is a page on Kuzmaclass that we created to act as a portal to student projects.
+						Initially, it just contained a bunch of links to various student projects. After a while, it became quite hard to find specific projects.
+						We needed a way to search and filter them all.
+						When redesigning the sandbox page, We decided that our primary goal would be to allow every project to be searched and sorted. Along the way, we also changed how data for each project is stored to make future updates easier.
+						Finally, we organized the student projects into logical groups for easier sorting. We accomplished these goals by storing the project data as an array of JSON objects.
+						Since there are so many student projects, code reusability was vital. We utilized Javascript to accomplish many of these goals.
+					</p>
+					<button class="moreButton" type="button" onclick="showMore('#aboutSandbox')">
+						More
+						<span class="buttonDownArrow"></span>
+					</button>
 				</div>
-			</article>
+			</div>
+			<div class="webProject">
+				<div class="webImg lazyLoadImgContainer">
+					<svg class="placeholderImg sandpaper" baseProfile="tiny" viewBox="0 0 1258 1220"><path fill="rgba(150,150,150,0.4)" d="M0 0h1258v1220H0z"/></svg>
+					<img class="fullImg sandpaper fadeInOnScroll" src="images/sandpaper.png" loading="lazy" alt="Kuzmaclass.org's sandbox displayed on desktop, iPad, and mobile"/>
+				</div>
+				<div>
+					<a class="websiteTitle" href="https://github.com/cpetta/sandpaper" target="_blank" rel="noreferrer">
+						<div class="centered">
+							<div class="text">
+								<h3>Sandpaper</h3>
+								<img class="external" src="images/external.svg" alt="See Demo" width="32"/>
+							</div>
+							<div class="underline"></div>
+						</div>
+					</a>
+					<p id="aboutSandpaper" class="webText showMoreHidden" style="max-height: 72px;">
+						Sandpaper is a tool I developed to improve the work involved with building and optimizing websites.
+						It started as a gulp file that automates linting, fixing, running, and minifying code.
+						As things progressed, it needed to be easy to use by a less technical audience, so it became a stand-alone program.
+						Sandpaper helps developers avoid common errors in HTML, CSS, and JavaScript. It optimizes assets to improve page load times by up to 30%.
+						Additionally, it automatically substitutes vendor-specific CSS and polyfills new javascript features to support older browsers.
+					</p>
+					<button class="moreButton" type="button" onclick="showMore('#aboutSandpaper')">
+						More
+						<span class="buttonDownArrow"></span>
+					</button>
+				</div>
+			</div>
 		</section>
 
 		<!-- 3D Modeling Section -->

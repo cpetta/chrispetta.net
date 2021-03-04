@@ -32,15 +32,14 @@
 	align-items: center;
 	display:flex;
 	flex-direction: column;
-	justify-content: space-evenly;
-	text-align: center;
+	justify-content: space-between;
 	min-width:80px;
 	padding:45px;
 }
 .skillItemImg {
 	width:100%;
 	min-width: 50px;
-	max-width: 130px
+	max-width: 150px
 }
 .skillItem:hover {
 	background-color: rgb(251, 251, 251);
@@ -59,19 +58,8 @@
 	}
 }
 #webDev {
-	display:flex;
-	flex-wrap: nowrap;
-	flex-direction: column;
-	align-items: center;
-	display:flex;
-	flex-wrap:nowrap;
 	padding-left:20px;
 	padding-right:20px;
-	min-height:50%;
-	justify-content: center;
-}
-#webDev article{
- width:100%;
 }
 
 .webProject {
@@ -161,7 +149,6 @@
 	font-family: "Oxygen", "Roboto", "Arial", sans-serif;
 	padding-top: 12px;
 	margin:0;
-	transition: 0.2s ease-in-out;
 	text-align: center;
 }
 .label + hr {
@@ -182,7 +169,7 @@
 	border-radius: 30px;
 }
 .showcaseWrapper a {
-	margin: 35px;
+	padding: 35px;
 	min-width: 100px;
 	width: 350px;
 	cursor: pointer;
