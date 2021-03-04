@@ -5,9 +5,12 @@ section {
 section#modeling {
 	contain:none;
 }
+.showMore {
+	max-height:1000px !important;
+	transition:3s ease-out;
+}
 .showMoreHidden {
 	overflow:hidden;
-	transition:2s ease-out;
 }
 .moreButton {
 	background-color: rgb(49, 127, 230);

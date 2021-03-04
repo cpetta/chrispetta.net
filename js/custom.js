@@ -634,5 +634,10 @@ function fadeIn(element, add = true, displayType = "block"){
  */
 function showMore(id) {
 	element = document.querySelector(id);
-	element.style.maxHeight = "1000px";
+	if(element.classList.contains("showMore")) {
+		element.classList.remove("showMore");
+	}
+	else {
+		element.classList.add("showMore");
+	}
 }
