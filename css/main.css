@@ -198,6 +198,7 @@ section#modeling {
 	}
 }
 #gotoTopBtn {
+	animation-fill-mode: forwards;
 	contain:strict;
 	background-color: rgb(49, 127, 230);
 	background-image: radial-gradient(rgba(50,50,50,0.3), rgba(0,0,0,0), rgba(0,0,0,0));
@@ -214,6 +215,7 @@ section#modeling {
 	margin: 20px;
 	height:50px;
 	width: 50px;
+	transform:scale(0);
 	transition: 0.3s cubic-bezier(.68,-0.55,.27,1.55);
 	display:flex;
 	justify-content: center;
@@ -239,9 +241,11 @@ section#modeling {
 	margin-top:-5px;
 }
 .zoomOut {
-	transform: scale(0);
+	animation: zoomOut 0.2s linear;
 }
-
+.zoomIn {
+	animation: zoomIn 0.2s linear;
+}
 /* Contact Section */
   
 #ContactForm {
@@ -636,4 +640,14 @@ model-viewer{
     100% {
         transform: rotate(360deg);
     }
+}
+@keyframes zoomIn {
+	0% {transform: scale(0);}
+	50% {transform: scale(1.2);}
+	100% {transform: scale(1);}
+}
+@keyframes zoomOut {
+	0% {transform: scale(1);}
+	50% {transform: scale(1.2);}
+	100% {transform: scale(0);}
 }

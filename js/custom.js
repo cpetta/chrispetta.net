@@ -8,6 +8,7 @@ let thumbnailClicked = -1;
 let lastModelLoaded = null;
 let lastThumbnailClicked = -1;
 let projectIndex = 0;
+let firstScroll = false;
 
 let passiveSupported = false;
 let avifSupported = false; // avifSupport()
@@ -200,11 +201,17 @@ function handleIntersect(entries, observer) {
 				observer.unobserve(entry.target);
 			}
 			if(entry.target === nav) {
-				gotoTopBtn.classList.add("zoomOut");
+				if(firstScroll) {
+					gotoTopBtn.classList.remove("zoomIn");
+					gotoTopBtn.classList.add("zoomOut");
+
+				}
 			}
 		}
 		else if(entry.target === nav) {
+			firstScroll = true;
 			gotoTopBtn.classList.remove("zoomOut");
+			gotoTopBtn.classList.add("zoomIn");
 		}
 	}
 }
