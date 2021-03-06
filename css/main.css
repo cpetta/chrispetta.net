@@ -39,15 +39,17 @@ section#modeling {
 	display:grid;
 }
 .skillItem {
-	align-items: center;
+	align-content: center;
 	contain:content;
-	display:flex;
-	flex-direction: column;
-	justify-content: space-between;
+	display:grid;
+	justify-content: center;
 	min-width:80px;
 	padding:45px;
 }
-.skillItemImg {
+.skillItemImg,
+.skillItem svg {
+	grid-row: 1;
+	grid-column: 1;
 	width:100%;
 	min-width: 50px;
 	max-width: 150px
@@ -67,6 +69,9 @@ section#modeling {
 	#skills {
 		grid-template-columns: repeat(2, minmax(50px, 1fr));
 	}
+}
+.skillItemText {
+	text-align: center;
 }
 #webDev {
 	padding-left:20px;
