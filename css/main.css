@@ -7,10 +7,11 @@ section#modeling {
 }
 .showMore {
 	max-height:1000px !important;
-	transition:3s ease-out;
+	transition: max-height 3s ease-out !important;
 }
 .showMoreHidden {
 	overflow:hidden;
+	transition: max-height 0.5s cubic-bezier(0,1.2,1,1);
 }
 .moreButton {
 	background-color: rgb(49, 127, 230);
