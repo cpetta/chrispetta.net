@@ -56,6 +56,7 @@ section#modeling {
 .skillItem svg {
 	grid-row: 1;
 	grid-column: 1;
+	height:auto;
 	width:100%;
 	min-width: 50px;
 	max-width: 150px
@@ -132,6 +133,7 @@ section#modeling {
 }
 .webImg img,
 .webImg svg {
+	height: auto;
 	width:100%;
 	max-width:700px;
 }
@@ -200,6 +202,7 @@ section#modeling {
 	border-radius: 25px;
 	box-shadow: 0px 1px 5px 0px rgba(0, 0, 0,0.2);
 	margin: 0px;
+	height: auto;
 	width: 100%;
 	transition: 0.2s;
 }
@@ -298,6 +301,7 @@ section#modeling {
 	width:2px;
 }
 .contactImg {
+	height:auto;
 	width:50px;
 }
 
