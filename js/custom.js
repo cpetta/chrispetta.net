@@ -42,8 +42,8 @@ let faces = document.getElementById('faces');
 let mats = document.getElementById('mats');
 let additionalOptionsContainer = document.getElementById('additionalOptionsContainer');
 
-let fadeInObjects = []; // Array
-
+let fadeInObjects = window.document.querySelectorAll(".fadeInOnScroll");
+let moreButtons = window.document.querySelectorAll(".moreButton");
 /**
  * Array which contains all the information for a given model.
  */
@@ -114,7 +114,6 @@ fullscreenBtn.addEventListener("click", fullscreenOpen, passiveSupported?{passiv
 fullscreenCloseBtn.addEventListener("click", fullscreenClose, passiveSupported?{passive:true}:false);
 window.addEventListener("load", () => {
 	resizeManager();
-	fadeInObjects = window.document.querySelectorAll(".fadeInOnScroll");
 	createObserver();
 }, passiveSupported?{once:true, passive:true}:false);
 
@@ -135,6 +134,10 @@ document.body.addEventListener('mouseover', loadmv, {once:true});
 document.body.addEventListener('touchmove', loadmv, {once:true});
 document.body.addEventListener('scroll', loadmv, {once:true});
 document.body.addEventListener('keydown', loadmv, {once:true});
+
+for(moreButton of moreButtons) {
+	moreButton.addEventListener('click', moreButtonClickHandler)
+}
 
 /**
  * Applies css styles to the navigation when the screen is resized
@@ -646,5 +649,24 @@ function showMore(id) {
 	}
 	else {
 		element.classList.add("showMore");
+	}
+}
+
+function moreButtonClickHandler(event) {
+	let content;
+	if(event.target.classList.contains("moreButton")) {
+		content = event.target.childNodes[1];
+	}
+	else if(event.target.classList.contains("moreButtonContent") || event.target.classList.contains("lessButtonContent")) {
+		content = event.target;
+	}
+
+	if(content.classList.contains("moreButtonContent")) {
+		content.classList.remove("moreButtonContent")
+		content.classList.add("lessButtonContent")
+	}
+	else if(content.classList.contains("lessButtonContent")) {
+		content.classList.remove("lessButtonContent")
+		content.classList.add("moreButtonContent")
 	}
 }

@@ -33,8 +33,13 @@ section#modeling {
 .moreButton:hover{
 	filter: contrast(110%) brightness(115%);
 }
-.buttonDownArrow:after {
-	content: ' \25BC';
+.moreButtonContent:after {
+	content: 'More \25BC';
+	user-select: none;
+}
+.lessButtonContent:after {
+	content: 'Less \25B2';
+	user-select: none;
 }
 #skills {
 	display:grid;
