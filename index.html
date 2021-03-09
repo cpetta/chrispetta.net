@@ -14,7 +14,10 @@
 	<link rel="preload" href="images/chris.avif" as="image" type="image/avif" />
 	<link rel="preload" href="images/portlogo.svg" as="image"/>
 
-	<link rel="stylesheet" href="css/main.css" type="text/css" />
+	<!-- Load Below The Fold CSS Asynchronously -->
+	<link rel="stylesheet" href="css/main.css" media="print" onload="this.media='all'">
+	<noscript><link rel="stylesheet" href="css/main.css" type="text/css" /></noscript>
+
 	<link rel="icon" href="images/portlogo.svg" type="image/svg" sizes="32x32" />
 
 	<link rel="manifest" href="manifest.json" />
