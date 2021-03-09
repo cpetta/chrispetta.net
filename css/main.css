@@ -80,9 +80,6 @@
 	width:100%;
 	opacity: 100%;
 }
-.website {
-	width:100%;
-}
 .webImg {
 	align-items: center;
 	height:100%;
@@ -595,9 +592,6 @@ model-viewer{
 }
 .fadeOut {
     animation: fadeout 0.3s linear;
-}
-.fadeOutSlow {
-    animation: fadeout 0.7s linear;
 }
 @keyframes fadeIn {
     0% {opacity: 0;}
