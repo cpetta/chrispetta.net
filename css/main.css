@@ -7,7 +7,7 @@ section#modeling {
 }
 .showMore {
 	max-height:1000px !important;
-	transition: max-height 3s ease-out !important;
+	transition: max-height 2s ease !important;
 }
 .showMoreHidden {
 	overflow:hidden;
