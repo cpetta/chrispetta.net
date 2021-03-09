@@ -355,6 +355,7 @@ footer {
 	}
 	#additionalOptionsContainer {
 		grid-column: auto !important;
+		grid-row: 2;
 	}
 }
 #viewer3d {
