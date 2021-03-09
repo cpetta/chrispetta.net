@@ -310,12 +310,12 @@ section#modeling {
 /* Footer */
 
 footer {
-	contain:content;
+	contain:strict;
 	background-color: rgb(220, 220, 220);
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 0.75em;
-	height: auto;
+	height: 50px;
 	justify-content: space-between;
 	align-items: center;
 	min-width: 50px;
