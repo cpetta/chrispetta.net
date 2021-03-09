@@ -559,11 +559,12 @@ function loadingBarUpdate(width) {
 async function startLoadingBarUpdate() {
 	new Promise((resolve) => {
 		fadeIn(loadingBar);
-		fadeIn(loadingSpinner);
+		let ls = setTimeout(()=>{fadeIn(loadingSpinner)}, 200);
 		let checkProgress = setInterval(frame, 10);
 		function frame() {
 			if (loadingBarWidth >= 100) {
 				clearInterval(checkProgress);
+				clearInterval(ls)
 				fadeOut(loadingBar);
 				fadeOut(loadingSpinner);
 				resolve();
