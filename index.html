@@ -280,7 +280,7 @@
 			padding:10px;
 			height:auto;
 			max-height:80%;
-			max-width: 500px;
+			max-width: 600px;
 			min-width: 200px;
 			width: 100%;
 		}
@@ -420,12 +420,18 @@
 				<div id="aboutImgContainer">
 					<picture>
 						<source srcset="
-						images/chris-1200.avif 1200w,
-						images/chris-900.avif 900w,
-						images/chris-600.avif 600w,
-						images/chris-300.avif 300w
-						" type="image/avif">
-						<source srcset="images/chris.jpg 600w" type="image/jpeg">
+						images/chris-300.avif 1x,
+						images/chris-600.avif 2x,
+						images/chris-900.avif 3x,
+						images/chris-1200.avif 4x"
+						media="only screen and (max-width: 365px)"
+						type="image/avif">
+						<source srcset="
+						images/chris-600.avif 1x,
+						images/chris-1200.avif 2x"
+						media="only screen and (min-width: 365px)"
+						type="image/avif">
+						<source srcset="images/chris.jpg 1x" type="image/jpeg">
 						<img src="images/chris.jpg" alt="Picture of Chris wearing a blue and white checkered dress shirt." loading="eager" height="673" width="600"/>
 					</picture>
 					<div style="grid-row: 2;text-align: center;font-size: 8pt;">*Quality profile pictures are hard to come by. - 2018</div>
