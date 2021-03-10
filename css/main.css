@@ -217,9 +217,24 @@
 	margin-bottom: 55px;
 	margin-top: 40px;
 	width: 60%;
-	min-width:300px;
 	max-width: 1000px;
 	box-shadow: 0px 1px 5px 1px rgba(0,0,0, 0.2);
+}
+@media only screen and (max-width: 550px) {
+	#ContactForm {
+		width:80%;
+		padding:0px;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.contactImg {
+		width:70px !important;
+		padding:10px;
+	}
+	.virticalLine,
+	.contactText {
+		display:none;
+	}
 }
 .contactTypes {
 	contain:content;
