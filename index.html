@@ -350,6 +350,30 @@
 			content: 'Less \25B2';
 			user-select: none;
 		}
+		.label {
+			font-size: 24pt;
+			font-weight: 300;
+			font-family: "Oxygen", "Roboto", "Arial", sans-serif;
+			padding-top: 12px;
+			margin:0;
+			text-align: center;
+		}
+
+		/* Basic Site Structure */
+		#skills {
+			display:grid;
+		}
+		@media only screen and (min-width: 1100px) {
+			#skills {
+				grid-template-columns: repeat(5, minmax(50px, 1fr));
+				padding:50px;
+			}
+		}
+		@media only screen and (max-width: 1100px) {
+			#skills {
+				grid-template-columns: repeat(2, minmax(50px, 1fr));
+			}
+		}
 	</style>
 	<script>
 		ModelViewerElement = self.ModelViewerElement || {};
