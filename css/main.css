@@ -1,5 +1,3 @@
-
-
 .skillItem {
 	align-content: center;
 	contain:content;
@@ -11,6 +9,15 @@
 	min-width:80px;
 	padding:45px;
 	width:100%;
+}
+@media only screen and (max-width: 500px) {
+	.skillItem {
+		padding: 20px;
+		margin:0px;
+		max-width:initial;
+		min-width: auto;
+		width:auto;
+	}
 }
 .skillItemImg {
 	filter: drop-shadow(-1px 2px 2px rgba(0,0,0,0.1));
