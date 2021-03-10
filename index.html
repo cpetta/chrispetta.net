@@ -8,10 +8,9 @@
 
 	<link rel="preload" href="css/main.css" as="style" />
 	<link rel="preload" href="js/custom.js" as="script" />
-	<link rel="preload" href="fonts/Roboto/Roboto-Light.ttf" as="font" type="font/ttf" crossorigin=""/>
-	<link rel="preload" href="fonts/Roboto/Roboto-Medium.ttf" as="font" type="font/ttf" crossorigin=""/>
-	<link rel="preload" href="fonts/Oxygen/Oxygen-Bold.ttf" as="font" type="font/ttf" crossorigin=""/>
-	<link rel="preload" href="images/chris.avif" as="image" type="image/avif" />
+	<link rel="preload" href="fonts/roboto-light.woff2" as="font" type="font/woff2" crossorigin=""/>
+	<link rel="preload" href="fonts/roboto-regular.woff2" as="font" type="font/woff2" crossorigin=""/>
+	<link rel="preload" href="fonts/oxygen-bold.woff2" as="font" type="font/woff2" crossorigin=""/>
 	<link rel="preload" href="images/portlogo.svg" as="image"/>
 
 	<!-- Load Below The Fold CSS Asynchronously -->
@@ -53,21 +52,24 @@
 			font-style: normal;
 			font-weight: 300;
 			font-display: swap;
-			src: url(fonts/Roboto/Roboto-Light.ttf);
+			src: url(fonts/roboto-light.woff2) format('woff2');
+  			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 		}
 		@font-face {
 			font-family: 'Roboto';
 			font-style: normal;
 			font-weight: 400;
 			font-display: swap;
-			src: url(fonts/Roboto/Roboto-Medium.ttf);
+			src: url(fonts/roboto-regular.woff2) format('woff2');
+  			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 		}
 		@font-face {
 			font-family: 'Oxygen';
 			font-style: normal;
 			font-weight: 700;
 			font-display: swap;
-			src: url(fonts/Oxygen/Oxygen-Bold.ttf);
+			src: url(fonts/oxygen-bold.woff2) format('woff2');
+			unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 		}
 		body,
 		html {
@@ -327,6 +329,7 @@
 			height:55px;
 			font-family: 'Oxygen', "Arial", sans-serif;
 			font-size: 14pt;
+			letter-spacing: inherit;
 			padding: 15px 32px;
 			text-align: center;
 			text-decoration: none;
