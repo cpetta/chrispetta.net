@@ -5,19 +5,16 @@
 .skillItem {
 	align-content: center;
 	contain:content;
-	display:grid;
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	max-width: 150px;
 	min-width:80px;
 	padding:45px;
 }
-.skillItemImg,
-.skillItem svg {
-	grid-row: 1;
-	grid-column: 1;
+.skillItemImg {
 	height:auto;
 	width:100%;
-	min-width: 50px;
-	max-width: 150px
 }
 .skillItem:hover {
 	background-color: rgb(251, 251, 251);
@@ -36,6 +33,7 @@
 	}
 }
 .skillItemText {
+	padding-top: 20px;
 	text-align: center;
 }
 #webDev {
