@@ -148,7 +148,7 @@
 }
 #gotoTopBtn {
 	animation-fill-mode: forwards;
-	contain:strict;
+	contain:content;
 	background-color: rgb(49, 127, 230);
 	background-image: radial-gradient(rgba(50,50,50,0.3), rgba(0,0,0,0), rgba(0,0,0,0));
 	background-position-x: center;
@@ -165,7 +165,7 @@
 	height:50px;
 	width: 50px;
 	transform:scale(0);
-	transition: 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+	transition: box-shadow 0.3s cubic-bezier(.68,-0.55,.27,1.55), filter 0.3s cubic-bezier(.68,-0.55,.27,1.55);
 	display:flex;
 	justify-content: center;
 	align-items: center;
@@ -183,10 +183,10 @@
     padding: 5px;
 	border-radius: 2px;
 	transform: rotate(225deg);
-	transition: 0.2s ease-in-out;
+	transition: margin 0.2s ease-in-out;
 	margin-top:3px;
 }
-#gotoTopBtn:hover > .upArrow {
+#gotoTopBtn:hover .upArrow {
 	margin-top:-5px;
 }
 .zoomOut {
