@@ -44,6 +44,7 @@ let additionalOptionsContainer = document.getElementById('additionalOptionsConta
 
 let fadeInObjects = window.document.querySelectorAll(".fadeInOnScroll");
 let moreButtons = window.document.querySelectorAll(".moreButton");
+let placeholderImgs = window.document.querySelectorAll(".placeholderImg");
 /**
  * Array which contains all the information for a given model.
  */
@@ -132,6 +133,9 @@ fullscreenCloseBtn.addEventListener("click", fullscreenClose, passiveSupported?{
 window.addEventListener("load", () => {
 	resizeManager();
 	createObserver();
+	for(placeholderImg of placeholderImgs) {
+		placeholderImg.style.display = "none";
+	}
 }, passiveSupported?{once:true, passive:true}:false);
 
 window.addEventListener("resize", resizeManager, passiveSupported?{passive:true}:false);
