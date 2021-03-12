@@ -85,12 +85,19 @@ function TypingText(element, delay) {
 }
 
 let fadeInOnScrollQueue = 0;
+/**
+ * Takes the classlist of an element, applys the fadeInOnScroll2 class. (causing a fadein animation)
+ * @param {DOMTokenList} element classlist of the element
+ */
 function queueFadeInOnScroll(element) {
+	let delay = fadeInOnScrollQueue * 150;
+	// If more than 10 animations are queued, start new animations with a shorter delay.
+	if(delay > 1400) delay = fadeInOnScrollQueue * 30;
 	setTimeout(() => {
 		element.remove("fadeInOnScroll");
 		element.add("fadeInOnScroll2");
 		fadeInOnScrollQueue--;
-	}, fadeInOnScrollQueue * 150);
+	}, delay);
 	fadeInOnScrollQueue++;
 }
 
