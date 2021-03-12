@@ -84,6 +84,16 @@ function TypingText(element, delay) {
 	this.typingDelay = delay;
 }
 
+let fadeInOnScrollQueue = 0;
+function queueFadeInOnScroll(element) {
+	setTimeout(() => {
+		element.remove("fadeInOnScroll");
+		element.add("fadeInOnScroll2");
+		fadeInOnScrollQueue--;
+	}, fadeInOnScrollQueue * 150);
+	fadeInOnScrollQueue++;
+}
+
 /**
  * Detect if passive event listeners are supported.
  */
@@ -136,7 +146,7 @@ document.body.addEventListener('scroll', loadmv, {once:true});
 document.body.addEventListener('keydown', loadmv, {once:true});
 
 for(moreButton of moreButtons) {
-	moreButton.addEventListener('click', moreButtonClickHandler)
+	moreButton.addEventListener('click', moreButtonClickHandler, passiveSupported?{passive:true}:false);
 }
 
 /**
@@ -199,8 +209,7 @@ function handleIntersect(entries, observer) {
 	for (entry of entries) {
 		if(entry.isIntersecting) {
 			if(entry.target.classList.contains("fadeInOnScroll")) {
-				entry.target.classList.remove("fadeInOnScroll");
-				entry.target.classList.add("fadeInOnScroll2");
+				queueFadeInOnScroll(entry.target.classList);
 				observer.unobserve(entry.target);
 			}
 			if(entry.target === nav) {
