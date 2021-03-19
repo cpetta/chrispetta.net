@@ -427,6 +427,14 @@ function prepareProjects(item, projIndex) {
 	imgs[projIndex] = new Array(item.images.length);
 	imgLoaded[projIndex] = new Array(item.images.length);
 	item.images.forEach((innerItem, imageIndex) => prepareDisplayImgs(innerItem, imageIndex, projIndex));
+
+	const element = document.getElementById(item.uniqueName);
+	if(element) {
+		element.addEventListener('click', () => modelProjectManager(item.uniqueName), passiveSupported?{passive:true}:false);
+	}
+	else {
+		console.error(`Missing link to 3D Model with uniqueName: ${item.uniqueName}`)
+	}
 }
 /**
  * Creates an image object for all images that can be loaded in the 3D projects section
