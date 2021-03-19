@@ -674,20 +674,21 @@ function showMore(id) {
 }
 
 function moreButtonClickHandler(event) {
+	const et = event.target;
 	let content;
-	if(event.target.classList.contains("moreButton")) {
-		content = event.target.childNodes[1];
+	if(et.classList.contains("moreButton")) {
+		content = et.childNodes[1].classList;
 	}
-	else if(event.target.classList.contains("moreButtonContent") || event.target.classList.contains("lessButtonContent")) {
-		content = event.target;
+	else if(et.classList.contains("moreButtonContent") || et.classList.contains("lessButtonContent")) {
+		content = event.target.classList;
 	}
 
-	if(content.classList.contains("moreButtonContent")) {
-		content.classList.remove("moreButtonContent")
-		content.classList.add("lessButtonContent")
+	if(content.contains("moreButtonContent")) {
+		content.remove("moreButtonContent")
+		content.add("lessButtonContent")
 	}
-	else if(content.classList.contains("lessButtonContent")) {
-		content.classList.remove("lessButtonContent")
-		content.classList.add("moreButtonContent")
+	else if(content.contains("lessButtonContent")) {
+		content.remove("lessButtonContent")
+		content.add("moreButtonContent")
 	}
 }
