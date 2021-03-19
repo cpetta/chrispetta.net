@@ -10,7 +10,7 @@ let lastThumbnailClicked = -1;
 let projectIndex = 0;
 let firstScroll = false;
 
-let passiveSupported = false;
+const passive = detectPassive() ? {passive:true} : false;
 let avifSupported = false; // avifSupport()
 
 let loading = document.getElementById("loading");
@@ -105,18 +105,20 @@ function queueFadeInOnScroll(element) {
 /**
  * Detect if passive event listeners are supported.
  */
-try {
-  const options = {
-    get passive() { // This function will be called when the browser attempts to access the passive property.
-      passiveSupported = true;
-      return false;
-    }
-  };
-
-  window.addEventListener("test", null, options);
-  window.removeEventListener("test", null, options);
-} catch(err) {
-  passiveSupported = false;
+function detectPassive() {
+	try {
+		const options = {
+		// This function will be called when the browser attempts to access the passive property.
+		  get passive() {return false;}
+		};
+	  
+		window.addEventListener("test", null, options);
+		window.removeEventListener("test", null, options);
+		return true;
+	  }
+	  catch(err) {
+		return false;
+	  }
 }
 /**
  * Detect if the AVIF image format is supported.
@@ -128,17 +130,17 @@ function avifSupport(){
 }
 avifSupport();
 
-fullscreenBtn.addEventListener("click", fullscreenOpen, passiveSupported?{passive:true}:false);
-fullscreenCloseBtn.addEventListener("click", fullscreenClose, passiveSupported?{passive:true}:false);
+fullscreenBtn.addEventListener("click", fullscreenOpen, passive);
+fullscreenCloseBtn.addEventListener("click", fullscreenClose, passive);
 window.addEventListener("load", () => {
 	resizeManager();
 	createObserver();
 	for(const placeholderImg of placeholderImgs) {
 		placeholderImg.style.display = "none";
 	}
-}, passiveSupported?{once:true, passive:true}:false);
+}, passive?{once:true, passive:true}:false);
 
-window.addEventListener("resize", resizeManager, passiveSupported?{passive:true}:false);
+window.addEventListener("resize", resizeManager, passive);
 
 /**
  * load modelviewer script when the user interacts with the page.
@@ -157,7 +159,7 @@ document.body.addEventListener('scroll', loadmv, {once:true});
 document.body.addEventListener('keydown', loadmv, {once:true});
 
 for(const moreButton of moreButtons) {
-	moreButton.addEventListener('click', moreButtonClickHandler, passiveSupported?{passive:true}:false);
+	moreButton.addEventListener('click', moreButtonClickHandler, passive);
 }
 
 /**
@@ -430,7 +432,7 @@ function prepareProjects(item, projIndex) {
 
 	const element = document.getElementById(item.uniqueName);
 	if(element) {
-		element.addEventListener('click', () => modelProjectManager(item.uniqueName), passiveSupported?{passive:true}:false);
+		element.addEventListener('click', () => modelProjectManager(item.uniqueName), passive);
 	}
 	else {
 		console.error(`Missing link to 3D Model with uniqueName: ${item.uniqueName}`)
