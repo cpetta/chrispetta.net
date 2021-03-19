@@ -133,7 +133,7 @@ fullscreenCloseBtn.addEventListener("click", fullscreenClose, passiveSupported?{
 window.addEventListener("load", () => {
 	resizeManager();
 	createObserver();
-	for(placeholderImg of placeholderImgs) {
+	for(const placeholderImg of placeholderImgs) {
 		placeholderImg.style.display = "none";
 	}
 }, passiveSupported?{once:true, passive:true}:false);
@@ -156,7 +156,7 @@ document.body.addEventListener('touchmove', loadmv, {once:true});
 document.body.addEventListener('scroll', loadmv, {once:true});
 document.body.addEventListener('keydown', loadmv, {once:true});
 
-for(moreButton of moreButtons) {
+for(const moreButton of moreButtons) {
 	moreButton.addEventListener('click', moreButtonClickHandler, passiveSupported?{passive:true}:false);
 }
 
@@ -217,7 +217,7 @@ function createObserver() {
  * @param {*} observer IntersectionObserver object
  */
 function handleIntersect(entries, observer) {
-	for (entry of entries) {
+	for (const entry of entries) {
 		if(entry.isIntersecting) {
 			if(entry.target.classList.contains("fadeInOnScroll")) {
 				queueFadeInOnScroll(entry.target.classList);
