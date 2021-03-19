@@ -424,8 +424,8 @@ function loadingManager(clicked) {
  * @param {number} projIndex the index of each array item
  */
 function prepareProjects(item, projIndex) {
-	imgs[projIndex] = new Array(item.length);
-	imgLoaded[projIndex] = new Array(item.length);
+	imgs[projIndex] = new Array(item.images.length);
+	imgLoaded[projIndex] = new Array(item.images.length);
 	item.images.forEach((innerItem, imageIndex) => prepareDisplayImgs(innerItem, imageIndex, projIndex));
 }
 /**
