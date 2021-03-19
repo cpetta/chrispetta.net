@@ -663,8 +663,7 @@ function fadeIn(element, add = true, displayType = "block"){
  * Change the max height of an element to show more.
  * @param {string} id the ID of the text element to show more.
  */
-function showMore(id) {
-	element = document.querySelector(id);
+function showMore(element) {
 	if(element.classList.contains("showMore")) {
 		element.classList.remove("showMore");
 	}
@@ -690,5 +689,15 @@ function moreButtonClickHandler(event) {
 	else if(content.contains("lessButtonContent")) {
 		content.remove("lessButtonContent")
 		content.add("moreButtonContent")
+	}
+	if(et.previousElementSibling != null) {
+		if (et.previousElementSibling.classList.contains("showMoreHidden")) {
+			showMore(et.previousElementSibling);
+		}
+	}
+	if(et.parentElement.previousElementSibling != null) {
+		if (et.parentElement.previousElementSibling.classList.contains("showMoreHidden")) {
+			showMore(et.parentElement.previousElementSibling);
+		}
 	}
 }
