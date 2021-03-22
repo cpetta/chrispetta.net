@@ -112,6 +112,8 @@ document.body.addEventListener('touchmove', loadmv, {once:true});
 document.body.addEventListener('scroll', loadmv, {once:true});
 document.body.addEventListener('keydown', loadmv, {once:true});
 hamburger.addEventListener("click", ()=>navToggle(false), passive);
+preBtn.addEventListener("click", ()=>clickManager('previous'), passive);
+nxtBtn.addEventListener("click", ()=>clickManager('next'), passive);
 fullscreenBtn.addEventListener("click", fullscreenOpen, passive);
 fullscreenCloseBtn.addEventListener("click", fullscreenClose, passive);
 
