@@ -463,7 +463,7 @@ async function loadAndAddImage(imgContainer, number) {
 		imageSrc = modelProjects[projectIndex].images[number];
 	}
 	
-	modelImg = `3DProjects/${projectFolder}/images/${imageSrc}`;
+	const modelImg = `3DProjects/${projectFolder}/images/${imageSrc}`;
 	loadingBarWidth = 0;
 	await Promise.all([
 		fetchImg(modelImg)
@@ -483,7 +483,7 @@ async function loadAndAddImage(imgContainer, number) {
 async function fetchImg(src) {
 	return new Promise(async (resolve) => {
 		let response = await fetch(src);
-		reader = response.body.getReader();
+		const reader = response.body.getReader();
 		const contentLength = +response.headers.get('Content-Length');
 		let receivedLength = 0; // received that many bytes at the moment
 		let chunks = []; // array of received binary chunks (comprises the body)
