@@ -9,46 +9,52 @@ let lastModelLoaded = null;
 let lastThumbnailClicked = -1;
 let projectIndex = 0;
 let firstScroll = false;
+let fadeInOnScrollQueue = 0;
 
 const passive = detectPassive() ? {passive:true} : false;
 let avifSupported = false; // avifSupport()
 
-let loading = document.getElementById("loading");
-let gotoTopBtn = document.getElementById("gotoTopBtn");
-let nav = document.getElementById("nav");
-let hamburger = document.getElementById("hamburger");
-let modelingSection = document.getElementById("modeling");
-let modelingLabel = document.getElementById("modelingLabel");
-let viewport = document.getElementById("viewer3d");
-let viewerImg = document.getElementById("viewerImg");
-let fullscreenBtn = document.getElementById("fullscreenBtn");
-let fullscreenCloseBtn = document.getElementById("fullscreenCloseBtn");
-let modelCopyright = document.getElementById("modelCopyright");
-let preBtn = document.getElementById("previousBtnWrapper");
-let nxtBtn = document.getElementById("nextBtnWrapper");
-let loadingSpinner = document.getElementById("loadingSpinner");
-let loadingBar = document.getElementById("loadingBar");
-let webGLViewer = document.getElementById("webGLViewer");
-let modelViewer = document.getElementById("modelViewer");
-let poster = document.getElementById("poster");
-let title = document.getElementById('title');
-let specs = document.getElementById('specs');
-let description = document.getElementById('description');
-let date = document.getElementById('date');
-let size = document.getElementById('size');
-let textureRez = document.getElementById('textureRez');
-let verts = document.getElementById('verts');
-let faces = document.getElementById('faces');
-let mats = document.getElementById('mats');
-let additionalOptionsContainer = document.getElementById('additionalOptionsContainer');
+let imgs = []; // 2D Array
+let imgLoaded = [];
+let modelProjects = [];
 
-let fadeInObjects = window.document.querySelectorAll(".fadeInOnScroll");
-let moreButtons = window.document.querySelectorAll(".moreButton");
-let placeholderImgs = window.document.querySelectorAll(".placeholderImg");
+const loading = document.getElementById("loading");
+const gotoTopBtn = document.getElementById("gotoTopBtn");
+const nav = document.getElementById("nav");
+const hamburger = document.getElementById("hamburger");
+const modelingSection = document.getElementById("modeling");
+const modelingLabel = document.getElementById("modelingLabel");
+const viewport = document.getElementById("viewer3d");
+const viewerImg = document.getElementById("viewerImg");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+const fullscreenCloseBtn = document.getElementById("fullscreenCloseBtn");
+const modelCopyright = document.getElementById("modelCopyright");
+const preBtn = document.getElementById("previousBtnWrapper");
+const nxtBtn = document.getElementById("nextBtnWrapper");
+const loadingSpinner = document.getElementById("loadingSpinner");
+const loadingBar = document.getElementById("loadingBar");
+const webGLViewer = document.getElementById("webGLViewer");
+const modelViewer = document.getElementById("modelViewer");
+const poster = document.getElementById("poster");
+const title = document.getElementById('title');
+const specs = document.getElementById('specs');
+const description = document.getElementById('description');
+const date = document.getElementById('date');
+const size = document.getElementById('size');
+const textureRez = document.getElementById('textureRez');
+const verts = document.getElementById('verts');
+const faces = document.getElementById('faces');
+const mats = document.getElementById('mats');
+const additionalOptionsContainer = document.getElementById('additionalOptionsContainer');
+
+const fadeInObjects = window.document.querySelectorAll(".fadeInOnScroll");
+const moreButtons = window.document.querySelectorAll(".moreButton");
+const placeholderImgs = window.document.querySelectorAll(".placeholderImg");
+
 /**
  * Array which contains all the information for a given model.
  */
-let modelInfoTypingTextContainer = [
+const modelInfoTypingTextContainer = [
 	new TypingText(specs, 619),
 	new TypingText(title, 300),
 	new TypingText(description, 600),
@@ -61,19 +67,6 @@ let modelInfoTypingTextContainer = [
 	new TypingText(additionalOptionsContainer, 301)
 ];
 
-let imgs; // 2D Array
-let imgLoaded;
-
-let modelProjects;
-fetch('3DProjects/3DProjects.json')
-.then(response => response.json())
-.then(data => modelProjects = data)
-.then(modelProjects => {
-	imgs = new Array(modelProjects.length);
-	imgLoaded = new Array(modelProjects.length);
-	modelProjects.forEach(prepareProjects); 
-});
-
 /**
  * Creates an object which can hold a DOM element and a setTimeout, used for controlling the typing animation
  * @param {Element} element The text element that will be animated
@@ -83,23 +76,6 @@ function TypingText(element, delay) {
 	this.elm = element;
 	this.typer;
 	this.typingDelay = delay;
-}
-
-let fadeInOnScrollQueue = 0;
-/**
- * Takes the classlist of an element, applys the fadeInOnScroll2 class. (causing a fadein animation)
- * @param {DOMTokenList} element classlist of the element
- */
-function queueFadeInOnScroll(element) {
-	let delay = fadeInOnScrollQueue * 150;
-	// If more than 10 animations are queued, start new animations with a shorter delay.
-	if(delay > 1400) delay = fadeInOnScrollQueue * 30;
-	setTimeout(() => {
-		element.remove("fadeInOnScroll");
-		element.add("fadeInOnScroll2");
-		fadeInOnScrollQueue--;
-	}, delay);
-	fadeInOnScrollQueue++;
 }
 
 /**
@@ -120,6 +96,7 @@ function detectPassive() {
 		return false;
 	  }
 }
+
 /**
  * Detect if the AVIF image format is supported.
  */
@@ -130,36 +107,45 @@ function avifSupport(){
 }
 avifSupport();
 
+window.addEventListener("load", init, passive?{once:true, passive:true}:false);
+window.addEventListener("resize", resizeManager, passive);
+document.body.addEventListener('mouseover', loadmv, {once:true});
+document.body.addEventListener('touchmove', loadmv, {once:true});
+document.body.addEventListener('scroll', loadmv, {once:true});
+document.body.addEventListener('keydown', loadmv, {once:true});
 fullscreenBtn.addEventListener("click", fullscreenOpen, passive);
 fullscreenCloseBtn.addEventListener("click", fullscreenClose, passive);
-window.addEventListener("load", () => {
+
+for(const moreButton of moreButtons) {
+	moreButton.addEventListener('click', moreButtonClickHandler, passive);
+}
+
+function init() {
 	resizeManager();
 	createObserver();
 	for(const placeholderImg of placeholderImgs) {
 		placeholderImg.style.display = "none";
 	}
-}, passive?{once:true, passive:true}:false);
-
-window.addEventListener("resize", resizeManager, passive);
+	
+	fetch('3DProjects/3DProjects.json')
+	.then(response => response.json())
+	.then(data => modelProjects = data)
+	.then(modelProjects => {
+		imgs = new Array(modelProjects.length);
+		imgLoaded = new Array(modelProjects.length);
+		modelProjects.forEach(prepareProjects); 
+	});
+}
 
 /**
  * load modelviewer script when the user interacts with the page.
  * This defered loading increases page load speed and interactive time.
  */
-const loadmv = () => {
+ function loadmv () {
 	if (!modelViewerLoaded) {
 		modelViewerLoaded = true;
 		loadScript('js/model-viewer.min.js', true);
 	}
-};
-
-document.body.addEventListener('mouseover', loadmv, {once:true});
-document.body.addEventListener('touchmove', loadmv, {once:true});
-document.body.addEventListener('scroll', loadmv, {once:true});
-document.body.addEventListener('keydown', loadmv, {once:true});
-
-for(const moreButton of moreButtons) {
-	moreButton.addEventListener('click', moreButtonClickHandler, passive);
 }
 
 /**
@@ -176,6 +162,7 @@ async function resizeManager() {
 		setTimeout(() => {nav.style.transition = "0.2s ease-out";}, 10); // setTimeout is required, otherwise it will animate oddly on a resize
 	}
 }
+
 /**
  *  Toggle the mobile version of the nav from closed to open and vice versa
  * @param {boolean} closeNav if true is passed, close the mobile nav regardless of what position it's in
@@ -194,12 +181,13 @@ function navToggle(closeNav = false) {
 		navState = true;
 	}
 }
+
 /**
  * Create the intersection observer object which is used to lazy load images and apply the fadeIn css style when an element becomes visible on the screen
  */
 function createObserver() {
 	let observer;
-	let options = {
+	const options = {
 		root: null,
 		rootMargin: "0px",
 		threshold: 0.4
@@ -213,6 +201,7 @@ function createObserver() {
 	observer.observe(viewport);
 	observer.observe(nav);
 }
+
 /**
  * handleIntersect is run when the intersection observer passes an intersection threshold
  * @param {*} entries item that the observer is observing
@@ -240,6 +229,7 @@ function handleIntersect(entries, observer) {
 		}
 	}
 }
+
 /**
  * Add a script tag to an html file. Called by the intersection observer to lazy load modelviewer.js
  * @param {string} scriptSrc Path to a javascript file, equivalent to the src of a <script> tag
@@ -258,6 +248,7 @@ async function loadScript(scriptSrc, module = false) {
 	script.setAttribute("defer", "");
 	document.body.appendChild(script);
 }
+
 /**
  * When a model project is clicked, load the modelviewer UI and any assets related to the clicked item
  * @param {sting} clicked The uniqueName of a model project from the 3DProjects.json file
@@ -298,18 +289,20 @@ async function modelProjectManager(clicked) {
 	// Delay the scroll for 2 frames to avoid attempting to scroll while the content is being repainted.
 	setTimeout(() => {requestAnimationFrame(() => {webGLViewer.scrollIntoView()})}, 32);
 }
+
 /**
  * Clear out the information for each item in the specs section of the viewer
  */
 function removeModelInfo() {
-modelInfoTypingTextContainer.forEach((item, index) => {
-	clearTimeout(item.typer); // This fixes a bug where multiple typing animations could overlap if the user clicks on a model project rapidly
-	fadeOut(item.elm, false);
-	if(index != 0) { // If not the title of each data section, e.g. the part of the page that says date, faces, vertices, etc
-		item.elm.innerHTML = "";
-	}
-});
+	modelInfoTypingTextContainer.forEach((item, index) => {
+		clearTimeout(item.typer); // This fixes a bug where multiple typing animations could overlap if the user clicks on a model project rapidly
+		fadeOut(item.elm, false);
+		if(index != 0) { // If not the title of each data section, e.g. the part of the page that says date, faces, vertices, etc
+			item.elm.innerHTML = "";
+		}
+	});
 }
+
 /**
  * Add in the information for each of the specs for the model that was selected.
  */
@@ -328,6 +321,7 @@ function startTypingNewModelInfo() {
 		}, element.typingDelay)
 	});
 }
+
 /**
  * Loads or switches the model that is displayed in the modelviewer window.
  */
@@ -388,6 +382,7 @@ function clickManager(number) {
 	loadingManager(thumbnailClicked);
 	lastThumbnailClicked = thumbnailClicked;
 }
+
 /**
  * Fade in or Fade out the modelviewer
  * @param {number} clicked if clicked is -1 fade in the modelviewer, otherwise, fade out
@@ -400,6 +395,7 @@ function CanvasManager(clicked) {
 		fadeOut(modelViewer);
 	}
 }
+
 /**
  * Manages the images in the 3D models section, if a render hasn't been loaded yet, load it, otherwise fade it in. fade out all other models
  * @param {number} clicked the thumbnail that was clicked
@@ -420,6 +416,7 @@ function loadingManager(clicked) {
 		imgLoaded[projectIndex][clicked] = true;
 	}
 }
+
 /**
  * Handler for modelProjects.forEach, adds an array to the images array, the new array contains the paths to all the images for a given model project
  * @param {*} item Each array item from the modelProjects array
@@ -438,6 +435,7 @@ function prepareProjects(item, projIndex) {
 		console.error(`Missing link to 3D Model with uniqueName: ${item.uniqueName}`)
 	}
 }
+
 /**
  * Creates an image object for all images that can be loaded in the 3D projects section
  * @param {*} item unused
@@ -447,6 +445,7 @@ function prepareProjects(item, projIndex) {
 function prepareDisplayImgs(item, imageIndex, projIndex) {
 	imgs[projIndex][imageIndex] = new Image ();
 }
+
 /**
  * load a 3D Model image and add it to a container element
  * @param {element} imgContainer the element that holds the image element
@@ -475,6 +474,7 @@ async function loadAndAddImage(imgContainer, number) {
 		fadeIn(img);
 	});
 }
+
 /**
  * Asynchronously loads an image from the provided source.
  * @param {sting} src file path to the image that should be fetched
@@ -508,6 +508,7 @@ async function fetchImg(src) {
 		}
 	});
 }
+
 /**
  * Open the fullscreen view for the model viewer
  * @todo apply styles through css classes rather than through javascript
@@ -527,7 +528,6 @@ function fullscreenOpen() {
 	viewport.style.width = `${window.innerWidth}px`;
 	viewport.style.minWidth = "100%";
 	viewport.classList.remove("defaultViewer3D");
-	//fullscreenBtn.style.position = "fixed";
 	fullscreenBtn.style.display = "none";
 	fullscreenCloseBtn.style.display = "flex";
 	nxtBtn.style.position = "fixed";
@@ -536,6 +536,7 @@ function fullscreenOpen() {
 	document.body.style.overflow = "hidden";
 	gotoTopBtn.style.display = "none";
 }
+
 /**
  * Close the fullscreen view for the model viewer, returns the view to it's initial state
  * @todo apply styles through css classes rather than through javascript
@@ -547,7 +548,6 @@ function fullscreenClose() {
 		viewport.style.width = "";
 		viewport.style.minWidth = "";
 		viewport.classList.remove("fullscreenViewer3d");
-		//fullscreenBtn.style.position = "absolute";
 		fullscreenBtn.style.display = "initial";
 		fullscreenCloseBtn.style.display = "none";
 		nxtBtn.style.position = "absolute";
@@ -574,6 +574,7 @@ function fullscreenClose() {
 		fullscreenCloseHelper();
 	}
 }
+
 /**
  * Update the width of the loading bar based on the progress
  * @param {number} width the current % width of the loading bar can range between 0% and 100% 
@@ -581,6 +582,7 @@ function fullscreenClose() {
 function loadingBarUpdate(width) {
 	loadingBar.style.width = `calc(${width}% - 32px - 10px`;
 }
+
 /**
  * starts a periodic update to the loading bar based on the value of the global variable loadingBarWidth. Ends when loadingBarWidth >= 100
  * @returns {Promise}
@@ -620,6 +622,7 @@ async function startTypeOut(textTypingObj, txt, speed) {
 		textTypingObj.elm.innerHTML = txt;
 	}
 }
+
 /**
  * Recursively add the next letter from a string to the given element 
  * @param {element} elm element to add a letter to
@@ -634,12 +637,13 @@ async function typeLetter(elm, txt, speed, i = 0) {
 		elm.typer = setTimeout(() => typeLetter(elm, txt, speed, i), speed);
 	}
 }
+
 /**
  * Animate the opacity of an element to fade out
  * @param {element} element DOM Element to be faded out 
  * @param {boolean} remove if set to false, will not set element to display none
  */
-function fadeOut(element, remove = true){
+function fadeOut(element, remove = true) {
 	element.style.opacity = 0;
 	element.classList.remove("fadeOut");
 	element.classList.add("fadeOut");
@@ -651,17 +655,16 @@ function fadeOut(element, remove = true){
 			if(element.classList.contains("fadeOut")) {
 				element.style.display = "none";
 			}
-			}, 300);
-			
+		}, 300);	
 	}
 }
+
 /**
  * Animate the opacity of an element to fade in
  * @param {element} element DOM Element to be faded in 
  * @param {boolean} remove if set to false, will not change display to block
  */
-function fadeIn(element, add = true, displayType = "block"){
-	
+function fadeIn(element, add = true, displayType = "block") {
 	element.style.opacity = 1;
 	element.classList.add("fadeIn");
 	element.classList.remove("fadeOut");
@@ -669,6 +672,23 @@ function fadeIn(element, add = true, displayType = "block"){
 		element.style.display = displayType;
 	}
 }
+
+/**
+ * Takes the classlist of an element, applys the fadeInOnScroll2 class. (causing a fadein animation)
+ * @param {DOMTokenList} element classlist of the element
+ */
+ function queueFadeInOnScroll(element) {
+	let delay = fadeInOnScrollQueue * 150;
+	// If more than 10 animations are queued, start new animations with a shorter delay.
+	if(delay > 1400) delay = fadeInOnScrollQueue * 30;
+	setTimeout(() => {
+		element.remove("fadeInOnScroll");
+		element.add("fadeInOnScroll2");
+		fadeInOnScrollQueue--;
+	}, delay);
+	fadeInOnScrollQueue++;
+}
+
 /**
  * Change the max height of an element to show more.
  * @param {string} id the ID of the text element to show more.

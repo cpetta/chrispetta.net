@@ -173,7 +173,7 @@
 			width:65%;
 			transition: 0.2s ease-out;
 		}
-		.hamburgerContainer {
+		#hamburgerContainer {
 			display: none;
 			contain:content;
 			grid-column: 2;
@@ -237,7 +237,7 @@
 			transform: translate(0px, -180%) scale(1.25,1.25) rotate(-45deg);
 		}
 		@media only screen and (max-width: 1100px) {
-			.hamburgerContainer {
+			#hamburgerContainer {
 				display: flex;
 				align-items: center;
 			}
@@ -400,7 +400,7 @@
 <body>
 	<header id="home">
 		<img id="logo" alt="Logo" src="images/portlogo.svg" height="50" width="50" />
-		<div class="hamburgerContainer" onclick="navToggle()">
+		<div id="hamburgerContainer" onclick="navToggle()">
 			<div id="hamburger" class="navClosed">
 				<div id="topHamBar" class="hambar"></div>
 				<div id="midHamBar" class="hambar"></div>
