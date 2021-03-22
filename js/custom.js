@@ -4,9 +4,8 @@
 let navState = false;
 let modelViewerLoaded = false;
 let loadingBarWidth = 0;
-let thumbnailClicked = -1;
+let thumbnailClicked = -1; // will be used as the index to the array of model images, -1 represents the 3D model viewer, 0 through x are images.
 let lastModelLoaded = null;
-let lastThumbnailClicked = -1;
 let projectIndex = 0;
 let firstScroll = false;
 let fadeInOnScrollQueue = 0;
@@ -18,7 +17,6 @@ let imgs = []; // 2D Array
 let imgLoaded = [];
 let modelProjects = [];
 
-const loading = document.getElementById("loading");
 const gotoTopBtn = document.getElementById("gotoTopBtn");
 const nav = document.getElementById("nav");
 const hamburger = document.getElementById("hamburger");
@@ -259,13 +257,12 @@ async function modelProjectManager(clicked) {
 		// modelProjects will evaluate false when the JSON file containing all the information hasn't been loaded yet
 		if(modelProjects) {
 			fadeIn(webGLViewer, true, 'grid');
-			if(lastThumbnailClicked != -1) { // If the last thumbnail clicked was not the modelviewer
-				fadeOut(imgs[projectIndex][lastThumbnailClicked]);
+			if(thumbnailClicked != -1) { // If the last thumbnail clicked was not the modelviewer
+				fadeOut(imgs[projectIndex][thumbnailClicked]);
 			}
 			fadeIn(modelViewer);
 			// When a new project is being loaded, default to the model viewer
 			thumbnailClicked = -1;
-			lastThumbnailClicked = -1;
 
 			const uniqueName = (element) => {return element.uniqueName === clicked}
 			projectIndex = modelProjects.findIndex(uniqueName);
@@ -369,18 +366,17 @@ function addAdditionalOptions(z = 0) {
  *	@param {*} number The array index of the full size image to load. 'next' and 'previous are also an option.
  */
 function clickManager(number) {
-	if(number == 'next' && lastThumbnailClicked < imgs[projectIndex].length - 1) {
-		thumbnailClicked = lastThumbnailClicked + 1;
+	if(number == 'next' && thumbnailClicked < imgs[projectIndex].length - 1) {
+		thumbnailClicked++;
 	}
-	else if(number == 'previous' && lastThumbnailClicked > -1) {
-		thumbnailClicked = lastThumbnailClicked - 1;
+	else if(number == 'previous' && thumbnailClicked > -1) {
+		thumbnailClicked--;
 	}
 	if(number != 'next' && number != 'previous') {
 		thumbnailClicked = number - 1;
 	}
 	CanvasManager(thumbnailClicked);
 	loadingManager(thumbnailClicked);
-	lastThumbnailClicked = thumbnailClicked;
 }
 
 /**
