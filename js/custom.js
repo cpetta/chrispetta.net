@@ -111,8 +111,13 @@ document.body.addEventListener('mouseover', loadmv, {once:true});
 document.body.addEventListener('touchmove', loadmv, {once:true});
 document.body.addEventListener('scroll', loadmv, {once:true});
 document.body.addEventListener('keydown', loadmv, {once:true});
+hamburger.addEventListener("click", ()=>navToggle(false), passive);
 fullscreenBtn.addEventListener("click", fullscreenOpen, passive);
 fullscreenCloseBtn.addEventListener("click", fullscreenClose, passive);
+
+for (const elm of nav.children) {
+	elm.addEventListener("click", ()=>navToggle(true), passive);
+}
 
 for(const moreButton of moreButtons) {
 	moreButton.addEventListener('click', moreButtonClickHandler, passive);
