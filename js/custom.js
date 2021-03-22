@@ -1,6 +1,3 @@
-// TODO: Iron out the service worker caching strategy before activating.
-//navigator.serviceWorker.register('serviceworker.js', {scope: '/chrispetta.net/'});
-
 let navState = false;
 let modelViewerLoaded = false;
 let loadingBarWidth = 0;
