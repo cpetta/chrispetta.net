@@ -333,29 +333,27 @@
 			border-radius: 5px;
 			box-shadow:0px 0px 2px rgba(0,0,0,0.5);
 			color: white;
-			contain:strict;
+			
 			cursor: pointer;
 			display: block;
-			height:55px;
 			font-family: 'Oxygen', "Arial", sans-serif;
-			font-size: 14pt;
+			font-size: 12pt;
 			letter-spacing: inherit;
-			padding: 15px 32px;
+			padding: 7px 15px;
 			text-align: center;
 			text-decoration: none;
-			margin: 30px auto 30px auto;
+			margin: 0px 0 0px 0px;
 			font-weight: bold;
-			width:140px;
 		}
 		.moreButton:hover{
 			filter: contrast(110%) brightness(115%);
 		}
 		.moreButtonContent:after {
-			content: 'More \25BC';
+			content: 'Read More \25BE';
 			user-select: none;
 		}
 		.lessButtonContent:after {
-			content: 'Less \25B2';
+			content: 'Read Less \25B4';
 			user-select: none;
 		}
 		.label {
@@ -494,10 +492,12 @@
 				<div id="aboutText">
 					<h1 style="font-size:32pt;font-family: 'Oxygen', 'Roboto', 'Arial', sans-serif ;">Hello there,</h1>
 					<h2>I'm Chris Petta, a Software and Web Developer living in Grand Rapids, MI.</h2>
-					<p id="aboutMore" class="showMoreHidden" style="max-height: 15px;">
+					<p id="aboutMore" class="showMoreHidden">
 						Currently, I work as the Teaching Assistant for a Software and Game Development Program. In this role, I assist students as they learn several coding languages including
 						<strong>HTML, CSS, JavaScript, C#, and C++.</strong>
 						I'm also <strong>pursuing a B.S. in Computer Science at Davenport University.</strong>
+					</p>
+					<p class="showMoreHidden"  style="max-height: 0px;">
 						I love to tinker and experiment with new technology. Over the years, I've hosted several web, email, and game servers. I've built several computers, flashed a custom ROM on my phone, and written scripts to automate repetitive tasks.
 						When I have free time, I enjoy 3D modeling, playing games with friends, and riding my bicycle.
 					</p>
