@@ -43,14 +43,16 @@
             "redbot2.jpg",
             "redbot3.jpg",
             "redbot4.jpg",
-            "redbot5.jpg"
+            "redbot5.jpg",
+            "redbot6.jpg"
         ],
         "avifImages": [
             "redbot1.avif",
             "redbot2.avif",
             "redbot3.avif",
             "redbot4.avif",
-            "redbot5.avif"
+            "redbot5.avif",
+            "redbot6.avif"
         ],
         "thumbnails": [
             "redbot0.png",
@@ -58,7 +60,8 @@
             "redbot2.png",
             "redbot3.png",
             "redbot4.png",
-            "redbot5.png"
+            "redbot5.png",
+            "redbot6.png"
         ]
     },
 	{   "uniqueName": "Stove",
