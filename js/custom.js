@@ -29,6 +29,7 @@ const nxtBtn = document.getElementById("nextBtnWrapper");
 const loadingSpinner = document.getElementById("loadingSpinner");
 const loadingBar = document.getElementById("loadingBar");
 const webGLViewer = document.getElementById("webGLViewer");
+const webGLViewerCloseBtn = document.getElementById("webGLViewerCloseBtn");
 const modelViewer = document.getElementById("modelViewer");
 const poster = document.getElementById("poster");
 const title = document.getElementById('title');
@@ -113,6 +114,8 @@ preBtn.addEventListener("click", ()=>clickManager('previous'), passive);
 nxtBtn.addEventListener("click", ()=>clickManager('next'), passive);
 fullscreenBtn.addEventListener("click", fullscreenOpen, passive);
 fullscreenCloseBtn.addEventListener("click", fullscreenClose, passive);
+fullscreenCloseBtn.addEventListener("click", fullscreenClose, passive);
+webGLViewerCloseBtn.addEventListener("click", closeModelViewer, passive);
 
 for (const elm of nav.children) {
 	elm.addEventListener("click", ()=>navToggle(true), passive);
@@ -291,6 +294,13 @@ async function modelProjectManager(clicked) {
 	setTimeout(() => {requestAnimationFrame(() => {webGLViewer.scrollIntoView()})}, 32);
 }
 
+/** Close the model project viewer
+ * 
+ */
+function closeModelViewer() {
+	fadeOut(webGLViewer);
+	lastModelLoaded = null;
+}
 /**
  * Clear out the information for each item in the specs section of the viewer
  */
@@ -336,6 +346,7 @@ function loadNewModelIntoModelViewer() {
 				modelViewer.resetTurntableRotation();
 				modelViewer.cameraOrbit = modelProjects[projectIndex].initialOrbit;
 				modelViewer.setAttribute("exposure", modelProjects[projectIndex].exposure);
+				modelViewer.dismissPoster();
 				clearInterval(checkLoad);
 			}
 		}, 50); // Interval
