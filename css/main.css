@@ -425,6 +425,11 @@ ul.specs li hr {
     min-width:30%;
     margin-left:0px;
 }
+#webTextureRezInfo {
+	bottom:0px;
+	font-size: 8pt;
+	position:absolute;
+}
 .arrow {
     border: solid black;
     border-width: 0 5px 5px 0;
