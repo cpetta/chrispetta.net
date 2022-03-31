@@ -689,9 +689,9 @@ function fadeIn(element, add = true, displayType = "block") {
  * @param {DOMTokenList} element classlist of the element
  */
  function queueFadeInOnScroll(element) {
-	let delay = fadeInOnScrollQueue * 150;
+	let delay = fadeInOnScrollQueue * 50;
 	// If more than 10 animations are queued, start new animations with a shorter delay.
-	if(delay > 1400) delay = fadeInOnScrollQueue * 30;
+	if(delay > 1400) delay = fadeInOnScrollQueue * 10;
 	setTimeout(() => {
 		element.remove("fadeInOnScroll");
 		element.add("fadeInOnScroll2");
