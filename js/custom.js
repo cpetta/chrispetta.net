@@ -158,9 +158,9 @@ function init() {
  */
 async function resizeManager() {
 	navState = false;
-	if(window.innerWidth >= 1100) {
+	if(window.innerWidth >= 1265) {
 		nav.style.transition = "0s";
-		nav.style.maxHeight = "340px";
+		nav.style.maxHeight = "408px";
 	}
 	else {
 		navToggle(true);
@@ -173,14 +173,14 @@ async function resizeManager() {
  * @param {boolean} closeNav if true is passed, close the mobile nav regardless of what position it's in
  */
 function navToggle(closeNav = false) {
-	if ((navState || closeNav) && window.innerWidth <= 1100) { // If mobile nav is not already open
+	if ((navState || closeNav) && window.innerWidth <= 1265) { // If mobile nav is not already open
 		nav.style.maxHeight = "0px";
 		setTimeout(() => {hamburger.classList.add("navClosed")},201); // using setTimeout here to allow the proper animation to play. avoiding an animation delay on the top bar
 		hamburger.classList.remove("navOpen");
 		navState = false;
 	}
 	else {
-		nav.style.maxHeight = "340px";
+		nav.style.maxHeight = "408px";
 		hamburger.classList.add("navOpen");
 		hamburger.classList.remove("navClosed");
 		navState = true;
