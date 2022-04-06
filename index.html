@@ -375,7 +375,12 @@
 				padding:50px;
 			}
 		}
-		@media only screen and (max-width: 1250px) {
+		@media only screen and (max-width: 1250px) and (min-width: 650px) {
+			#skills {
+				grid-template-columns: repeat(3, minmax(50px, 1fr));
+			}
+		}
+		@media only screen and (max-width: 650px) {
 			#skills {
 				grid-template-columns: repeat(2, minmax(50px, 1fr));
 			}
