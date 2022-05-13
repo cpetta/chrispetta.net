@@ -319,10 +319,12 @@
 		.showMore {
 			max-height:1000px !important;
 			transition: max-height 2s ease !important;
+			mask-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,1)) !important;
 		}
 		.showMoreHidden {
 			overflow:hidden;
 			transition: max-height 0.5s cubic-bezier(0,1.2,1,1);
+			mask-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.1));
 		}
 		.moreButton {
 			background-color: rgb(49, 127, 230);
@@ -516,7 +518,7 @@
 				<div id="aboutText">
 					<h1 style="font-size:42pt;font-family: 'Oxygen', 'Roboto', 'Arial', sans-serif ;">Hello there,</h1>
 					<h2>I'm Chris Petta, a Software and Web Developer living in Grand Rapids, MI.</h2>
-					<p id="aboutMore" class="showMoreHidden" style="max-height: 15px;">
+					<p id="aboutMore" class="showMoreHidden" style="max-height: 75px;">
 						Currently, I work as the Teaching Assistant for a Software and Game Development Program. In this role, I assist students as they learn several coding languages including
 						<strong>HTML, CSS, JavaScript, C#, and C++.</strong>
 						I'm also <strong>pursuing a B.S. in Computer Science at Davenport University.</strong>
