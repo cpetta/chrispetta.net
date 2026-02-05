@@ -114,7 +114,6 @@ preBtn.addEventListener("click", ()=>clickManager('previous'), passive);
 nxtBtn.addEventListener("click", ()=>clickManager('next'), passive);
 fullscreenBtn.addEventListener("click", fullscreenOpen, passive);
 fullscreenCloseBtn.addEventListener("click", fullscreenClose, passive);
-fullscreenCloseBtn.addEventListener("click", fullscreenClose, passive);
 webGLViewerCloseBtn.addEventListener("click", closeModelViewer, passive);
 
 for (const elm of nav.children) {
