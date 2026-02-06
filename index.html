@@ -1,524 +1,638 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title>Chris Petta's Portfolio</title>
+		<title>Chris Petta's Portfolio</title>
 
-	<link rel="preload" href="css/main.css" as="style" />
-	<link rel="preload" href="js/custom.js" as="script" />
-	<link rel="preload" href="fonts/roboto-light.woff2" as="font" type="font/woff2" crossorigin=""/>
-	<link rel="preload" href="fonts/roboto-regular.woff2" as="font" type="font/woff2" crossorigin=""/>
-	<link rel="preload" href="fonts/oxygen-bold.woff2" as="font" type="font/woff2" crossorigin=""/>
-	<link rel="preload" href="images/portlogo.svg" as="image"/>
+		<link rel="preload" href="css/main.css" as="style" />
+		<link rel="preload" href="js/custom.js" as="script" />
+		<link
+			rel="preload"
+			href="fonts/roboto-light.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin=""
+		/>
+		<link
+			rel="preload"
+			href="fonts/roboto-regular.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin=""
+		/>
+		<link
+			rel="preload"
+			href="fonts/oxygen-bold.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin=""
+		/>
+		<link rel="preload" href="images/portlogo.svg" as="image" />
 
-	<!-- Load Below The Fold CSS Asynchronously -->
-	<link rel="stylesheet" href="css/main.css" media="print" onload="this.media='all'">
-	<noscript><link rel="stylesheet" href="css/main.css" type="text/css" /></noscript>
+		<!-- Load Below The Fold CSS Asynchronously -->
+		<link
+			rel="stylesheet"
+			href="css/main.css"
+			media="print"
+			onload="this.media = 'all'"
+		/>
+		<noscript
+			><link rel="stylesheet" href="css/main.css" type="text/css"
+		/></noscript>
 
-	<link rel="icon" href="images/portlogo.svg" type="image/svg" sizes="32x32" />
+		<link
+			rel="icon"
+			href="images/portlogo.svg"
+			type="image/svg"
+			sizes="32x32"
+		/>
 
-	<link rel="manifest" href="manifest.json" />
-	<meta name="theme-color" content="rgb(49, 127, 230)"/>
-	<!-- Apple Specific -->
-	<link rel="apple-touch-icon" href="images/icons/icon-180.png" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="manifest" href="manifest.json" />
+		<meta name="theme-color" content="rgb(49, 127, 230)" />
+		<!-- Apple Specific -->
+		<link rel="apple-touch-icon" href="images/icons/icon-180.png" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
 
-	<!-- Open Graph -->
-	<meta name="og:type" content="website" />
-	<meta property="og:site_name" content="Chris Petta's Portfolio" />
-	<meta property="og:title" content="Chris Petta's Portfolio" />
-	<meta property="og:description" content="A Web Developer and 3D Modeler from Grand Rapids, MI" />
-	<meta property="og:image" content="https://chrispetta.net/images/profile-no-bg-900.png" />
-	<meta property="og:image:type" content="image/jpeg" />
-	<meta property="og:image:width" content="600" />
-	<meta property="og:image:height" content="673" />
-	<meta property="og:image:alt" content="A picture of Chris Petta" />
-	<meta property="og:url" content="https://chrispetta.net/index.html" />
-	<meta property="og:locale" content="en_US" />
-	<meta name="twitter:card" content="summary" />
+		<!-- Open Graph -->
+		<meta name="og:type" content="website" />
+		<meta property="og:site_name" content="Chris Petta's Portfolio" />
+		<meta property="og:title" content="Chris Petta's Portfolio" />
+		<meta
+			property="og:description"
+			content="A Web Developer and 3D Modeler from Grand Rapids, MI"
+		/>
+		<meta
+			property="og:image"
+			content="https://chrispetta.net/images/profile-no-bg-900.png"
+		/>
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:width" content="600" />
+		<meta property="og:image:height" content="673" />
+		<meta property="og:image:alt" content="A picture of Chris Petta" />
+		<meta property="og:url" content="https://chrispetta.net/index.html" />
+		<meta property="og:locale" content="en_US" />
+		<meta name="twitter:card" content="summary" />
 
-	<meta itemprop="name" content="Chris Petta's Portfolio" />
-    <meta itemprop="description" content="Chris Petta is a Web Developer and 3D Modeler from Grand Rapids, MI" />
-	<meta itemprop="image" content="https://chrispetta.net/images/chris.jpg" />
-	
-	<meta name="description" content="Chris Petta, a Web Developer and 3D Modeler Portfolio" />
-	
-	<style>
-		/* Styles being applied to content above the fold */
-		@font-face {
-			font-family: 'Roboto-Light';
-			font-style: normal;
-			font-weight: 300;
-			font-display: swap;
-			src: url(fonts/roboto-light.woff2) format('woff2');
-		}
-		@font-face {
-			font-family: 'Roboto';
-			font-style: normal;
-			font-weight: 400;
-			font-display: swap;
-			src: url(fonts/roboto-regular.woff2) format('woff2');
-		}
-		@font-face {
-			font-family: 'Oxygen';
-			font-style: normal;
-			font-weight: 700;
-			font-display: swap;
-			src: url(fonts/oxygen-bold.woff2) format('woff2');
-		}
-		body,
-		html {
-			background: url('data:image/gif;base64,R0lGODdhGgAaAPAAAOzs7Pr6+iwAAAAAGgAaAAACPYSPqRrtD+MDgdqKr85Y+r+FnEh9JkSO6na265uWrhnD6kzb9YWD+i/rRXZAoYdINA6LNSWKaXNOoCmpowAAOw==') repeat;
-			color: #313131;
-			font-family: 'Roboto-Light', "Arial", sans-serif;
-			font-size: 14pt;
-			letter-spacing: 1px;
-			margin:0;
-			scrollbar-width: thin; /* Firefox Scrollbar */
-			scroll-behavior: smooth;
-			text-shadow:0px 0px 2px rgba(255,255,255,0.5); /* added text clarity */
-		}
-		#logo {
-			padding: 15px;
-			width:50px;
-		}
-		nav {
-			contain:content;
-			background-color: rgb(220, 220, 220);
-			font-family: "Oxygen", "Roboto", "Arial", sans-serif;
-			font-size: 16pt;
-			grid-column: 2 / 9;
-			grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-		}
-		/* Chrome Scrollbar */
-		::-webkit-scrollbar {
-			width: 5px;
-		}
-		/* Track */
-		::-webkit-scrollbar-track {
-			background: #f1f1f1;
-		}
-		/* Handle */
-		::-webkit-scrollbar-thumb {
-			background: #888;
-		}
-		/* Handle on hover */
-		::-webkit-scrollbar-thumb:hover {
-			background: #555;
-		}
-		nav,
-		main {
-			line-height: 150%;
-			/*contain:content;*/
-		}
-		main {
-			padding-top: 50px;
-		}
-		section {
-			contain:content;
-		}
-		section#modeling {
-			contain:none;
-		}
-		a {
-			color: #313131;
-			text-decoration: none;
-		}
-		header {
-			display: grid;
-			contain:content;
-			position:absolute;
-			width:100%;
-			border-bottom: 3px solid rgb(49, 127, 230);
-			background-color: rgb(220, 220, 220);
-			user-select: none;
-			box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
-			z-index: 2;
-		}
+		<meta itemprop="name" content="Chris Petta's Portfolio" />
+		<meta
+			itemprop="description"
+			content="Chris Petta is a Web Developer and 3D Modeler from Grand Rapids, MI"
+		/>
+		<meta itemprop="image" content="https://chrispetta.net/images/chris.jpg" />
 
-		@media only screen and (min-width: 1265px) {
+		<meta
+			name="description"
+			content="Chris Petta, a Web Developer and 3D Modeler Portfolio"
+		/>
+
+		<style>
+			/* Styles being applied to content above the fold */
+			@font-face {
+				font-family: "Roboto-Light";
+				font-style: normal;
+				font-weight: 300;
+				font-display: swap;
+				src: url(fonts/roboto-light.woff2) format("woff2");
+			}
+			@font-face {
+				font-family: "Roboto";
+				font-style: normal;
+				font-weight: 400;
+				font-display: swap;
+				src: url(fonts/roboto-regular.woff2) format("woff2");
+			}
+			@font-face {
+				font-family: "Oxygen";
+				font-style: normal;
+				font-weight: 700;
+				font-display: swap;
+				src: url(fonts/oxygen-bold.woff2) format("woff2");
+			}
+			body,
+			html {
+				background: url("data:image/gif;base64,R0lGODdhGgAaAPAAAOzs7Pr6+iwAAAAAGgAaAAACPYSPqRrtD+MDgdqKr85Y+r+FnEh9JkSO6na265uWrhnD6kzb9YWD+i/rRXZAoYdINA6LNSWKaXNOoCmpowAAOw==")
+					repeat;
+				color: #313131;
+				font-family: "Roboto-Light", "Arial", sans-serif;
+				font-size: 14pt;
+				letter-spacing: 1px;
+				margin: 0;
+				scrollbar-width: thin; /* Firefox Scrollbar */
+				scroll-behavior: smooth;
+				text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5); /* added text clarity */
+			}
+			#logo {
+				padding: 15px;
+				width: 50px;
+			}
 			nav {
-				display: grid;
+				contain: content;
+				background-color: rgb(220, 220, 220);
+				font-family: "Oxygen", "Roboto", "Arial", sans-serif;
+				font-size: 16pt;
+				grid-column: 2 / 9;
 				grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
 			}
-		}
-		nav a {
-			align-items: center;
-			box-sizing: content-box;
-			contain:content;
-			display: flex;
-			justify-content: center;
-			padding: 15px;
-		}
-		nav a .text {
-			align-items: center;
-			display:flex;
-			flex-wrap: nowrap;
-			flex-direction: row;
-		}
-		nav a:hover .text ~ .underline {
-			background-color: #000;
-			width:100%;
-			opacity: 100%;
-		}
-		nav a:hover,
-		nav a:focus {
-			background-color: rgb(251, 251, 251);
-		}
-		nav a img { 
-		height:auto;
-		width:25px;
-		margin-left:5px;
-		}
-		.underline {
-			height:2px;
-			border-radius: 2px;
-			opacity: 0%;
-			margin-top:3px;
-			width:65%;
-			transition: 0.2s ease-out;
-		}
-		#hamburgerContainer {
-			display: none;
-			contain:content;
-			grid-column: 2;
-			grid-row: 1;
-		}
-		#hamburger {
-			border-radius: 5px;
-			cursor: pointer;
-			contain:content;
-			display:flex;
-			flex-direction: column;
-			flex-wrap: nowrap;
-			justify-content: center;
-			margin-right:10px;
-			padding:15px;
-			transition: 0.2s;
-			width: 30px;
-		}
-		#hamburger:hover {
-			background-color: rgb(251, 251, 251);
-			border-radius: 15px;
-		}
-		#hamburger.navClosed:hover > #topHamBar{
-			background-color: rgb(49, 127, 230);
-			transition-delay: 0.2s;
-		}
-		#hamburger.navClosed:hover > #midHamBar{
-			background-color: rgb(49, 127, 230);
-			transition-delay: 0.1s;
-		}
-		#hamburger.navClosed:hover > #botHamBar{
-			background-color: rgb(49, 127, 230);
-			transition-delay: 0.0s;
-		}
-		.hambar {
-			background-color: #000;
-			border-radius: 2px;
-			height:6.2px;
-			width:100%;
-		}
-		#topHamBar,
-		#midHamBar,
-		#botHamBar {
-			margin-top:0px;
-			-webkit-backface-visibility: hidden;
-			backface-visibility: hidden;
-			outline: 1px solid transparent;
-			transition: 0.2s;
-		}
-		#topHamBar,
-		#midHamBar {
-			margin-bottom: 5px;
-		}
-		#hamburger.navOpen #topHamBar {
-			transform: translate(0px, 180%) scale(1.25,1.25) rotate(45deg);
-		}
-		#hamburger.navOpen #midHamBar {
-			opacity: 0;
-		}
-		#hamburger.navOpen #botHamBar {
-			transform: translate(0px, -180%) scale(1.25,1.25) rotate(-45deg);
-		}
-		@media only screen and (max-width: 1264px) {
-			#hamburgerContainer {
-				display: flex;
-				align-items: center;
+			/* Chrome Scrollbar */
+			::-webkit-scrollbar {
+				width: 5px;
 			}
-			#hamburger {
-				position:absolute;
-				right:0px;
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: #f1f1f1;
 			}
-			nav {
-				grid-column: 1 / 3;
-				grid-row: 2;
-				max-height:0px;
-				overflow: hidden;
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: #888;
+			}
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #555;
+			}
+			nav,
+			main {
+				line-height: 150%;
+				/*contain:content;*/
+			}
+			main {
+				padding-top: 50px;
+			}
+			section {
+				contain: content;
+			}
+			section#modeling {
+				contain: none;
+			}
+			a {
+				color: #313131;
+				text-decoration: none;
+			}
+			header {
+				display: grid;
+				contain: content;
+				position: absolute;
+				width: 100%;
+				border-bottom: 3px solid rgb(49, 127, 230);
+				background-color: rgb(220, 220, 220);
+				user-select: none;
+				box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+				z-index: 2;
+			}
+
+			@media only screen and (min-width: 1265px) {
+				nav {
+					display: grid;
+					grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+				}
 			}
 			nav a {
-				border-top: 1px solid #555
+				align-items: center;
+				box-sizing: content-box;
+				contain: content;
+				display: flex;
+				justify-content: center;
+				padding: 15px;
 			}
-		}
-		#about {
-			align-items: center;
-			display:flex;
-			flex-wrap:nowrap;
-			padding-bottom:100px;
-			padding-left:20px;
-			padding-right:20px;
-			padding-top: 100px;
-			margin-top: 50px;
-			justify-content: center;
-		}
-		@media only screen and (max-width: 860px) {
+			nav a .text {
+				align-items: center;
+				display: flex;
+				flex-wrap: nowrap;
+				flex-direction: row;
+			}
+			nav a:hover .text ~ .underline {
+				background-color: #000;
+				width: 100%;
+				opacity: 100%;
+			}
+			nav a:hover,
+			nav a:focus {
+				background-color: rgb(251, 251, 251);
+			}
+			nav a img {
+				height: auto;
+				width: 25px;
+				margin-left: 5px;
+			}
+			.underline {
+				height: 2px;
+				border-radius: 2px;
+				opacity: 0%;
+				margin-top: 3px;
+				width: 65%;
+				transition: 0.2s ease-out;
+			}
+			#hamburgerContainer {
+				display: none;
+				contain: content;
+				grid-column: 2;
+				grid-row: 1;
+			}
+			#hamburger {
+				border-radius: 5px;
+				cursor: pointer;
+				contain: content;
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				justify-content: center;
+				margin-right: 10px;
+				padding: 15px;
+				transition: 0.2s;
+				width: 30px;
+			}
+			#hamburger:hover {
+				background-color: rgb(251, 251, 251);
+				border-radius: 15px;
+			}
+			#hamburger.navClosed:hover > #topHamBar {
+				background-color: rgb(49, 127, 230);
+				transition-delay: 0.2s;
+			}
+			#hamburger.navClosed:hover > #midHamBar {
+				background-color: rgb(49, 127, 230);
+				transition-delay: 0.1s;
+			}
+			#hamburger.navClosed:hover > #botHamBar {
+				background-color: rgb(49, 127, 230);
+				transition-delay: 0s;
+			}
+			.hambar {
+				background-color: #000;
+				border-radius: 2px;
+				height: 6.2px;
+				width: 100%;
+			}
+			#topHamBar,
+			#midHamBar,
+			#botHamBar {
+				margin-top: 0px;
+				-webkit-backface-visibility: hidden;
+				backface-visibility: hidden;
+				outline: 1px solid transparent;
+				transition: 0.2s;
+			}
+			#topHamBar,
+			#midHamBar {
+				margin-bottom: 5px;
+			}
+			#hamburger.navOpen #topHamBar {
+				transform: translate(0px, 180%) scale(1.25, 1.25) rotate(45deg);
+			}
+			#hamburger.navOpen #midHamBar {
+				opacity: 0;
+			}
+			#hamburger.navOpen #botHamBar {
+				transform: translate(0px, -180%) scale(1.25, 1.25) rotate(-45deg);
+			}
+			@media only screen and (max-width: 1264px) {
+				#hamburgerContainer {
+					display: flex;
+					align-items: center;
+				}
+				#hamburger {
+					position: absolute;
+					right: 0px;
+				}
+				nav {
+					grid-column: 1 / 3;
+					grid-row: 2;
+					max-height: 0px;
+					overflow: hidden;
+				}
+				nav a {
+					border-top: 1px solid #555;
+				}
+			}
 			#about {
-				flex-wrap:wrap;
-				padding-top:30px;
+				align-items: center;
+				display: flex;
+				flex-wrap: nowrap;
+				padding-bottom: 100px;
+				padding-left: 20px;
+				padding-right: 20px;
+				padding-top: 100px;
+				margin-top: 50px;
+				justify-content: center;
 			}
-		}
-		#aboutImgContainer {
-			display:grid;
-			contain:content;
-			padding:10px;
-			height:auto;
-			max-height:80%;
-			max-width: 600px;
-			min-width: 200px;
-			width: 100%;
-		}
-		#aboutImgContainer img,
-		#aboutImgContainer svg {
-			filter: brightness(1.2) contrast(110%);
-		}
-		#aboutImgContainer img,
-		#aboutImgContainer svg,
-		#aboutImgContainer picture {
-			grid-column: 1;
-			grid-row: 1;
-			height: auto;
-			width:100%;
-			border-radius: 5px;
-		}
-		#aboutText {
-			contain:content;
-			margin:0px;
-			width:100%;
-			max-width: 900px;
-		}
-		#aboutText h2 {
-			font-size:1.25em;
-		}
-		@media only screen and (min-width: 860px) {
+			@media only screen and (max-width: 860px) {
+				#about {
+					flex-wrap: wrap;
+					padding-top: 30px;
+				}
+			}
+			#aboutImgContainer {
+				display: grid;
+				contain: content;
+				padding: 10px;
+				height: auto;
+				max-height: 80%;
+				max-width: 600px;
+				min-width: 200px;
+				width: 100%;
+			}
+			#aboutImgContainer img,
+			#aboutImgContainer svg {
+				filter: brightness(1.2) contrast(110%);
+			}
+			#aboutImgContainer img,
+			#aboutImgContainer svg,
+			#aboutImgContainer picture {
+				grid-column: 1;
+				grid-row: 1;
+				height: auto;
+				width: 100%;
+				border-radius: 5px;
+			}
 			#aboutText {
-				margin:50px;
+				contain: content;
+				margin: 0px;
+				width: 100%;
+				max-width: 900px;
 			}
-		}
-		.showMore {
-			max-height:1000px !important;
-			transition: max-height 2s ease !important;
-			mask-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,1)) !important;
-		}
-		.showMoreHidden {
-			overflow:hidden;
-			transition: max-height 0.5s cubic-bezier(0,1.2,1,1);
-			mask-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.1));
-		}
-		.moreButton {
-			background-color: rgb(49, 127, 230);
-			border: none;
-			border-radius: 5px;
-			box-shadow:0px 0px 2px rgba(0,0,0,0.5);
-			color: white;
-			contain:strict;
-			cursor: pointer;
-			display: block;
-			height:55px;
-			font-family: 'Oxygen', "Arial", sans-serif;
-			font-size: 14pt;
-			letter-spacing: inherit;
-			padding: 15px 32px;
-			text-align: center;
-			text-decoration: none;
-			margin: 30px auto 30px auto;
-			font-weight: bold;
-			width:140px;
-		}
-		.moreButton:hover{
-			filter: contrast(110%) brightness(115%);
-		}
-		.moreButtonContent:after {
-			content: 'More \25BC';
-			user-select: none;
-		}
-		.lessButtonContent:after {
-			content: 'Less \25B2';
-			user-select: none;
-		}
-		.label {
-			font-size: 24pt;
-			font-weight: 300;
-			font-family: "Oxygen", "Roboto", "Arial", sans-serif;
-			padding-top: 12px;
-			margin:0;
-			text-align: center;
-		}
-
-		/* Basic Site Structure */
-		#skills {
-			display:grid;
-			padding-bottom:100px;
-		}
-		@media only screen and (min-width: 1250px) {
-			#skills {
-				grid-template-columns: repeat(6, minmax(50px, 1fr));
-				padding:50px;
+			#aboutText h2 {
+				font-size: 1.25em;
 			}
-		}
-		@media only screen and (max-width: 1250px) and (min-width: 650px) {
-			#skills {
-				grid-template-columns: repeat(3, minmax(50px, 1fr));
+			@media only screen and (min-width: 860px) {
+				#aboutText {
+					margin: 50px;
+				}
 			}
-		}
-		@media only screen and (max-width: 650px) {
-			#skills {
-				grid-template-columns: repeat(2, minmax(50px, 1fr));
+			.showMore {
+				max-height: 1000px !important;
+				transition: max-height 2s ease !important;
+				mask-image: linear-gradient(
+					rgba(0, 0, 0, 1),
+					rgba(0, 0, 0, 1)
+				) !important;
 			}
-		}
-	</style>
-	<script>
-		ModelViewerElement = self.ModelViewerElement || {};
-		ModelViewerElement.dracoDecoderLocation = 'js/draco/';
-	</script>
-	<noscript>
-		<style>
 			.showMoreHidden {
-				max-height: none !important;
-				overflow: auto;
+				overflow: hidden;
+				transition: max-height 0.5s cubic-bezier(0, 1.2, 1, 1);
+				mask-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1));
 			}
 			.moreButton {
-				display:none;
+				background-color: rgb(49, 127, 230);
+				border: none;
+				border-radius: 5px;
+				box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+				color: white;
+				contain: strict;
+				cursor: pointer;
+				display: block;
+				height: 55px;
+				font-family: "Oxygen", "Arial", sans-serif;
+				font-size: 14pt;
+				letter-spacing: inherit;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				margin: 30px auto 30px auto;
+				font-weight: bold;
+				width: 140px;
 			}
-			.fadeInOnScroll {
-				opacity: 1;
-				animation: none !important;
+			.moreButton:hover {
+				filter: contrast(110%) brightness(115%);
 			}
-			.showMoreHidden {
-				mask-image: none !important;
+			.moreButtonContent:after {
+				content: "More \25BC";
+				user-select: none;
 			}
-			.placeholderImg {
-				display: none;
+			.lessButtonContent:after {
+				content: "Less \25B2";
+				user-select: none;
 			}
-			#gotoTopBtn {
-				transform:scale(1);
+			.label {
+				font-size: 24pt;
+				font-weight: 300;
+				font-family: "Oxygen", "Roboto", "Arial", sans-serif;
+				padding-top: 12px;
+				margin: 0;
+				text-align: center;
+			}
+
+			/* Basic Site Structure */
+			#skills {
+				display: grid;
+				padding-bottom: 100px;
+			}
+			@media only screen and (min-width: 1250px) {
+				#skills {
+					grid-template-columns: repeat(6, minmax(50px, 1fr));
+					padding: 50px;
+				}
+			}
+			@media only screen and (max-width: 1250px) and (min-width: 650px) {
+				#skills {
+					grid-template-columns: repeat(3, minmax(50px, 1fr));
+				}
+			}
+			@media only screen and (max-width: 650px) {
+				#skills {
+					grid-template-columns: repeat(2, minmax(50px, 1fr));
+				}
 			}
 		</style>
-	</noscript>
-</head>
+		<script>
+			ModelViewerElement = self.ModelViewerElement || {};
+			ModelViewerElement.dracoDecoderLocation = "js/draco/";
+		</script>
+		<noscript>
+			<style>
+				.showMoreHidden {
+					max-height: none !important;
+					overflow: auto;
+				}
+				.moreButton {
+					display: none;
+				}
+				.fadeInOnScroll {
+					opacity: 1;
+					animation: none !important;
+				}
+				.showMoreHidden {
+					mask-image: none !important;
+				}
+				.placeholderImg {
+					display: none;
+				}
+				#gotoTopBtn {
+					transform: scale(1);
+				}
+			</style>
+		</noscript>
+	</head>
 
-<body>
-	<header id="home">
-		<img id="logo" alt="Logo" src="images/portlogo.svg" height="50" width="50" />
-		<div id="hamburgerContainer">
-			<div id="hamburger" class="navClosed">
-				<div id="topHamBar" class="hambar"></div>
-				<div id="midHamBar" class="hambar"></div>
-				<div id="botHamBar" class="hambar"></div>
+	<body>
+		<header id="home">
+			<img
+				id="logo"
+				alt="Logo"
+				src="images/portlogo.svg"
+				height="50"
+				width="50"
+			/>
+			<div id="hamburgerContainer">
+				<div id="hamburger" class="navClosed">
+					<div id="topHamBar" class="hambar"></div>
+					<div id="midHamBar" class="hambar"></div>
+					<div id="botHamBar" class="hambar"></div>
+				</div>
 			</div>
-		</div>
-		<nav id="nav">
-			<a href="#about">
-				<div class="centered">
-					<div class="text">
-						<span>About</span>
-						<img src="images/nav/person.svg" alt="" loading="lazy" height="32" width="32"/>
+			<nav id="nav">
+				<a href="#about">
+					<div class="centered">
+						<div class="text">
+							<span>About</span>
+							<img
+								src="images/nav/person.svg"
+								alt=""
+								loading="lazy"
+								height="32"
+								width="32"
+							/>
+						</div>
+						<div class="underline"></div>
 					</div>
-					<div class="underline"></div>
-				</div>
-			</a>
-			<a href="#webDev">
-				<div class="centered">
-					<div class="text">
-						<span>Web Dev</span>
-						<img src="images/nav/code.svg" alt="" loading="lazy" height="32" width="32"/>
+				</a>
+				<a href="#webDev">
+					<div class="centered">
+						<div class="text">
+							<span>Web Dev</span>
+							<img
+								src="images/nav/code.svg"
+								alt=""
+								loading="lazy"
+								height="32"
+								width="32"
+							/>
+						</div>
+						<div class="underline"></div>
 					</div>
-					<div class="underline"></div>
-				</div>
-			</a>
-			<a href="#c_sharp">
-				<div class="centered">
-					<div class="text">
-						<span>C# Dev</span>
-						<img src="images/nav/cs.svg" alt="" loading="lazy" height="32" width="32"/>
+				</a>
+				<a href="#c_sharp">
+					<div class="centered">
+						<div class="text">
+							<span>C# Dev</span>
+							<img
+								src="images/nav/cs.svg"
+								alt=""
+								loading="lazy"
+								height="32"
+								width="32"
+							/>
+						</div>
+						<div class="underline"></div>
 					</div>
-					<div class="underline"></div>
-				</div>
-			</a>
-			<a href="#modeling">
-				<div class="centered">
-					<div class="text">
-						<span>3D Models</span>
-						<img src="images/nav/3d.svg" alt="" loading="lazy" height="32" width="32"/>
+				</a>
+				<a href="#modeling">
+					<div class="centered">
+						<div class="text">
+							<span>3D Models</span>
+							<img
+								src="images/nav/3d.svg"
+								alt=""
+								loading="lazy"
+								height="32"
+								width="32"
+							/>
+						</div>
+						<div class="underline"></div>
 					</div>
-					<div class="underline"></div>
-				</div>
-			</a>
-			<a href="Christopher_Petta_Web_Resume.pdf" target="_blank">
-				<div class="centered">
-					<div class="text">
-						<span>Resume</span>
-						<img src="images/nav/document.svg" alt="" loading="lazy" height="32" width="32"/>
+				</a>
+				<a href="Christopher_Petta_Web_Resume.pdf" target="_blank">
+					<div class="centered">
+						<div class="text">
+							<span>Resume</span>
+							<img
+								src="images/nav/document.svg"
+								alt=""
+								loading="lazy"
+								height="32"
+								width="32"
+							/>
+						</div>
+						<div class="underline"></div>
 					</div>
-					<div class="underline"></div>
-				</div>
-			</a>
-			<a href="#ContactForm">
-				<div class="centered">
-					<div class="text">
-						<span>Contact</span>
-						<img src="images/nav/paperplane.svg" alt="" loading="lazy" height="32" width="32"/>
+				</a>
+				<a href="#ContactForm">
+					<div class="centered">
+						<div class="text">
+							<span>Contact</span>
+							<img
+								src="images/nav/paperplane.svg"
+								alt=""
+								loading="lazy"
+								height="32"
+								width="32"
+							/>
+						</div>
+						<div class="underline"></div>
 					</div>
-					<div class="underline"></div>
-				</div>
-			</a>
-		</nav>
-	</header>
-	
-	<main>
+				</a>
+			</nav>
+		</header>
 
-		<!-- About Section -->
-		
+		<main>
+			<!-- About Section -->
+
 			<section id="about">
 				<div id="aboutImgContainer">
 					<picture>
-						<source srcset="
-							images/profile-no-bg-600.avif 1x,
-							images/profile-no-bg-900.avif 2x"
+						<source
+							srcset="
+								images/profile-no-bg-600.avif 1x,
+								images/profile-no-bg-900.avif 2x
+							"
 							type="image/avif"
-						>
-						<img src="images/profile-no-bg-900.png" alt="Picture of Chris" loading="eager" height="600" width="600"/>
+						/>
+						<img
+							src="images/profile-no-bg-900.png"
+							alt="Picture of Chris"
+							loading="eager"
+							height="600"
+							width="600"
+						/>
 					</picture>
 					<!--<div style="grid-row: 2;text-align: center;font-size: 8pt;"></div>-->
 				</div>
-				
+
 				<div id="aboutText">
-					<h1 style="font-size:42pt;font-family: 'Oxygen', 'Roboto', 'Arial', sans-serif ;">Hello there,</h1>
-					<h2>I'm Chris Petta, a Software and Web Developer from Grand Rapids, MI.</h2>
-					<div id="aboutMore" class="showMoreHidden" style="max-height: 75px;">
-						Currently exploring the next step in my career, contact me if I might be a good fit at your company.
+					<h1
+						style="
+							font-size: 42pt;
+							font-family:
+								&quot;Oxygen&quot;, &quot;Roboto&quot;, &quot;Arial&quot;,
+								sans-serif;
+						"
+					>
+						Hello there,
+					</h1>
+					<h2>
+						I'm Chris Petta, a Software and Web Developer from Grand Rapids, MI.
+					</h2>
+					<div id="aboutMore" class="showMoreHidden" style="max-height: 75px">
+						Currently exploring the next step in my career, contact me if I
+						might be a good fit at your company.
 						<ul>
 							<li>
-								<strong>3.6</strong> years of experience working as a full-stack web developer at eTool Developers writing HTML, CSS, JavaScript, and PHP to maintain client websites, import data, and integrate with 3rd party API's.
+								<strong>3.6</strong> years of experience working as a full-stack
+								web developer at eTool Developers writing HTML, CSS, JavaScript,
+								and PHP to maintain client websites, import data, and integrate
+								with 3rd party API's.
 							</li>
 							<li>
-								B.S. in Computer Science from Davenport University, specializing in Biometric Security.
+								B.S. in Computer Science from Davenport University, specializing
+								in Biometric Security.
 							</li>
 						</ul>
-						
-						I love to tinker and experiment with new technology. Over the years, I've hosted several web, email, and game servers. I've built several computers, flashed a custom ROM on my phone, and written scripts to automate repetitive tasks.
-						When I have free time, I enjoy 3D modeling, playing games with friends, and riding my bicycle.
+
+						I love to tinker and experiment with new technology. Over the years,
+						I've hosted several web, email, and game servers. I've built several
+						computers, flashed a custom ROM on my phone, and written scripts to
+						automate repetitive tasks. When I have free time, I enjoy 3D
+						modeling, playing games with friends, and riding my bicycle.
 					</div>
 					<button class="moreButton" type="button" aria-label="more button">
 						<span class="moreButtonContent"></span>
@@ -533,586 +647,1200 @@
 				<hr />
 				<div id="skills">
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="HTML 5" src="images/skills/html.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="HTML 5"
+							src="images/skills/html.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">HTML5</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="CSS 3" src="images/skills/css.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="CSS 3"
+							src="images/skills/css.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">CSS3</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="JavaScript" src="images/skills/javascript.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="JavaScript"
+							src="images/skills/javascript.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">JavaScript</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="Git" src="images/skills/git.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="Git"
+							src="images/skills/git.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">Git</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="PHP" src="images/skills/php.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="PHP"
+							src="images/skills/php.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">PHP</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="MySQL" src="images/skills/mysql.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="MySQL"
+							src="images/skills/mysql.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">MySQL</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="C Sharp" src="images/skills/c_sharp.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="C Sharp"
+							src="images/skills/c_sharp.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">C#</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="PowerShell" src="images/skills/powershell.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="PowerShell"
+							src="images/skills/powershell.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">PowerShell</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="Gulp JS" src="images/skills/gulp.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="Gulp JS"
+							src="images/skills/gulp.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">GulpJS</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="Photoshop" src="images/skills/photoshop.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="Photoshop"
+							src="images/skills/photoshop.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">Photoshop</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="Blender" src="images/skills/blender.svg" loading="lazy" height="150" width="150" />
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="Blender"
+							src="images/skills/blender.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">Blender</div>
 					</div>
 					<div class="skillItem">
-						<img class="skillItemImg fadeInOnScroll" alt="Substance Painter" src="images/skills/substance_painter.svg" loading="lazy" height="150" width="150"/>
+						<img
+							class="skillItemImg fadeInOnScroll"
+							alt="Substance Painter"
+							src="images/skills/substance_painter.svg"
+							loading="lazy"
+							height="150"
+							width="150"
+						/>
 						<div class="skillItemText">Substance Painter</div>
 					</div>
 				</div>
 			</section>
 
-		<!-- Website Development Section -->	
+			<!-- Website Development Section -->
 
-		<section id="webDev">
-			<h2 class="label fadeInOnScroll">Website Development</h2>
-			<hr />
-			<!-- Ridestyler -->
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 800 394"><path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="images/ridestyler.avif" type="image/avif">
-						<source srcset="images/ridestyler.png" type="image/png">
-						<img src="images/ridestyler.png" loading="lazy" alt="" height="384" width="779"/>
-					</picture>
-				</div>
-				<div>
-					<a class="websiteTitle" href="https://www.actiontrucks.com/wheel-tire-configurator/" target="_blank">
-						<div class="centered">
-							<div class="text">
-								<h3>Action Trucks - Wheel and Tire Configurator</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
-							</div>
-							<div class="underline"></div>
-						</div>
-					</a>
-					<div id="aboutAction" class="webText showMoreHidden" style="max-height: 72px;">
-						For this project, I worked together with Action Trucks wheel and tire expert to design and develop a front-end that integrated the Action Trucks website with the Ridestyler API.<br />
-						I utilized object-oriented JavaScript which allowed each component to act as their own asynchronous processes, resulting in a extremely fast and responsive front end.<br />
-						This allowed me to implement several features that greatly improved the wheel and tire purchasing experience for customers including:
-						<ul>
-							<li>Vehicle selector</li>
-							<li>Vehicle visualization</li>
-							<li>Guaranteed fit for wheels and tires</li>
-							<li>Custom fit options for customers with lift kits</li>
-							<li>Wheel and tire kit combinations</li>
-							<li>Addon products such as valve stems and balancing rings</li>
-						</ul>
+			<section id="webDev">
+				<h2 class="label fadeInOnScroll">Website Development</h2>
+				<hr />
+				<!-- Ridestyler -->
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 800 394">
+							<path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source srcset="images/ridestyler.avif" type="image/avif" />
+							<source srcset="images/ridestyler.png" type="image/png" />
+							<img
+								src="images/ridestyler.png"
+								loading="lazy"
+								alt=""
+								height="384"
+								width="779"
+							/>
+						</picture>
 					</div>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
-				</div>
-			</div>
-			<!-- Action Trucks New Website -->
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 800 394"><path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="images/actiontrucks.avif" type="image/avif">
-						<source srcset="images/actiontrucks.png" type="image/png">
-						<img src="images/actiontrucks.png" loading="lazy" alt="" height="384" width="779"/>
-					</picture>
-				</div>
-				<div>
-					<a class="websiteTitle" href="https://www.actiontrucks.com/" target="_blank">
-						<div class="centered">
-							<div class="text">
-								<h3>Actiontrucks</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
+					<div>
+						<a
+							class="websiteTitle"
+							href="https://www.actiontrucks.com/wheel-tire-configurator/"
+							target="_blank"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Action Trucks - Wheel and Tire Configurator</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
 							</div>
-							<div class="underline"></div>
+						</a>
+						<div
+							id="aboutAction"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							For this project, I worked together with Action Trucks wheel and
+							tire expert to design and develop a front-end that integrated the
+							Action Trucks website with the Ridestyler API.<br />
+							I utilized object-oriented JavaScript which allowed each component
+							to act as their own asynchronous processes, resulting in a
+							extremely fast and responsive front end.<br />
+							This allowed me to implement several features that greatly
+							improved the wheel and tire purchasing experience for customers
+							including:
+							<ul>
+								<li>Vehicle selector</li>
+								<li>Vehicle visualization</li>
+								<li>Guaranteed fit for wheels and tires</li>
+								<li>Custom fit options for customers with lift kits</li>
+								<li>Wheel and tire kit combinations</li>
+								<li>Addon products such as valve stems and balancing rings</li>
+							</ul>
 						</div>
-					</a>
-					<div id="aboutAction" class="webText showMoreHidden" style="max-height: 72px;">
-						Action Trucks is one of Canada's leading automotive accessory retailers.
-						Around December of 2023 while at eTool Developers, I worked with another member of our team to develop a new version of the action trucks website.<br />
-						Some of my favorite contributions include:
-						<ul>
-							<li>Developed the "mega menu" which allowed customers to select top level categories, as well as sub-categories from the main menu.</li>
-							<li>Developed the mobile layout, functionality, and styling for the entire menu system.</li>
-							<li>Created front-end logic, layout, styling and animations that integrated with an in-house quick search API.</li>
-							<li>Created layouts and styling for the product detail pages.</li>
-							<li>Added pagination that works together with lazy loading product lists.</li>
-							<li>Developed the logic, layout, and styling to support product list filters.</li>
-							<li>Developed an icon loading system that improved page load speed and increased google lighthouse page scores.</li>
-							<li>Worked with the client to ensure their localize site translation widget improved Search Engine Optimization for French Language Results.</li>
-						</ul>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
 					</div>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
 				</div>
-			</div>
-			<!-- Kuzma Class Homepage -->
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 800 394"><path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="images/kcDisplays.avif" type="image/avif">
-						<source srcset="images/kcDisplays.png" type="image/png">
-						<img src="images/kcDisplays2.png" loading="lazy" alt="Kuzmaclass.org's homepage displayed on desktop, iPad, and mobile" height="384" width="779"/>
-					</picture>
-				</div>
-				<div>
-					<a class="websiteTitle" href="webprojects/kuzmaclass/index.html" target="_blank">
-						<div class="centered">
-							<div class="text">
-								<h3>Kuzmaclass - Homepage</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
+				<!-- Action Trucks New Website -->
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 800 394">
+							<path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source srcset="images/actiontrucks.avif" type="image/avif" />
+							<source srcset="images/actiontrucks.png" type="image/png" />
+							<img
+								src="images/actiontrucks.png"
+								loading="lazy"
+								alt=""
+								height="384"
+								width="779"
+							/>
+						</picture>
+					</div>
+					<div>
+						<a
+							class="websiteTitle"
+							href="https://www.actiontrucks.com/"
+							target="_blank"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Actiontrucks</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
 							</div>
-							<div class="underline"></div>
+						</a>
+						<div
+							id="aboutAction"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							Action Trucks is one of Canada's leading automotive accessory
+							retailers. Around December of 2023 while at eTool Developers, I
+							worked with another member of our team to develop a new version of
+							the action trucks website.<br />
+							Some of my favorite contributions include:
+							<ul>
+								<li>
+									Developed the "mega menu" which allowed customers to select
+									top level categories, as well as sub-categories from the main
+									menu.
+								</li>
+								<li>
+									Developed the mobile layout, functionality, and styling for
+									the entire menu system.
+								</li>
+								<li>
+									Created front-end logic, layout, styling and animations that
+									integrated with an in-house quick search API.
+								</li>
+								<li>
+									Created layouts and styling for the product detail pages.
+								</li>
+								<li>
+									Added pagination that works together with lazy loading product
+									lists.
+								</li>
+								<li>
+									Developed the logic, layout, and styling to support product
+									list filters.
+								</li>
+								<li>
+									Developed an icon loading system that improved page load speed
+									and increased google lighthouse page scores.
+								</li>
+								<li>
+									Worked with the client to ensure their localize site
+									translation widget improved Search Engine Optimization for
+									French Language Results.
+								</li>
+							</ul>
 						</div>
-					</a>
-					<p id="aboutKuzmaclass" class="webText showMoreHidden" style="max-height: 72px;">
-						The Kuzmaclass website provides useful information for our students and their parents.
-						We worked on a prototype version of the site that reduced code complexity, added a student showcase, and made the site touchscreen-friendly.
-						We reduced code complexity by adding comments and removing unused or redundant code. We created the showcase section using flexbox in HTML and CSS.
-						Finally, we made the site touchscreen-friendly by increasing the size of links, creating a mobile-friendly navigation menu, and modifying the layout to work better adjust to mobile resolutions.
-					</p>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
+					</div>
 				</div>
-			</div>
-			<!-- Kuzma Class Sandbox -->
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 800 394"><path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="images/SandboxDisplays.avif" type="image/avif">
-						<source srcset="images/SandboxDisplays.png" type="image/png">
-						<img src="images/SandboxDisplays.png" loading="lazy" alt="Kuzmaclass.org's sandbox displayed on desktop, iPad, and mobile" height="384" width="779"/>
-					</picture>
-				</div>
-				<div>
-					<a class="websiteTitle" href="webprojects/sandbox/index.html" target="_blank">
-						<div class="centered">
-							<div class="text">
-								<h3>Kuzmaclass - Sandbox</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
+				<!-- Kuzma Class Homepage -->
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 800 394">
+							<path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source srcset="images/kcDisplays.avif" type="image/avif" />
+							<source srcset="images/kcDisplays.png" type="image/png" />
+							<img
+								src="images/kcDisplays2.png"
+								loading="lazy"
+								alt="Kuzmaclass.org's homepage displayed on desktop, iPad, and mobile"
+								height="384"
+								width="779"
+							/>
+						</picture>
+					</div>
+					<div>
+						<a
+							class="websiteTitle"
+							href="webprojects/kuzmaclass/index.html"
+							target="_blank"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Kuzmaclass - Homepage</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
 							</div>
-							<div class="underline"></div>
-						</div>
-					</a>
-					<p id="aboutSandbox" class="webText showMoreHidden" style="max-height: 72px;">
-						The sandbox is a page on Kuzmaclass that we created to act as a portal to student projects.
-						Initially, it just contained a bunch of links to various student projects. After a while, it became quite hard to find specific projects.
-						We needed a way to search and filter them all.
-						When redesigning the sandbox page, we decided that our primary goal would be to allow every project to be searched and sorted. Along the way, we also changed how data for each project is stored to make future updates easier.
-						Finally, we organized the student projects into logical groups for easier sorting. We accomplished these goals by storing the project data as an array of JSON objects.
-						Since there are so many student projects, code reusability was vital. We utilized JavaScript to accomplish many of these goals.
-					</p>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
+						</a>
+						<p
+							id="aboutKuzmaclass"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							The Kuzmaclass website provides useful information for our
+							students and their parents. We worked on a prototype version of
+							the site that reduced code complexity, added a student showcase,
+							and made the site touchscreen-friendly. We reduced code complexity
+							by adding comments and removing unused or redundant code. We
+							created the showcase section using flexbox in HTML and CSS.
+							Finally, we made the site touchscreen-friendly by increasing the
+							size of links, creating a mobile-friendly navigation menu, and
+							modifying the layout to work better adjust to mobile resolutions.
+						</p>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
+					</div>
 				</div>
-			</div>
-			<!-- Campfire Pizza -->
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 800 394"><path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="images/campfirePizza.avif" type="image/avif">
-						<source srcset="images/campfirePizza.png" type="image/png">
-						<img src="images/campfirePizza.png" loading="lazy" alt="Campfire Pizza site displayed on desktop, iPad, and mobile" height="384" width="779"/>
-					</picture>
-				</div>
-				<div>
-					<a class="websiteTitle" href="https://github.com/cpetta/CampfirePizza" target="_blank">
-						<div class="centered">
-							<div class="text">
-								<h3>Campfire Pizza</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
+				<!-- Kuzma Class Sandbox -->
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 800 394">
+							<path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source srcset="images/SandboxDisplays.avif" type="image/avif" />
+							<source srcset="images/SandboxDisplays.png" type="image/png" />
+							<img
+								src="images/SandboxDisplays.png"
+								loading="lazy"
+								alt="Kuzmaclass.org's sandbox displayed on desktop, iPad, and mobile"
+								height="384"
+								width="779"
+							/>
+						</picture>
+					</div>
+					<div>
+						<a
+							class="websiteTitle"
+							href="webprojects/sandbox/index.html"
+							target="_blank"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Kuzmaclass - Sandbox</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
 							</div>
-							<div class="underline"></div>
-						</div>
-					</a>
-					<p id="aboutCampfirePizza" class="webText showMoreHidden" style="max-height: 72px;">
-						Campfire Pizza is a fictitious pizzeria website that I created while learning ASP.net development using C#.
-						In addition to marketing, the site allows users to submit orders which are then tracked on a separate page.
-						It also provides a store search functionality which would allow a user to find stores in their area.
-					</p>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
+						</a>
+						<p
+							id="aboutSandbox"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							The sandbox is a page on Kuzmaclass that we created to act as a
+							portal to student projects. Initially, it just contained a bunch
+							of links to various student projects. After a while, it became
+							quite hard to find specific projects. We needed a way to search
+							and filter them all. When redesigning the sandbox page, we decided
+							that our primary goal would be to allow every project to be
+							searched and sorted. Along the way, we also changed how data for
+							each project is stored to make future updates easier. Finally, we
+							organized the student projects into logical groups for easier
+							sorting. We accomplished these goals by storing the project data
+							as an array of JSON objects. Since there are so many student
+							projects, code reusability was vital. We utilized JavaScript to
+							accomplish many of these goals.
+						</p>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
+					</div>
 				</div>
-			</div>
-			<!-- Sandpaper -->
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg square" viewBox="0 0 1258 1220"><path fill="rgba(150,150,150,0.4)" d="M0 0h1258v1220H0z"/></svg>
-					<img class="fullImg squareProjectBoxShadow fadeInOnScroll" src="images/sandpaper.png" loading="lazy" alt="Kuzmaclass.org's sandbox displayed on desktop, iPad, and mobile" height="1220" width="1258"/>
-				</div>
-				<div>
-					<a class="websiteTitle" href="https://github.com/cpetta/sandpaper" target="_blank" rel="noreferrer">
-						<div class="centered">
-							<div class="text">
-								<h3>Sandpaper</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
+				<!-- Campfire Pizza -->
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 800 394">
+							<path fill="rgba(0,0,0,0)" d="M0 0h800v394H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source srcset="images/campfirePizza.avif" type="image/avif" />
+							<source srcset="images/campfirePizza.png" type="image/png" />
+							<img
+								src="images/campfirePizza.png"
+								loading="lazy"
+								alt="Campfire Pizza site displayed on desktop, iPad, and mobile"
+								height="384"
+								width="779"
+							/>
+						</picture>
+					</div>
+					<div>
+						<a
+							class="websiteTitle"
+							href="https://github.com/cpetta/CampfirePizza"
+							target="_blank"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Campfire Pizza</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
 							</div>
-							<div class="underline"></div>
-						</div>
-					</a>
-					<p id="aboutSandpaper" class="webText showMoreHidden" style="max-height: 72px;">
-						Sandpaper is a tool I developed to improve the work involved with building and optimizing websites.
-						It started as a gulp file that automates linting, fixing, running, and minifying code.
-						As things progressed, it needed to be easy to use by a less technical audience, so it became a stand-alone program.
-						Sandpaper helps developers avoid common errors in HTML, CSS, and JavaScript. It optimizes assets to improve page load times by up to 30%.
-						Additionally, it automatically substitutes vendor-specific CSS and polyfills new JavaScript features to support older browsers.
-					</p>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
+						</a>
+						<p
+							id="aboutCampfirePizza"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							Campfire Pizza is a fictitious pizzeria website that I created
+							while learning ASP.net development using C#. In addition to
+							marketing, the site allows users to submit orders which are then
+							tracked on a separate page. It also provides a store search
+							functionality which would allow a user to find stores in their
+							area.
+						</p>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
+					</div>
 				</div>
-			</div>
-		</section>
+				<!-- Sandpaper -->
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg square" viewBox="0 0 1258 1220">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h1258v1220H0z" />
+						</svg>
+						<img
+							class="fullImg squareProjectBoxShadow fadeInOnScroll"
+							src="images/sandpaper.png"
+							loading="lazy"
+							alt="Kuzmaclass.org's sandbox displayed on desktop, iPad, and mobile"
+							height="1220"
+							width="1258"
+						/>
+					</div>
+					<div>
+						<a
+							class="websiteTitle"
+							href="https://github.com/cpetta/sandpaper"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Sandpaper</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
+							</div>
+						</a>
+						<p
+							id="aboutSandpaper"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							Sandpaper is a tool I developed to improve the work involved with
+							building and optimizing websites. It started as a gulp file that
+							automates linting, fixing, running, and minifying code. As things
+							progressed, it needed to be easy to use by a less technical
+							audience, so it became a stand-alone program. Sandpaper helps
+							developers avoid common errors in HTML, CSS, and JavaScript. It
+							optimizes assets to improve page load times by up to 30%.
+							Additionally, it automatically substitutes vendor-specific CSS and
+							polyfills new JavaScript features to support older browsers.
+						</p>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
+					</div>
+				</div>
+			</section>
 
-		<!-- C# Development Section -->	
+			<!-- C# Development Section -->
 
-		<section id="c_sharp">
-			<h2 class="label fadeInOnScroll">C# Development</h2>
-			<hr />
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg square" viewBox="0 0 1078 755"><path fill="rgba(150,150,150,0.4)" d="M0 0h1078v755H0z"/></svg>
-					<img class="fullImg squareProjectBoxShadow fadeInOnScroll" src="images/huffmanEncoding.png" loading="lazy" alt="Left shows the original text, and the right shows the result of running the huffman encoding program I wrote." height="755" width="1078"/>
-				</div>
-				<div>
-					<a class="websiteTitle" href="https://github.com/cpetta/Huffman_Compression_CSCI312" target="_blank">
-						<div class="centered">
-							<div class="text">
-								<h3>Text file compression program</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
+			<section id="c_sharp">
+				<h2 class="label fadeInOnScroll">C# Development</h2>
+				<hr />
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg square" viewBox="0 0 1078 755">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h1078v755H0z" />
+						</svg>
+						<img
+							class="fullImg squareProjectBoxShadow fadeInOnScroll"
+							src="images/huffmanEncoding.png"
+							loading="lazy"
+							alt="Left shows the original text, and the right shows the result of running the huffman encoding program I wrote."
+							height="755"
+							width="1078"
+						/>
+					</div>
+					<div>
+						<a
+							class="websiteTitle"
+							href="https://github.com/cpetta/Huffman_Compression_CSCI312"
+							target="_blank"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Text file compression program</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
 							</div>
-							<div class="underline"></div>
-						</div>
-					</a>
-					<p id="aboutHuffman" class="webText showMoreHidden" style="max-height: 72px;">
-						This text compression program I wrote in C# is a command-line tool for compressing text files. It uses the Huffman
-						encoding algorithm which on average will save roughly 40% in file size. During this project I learned a lot about binary trees, hash tables,
-						input/output processing, and text file formats.
-					</p>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
+						</a>
+						<p
+							id="aboutHuffman"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							This text compression program I wrote in C# is a command-line tool
+							for compressing text files. It uses the Huffman encoding algorithm
+							which on average will save roughly 40% in file size. During this
+							project I learned a lot about binary trees, hash tables,
+							input/output processing, and text file formats.
+						</p>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
+					</div>
 				</div>
-			</div>
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 750 750"><path fill="rgba(150,150,150,0.4)" d="M0 0h750v750H0z"/></svg>
-					<img class="fullImg fadeInOnScroll" src="images/socialGraph.png" loading="lazy" alt="A social graph I created" height="750" width="750"/>
-				</div>
-				<div>
-					<a class="websiteTitle" href="https://github.com/cpetta/GephiSteamSocialGraph" target="_blank">
-						<div class="centered">
-							<div class="text">
-								<h3>Social Graph Builder</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 750 750">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h750v750H0z" />
+						</svg>
+						<img
+							class="fullImg fadeInOnScroll"
+							src="images/socialGraph.png"
+							loading="lazy"
+							alt="A social graph I created"
+							height="750"
+							width="750"
+						/>
+					</div>
+					<div>
+						<a
+							class="websiteTitle"
+							href="https://github.com/cpetta/GephiSteamSocialGraph"
+							target="_blank"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Social Graph Builder</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
 							</div>
-							<div class="underline"></div>
-						</div>
-					</a>
-					<p id="aboutSocialGraph" class="webText showMoreHidden" style="max-height: 72px;">
-						As part of a different project, I wrote a small program that organized the data from my steam friends-list into a format that could be loaded into Gephi for visualization.
-						For this program, I created a tree data structure that held user information. It then traverses the raw friend-list information to create the structure shown in the visualization in memory.
-						Once that structure has been created, it outputs the data in a .csv format that can be easily loaded into Gephi.
-					</p>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
+						</a>
+						<p
+							id="aboutSocialGraph"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							As part of a different project, I wrote a small program that
+							organized the data from my steam friends-list into a format that
+							could be loaded into Gephi for visualization. For this program, I
+							created a tree data structure that held user information. It then
+							traverses the raw friend-list information to create the structure
+							shown in the visualization in memory. Once that structure has been
+							created, it outputs the data in a .csv format that can be easily
+							loaded into Gephi.
+						</p>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
+					</div>
 				</div>
-			</div>
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg square" viewBox="0 0 1027 907"><path fill="rgba(150,150,150,0.4)" d="M0 0h1027v907H0z"/></svg>
-					<img class="fullImg squareProjectBoxShadow fadeInOnScroll" src="images/tictactoegame.png" loading="lazy" alt="Several states in a tic-tac-toe game" height="907" width="1027"/>
-				</div>
-				<div>
-					<a class="websiteTitle" href="https://github.com/cpetta/TickTacToeAI" target="_blank">
-						<div class="centered">
-							<div class="text">
-								<h3>Tic-Tac-Toe AI</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg square" viewBox="0 0 1027 907">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h1027v907H0z" />
+						</svg>
+						<img
+							class="fullImg squareProjectBoxShadow fadeInOnScroll"
+							src="images/tictactoegame.png"
+							loading="lazy"
+							alt="Several states in a tic-tac-toe game"
+							height="907"
+							width="1027"
+						/>
+					</div>
+					<div>
+						<a
+							class="websiteTitle"
+							href="https://github.com/cpetta/TickTacToeAI"
+							target="_blank"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Tic-Tac-Toe AI</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
 							</div>
-							<div class="underline"></div>
-						</div>
-					</a>
-					<p id="aboutTicTacToe" class="webText showMoreHidden" style="max-height: 72px;">
-						This program allows you to play against the computer in a game of Tic-Tac-Toe. It implements the MiniMax algorithm which allows the computer to play perfectly. So unfortunately for the human player, the best they can do is draw.
-						I learned a lot about game theory and recursion through this project.
-					</p>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
+						</a>
+						<p
+							id="aboutTicTacToe"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							This program allows you to play against the computer in a game of
+							Tic-Tac-Toe. It implements the MiniMax algorithm which allows the
+							computer to play perfectly. So unfortunately for the human player,
+							the best they can do is draw. I learned a lot about game theory
+							and recursion through this project.
+						</p>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
+					</div>
 				</div>
-			</div>
-			<div class="webProject">
-				<div class="webImg lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 700 700"><path fill="rgba(150,150,150,0.4)" d="M0 0h700v700H0z"/></svg>
-					<img class="fullImg fadeInOnScroll" src="images/ding.png" loading="lazy" alt="A social graph I created" height="700" width="700"/>
-				</div>
-				<div>
-					<a class="websiteTitle" href="https://github.com/cpetta/Ding" target="_blank">
-						<div class="centered">
-							<div class="text">
-								<h3>Commandline Chat Program</h3>
-								<img class="external" src="images/external.svg" alt="See Demo" height="16" width="16"/>
+				<div class="webProject">
+					<div class="webImg lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 700 700">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h700v700H0z" />
+						</svg>
+						<img
+							class="fullImg fadeInOnScroll"
+							src="images/ding.png"
+							loading="lazy"
+							alt="A social graph I created"
+							height="700"
+							width="700"
+						/>
+					</div>
+					<div>
+						<a
+							class="websiteTitle"
+							href="https://github.com/cpetta/Ding"
+							target="_blank"
+						>
+							<div class="centered">
+								<div class="text">
+									<h3>Commandline Chat Program</h3>
+									<img
+										class="external"
+										src="images/external.svg"
+										alt="See Demo"
+										height="16"
+										width="16"
+									/>
+								</div>
+								<div class="underline"></div>
 							</div>
-							<div class="underline"></div>
-						</div>
-					</a>
-					<p id="aboutDing" class="webText showMoreHidden" style="max-height: 72px;">
-						In my free time, I wanted to learn how to create a C# program with networking capabilities, so I created this simple chat application.<br />
-						While creating this program I referenced the Microsoft documentation frequently, but otherwise pretty much everything was written from scratch.
-					</p>
-					<button class="moreButton" type="button" aria-label="more button">
-						<span class="moreButtonContent"></span>
-					</button>
+						</a>
+						<p
+							id="aboutDing"
+							class="webText showMoreHidden"
+							style="max-height: 72px"
+						>
+							In my free time, I wanted to learn how to create a C# program with
+							networking capabilities, so I created this simple chat
+							application.<br />
+							While creating this program I referenced the Microsoft
+							documentation frequently, but otherwise pretty much everything was
+							written from scratch.
+						</p>
+						<button class="moreButton" type="button" aria-label="more button">
+							<span class="moreButtonContent"></span>
+						</button>
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- 3D Modeling Section -->
+			<!-- 3D Modeling Section -->
 
-		<section id="modeling">
-			<h2 id="modelingLabel" class="label fadeInOnScroll">3D Models</h2>
-			<hr />
-			<noscript>
-				<div style="text-align: center;">Please enable JavaScript if you would like to view the 3D models.</div>
-			</noscript>
-			<div id="webGLViewer">
-				<div id="viewer3d" class="defaultViewer3D">
-					<div id="paddingForImagesAnd3D"
-					style="
-					position: relative;
-					width:100%;
-					height:0px;
-					padding-top: 100%;
-					"
-					></div>
-					<model-viewer 
-					id="modelViewer"
-					rotation-per-second="65%"
-					camera-controls
-					shadow-intensity="1"
-					interaction-prompt="when-focused"
-					interaction-prompt-threshold="5000"
-					loading="lazy"
+			<section id="modeling">
+				<h2 id="modelingLabel" class="label fadeInOnScroll">3D Models</h2>
+				<hr />
+				<noscript>
+					<div style="text-align: center">
+						Please enable JavaScript if you would like to view the 3D models.
+					</div>
+				</noscript>
+				<div id="webGLViewer">
+					<div id="viewer3d" class="defaultViewer3D">
+						<div
+							id="paddingForImagesAnd3D"
+							style="
+								position: relative;
+								width: 100%;
+								height: 0px;
+								padding-top: 100%;
+							"
+						></div>
+						<model-viewer
+							id="modelViewer"
+							rotation-per-second="65%"
+							camera-controls
+							shadow-intensity="1"
+							interaction-prompt="when-focused"
+							interaction-prompt-threshold="5000"
+							loading="lazy"
+						>
+							<div id="poster" slot="poster"></div>
+						</model-viewer>
+
+						<div id="viewerImg"></div>
+						<div id="loadingSpinner"></div>
+						<div id="loadingBar"></div>
+						<div id="fullscreenBtn"></div>
+						<div id="fullscreenCloseBtn" class="closeBtn" style="display: none">
+							<div class="xTop"></div>
+							<div class="xBot"></div>
+						</div>
+						<div id="previousBtnWrapper">
+							<div id="previousBtn" class="arrow"></div>
+						</div>
+						<div id="nextBtnWrapper">
+							<div id="nextBtn" class="arrow"></div>
+						</div>
+						<div id="modelCopyright">
+							Copyright &copy; Chris Petta - All Rights Reserved
+						</div>
+					</div>
+					<div id="itemInformation">
+						<div
+							id="webGLViewerCloseBtn"
+							class="closeBtn"
+							style="height: 20px; width: 20px"
+						>
+							<div class="xTop" style="height: 4px"></div>
+							<div class="xBot" style="height: 4px"></div>
+						</div>
+						<h2 id="title">Model Title</h2>
+						<hr />
+						<div id="description"></div>
+						<ul id="specs" class="specs">
+							<li>
+								<strong>Date Finished</strong>
+								<hr />
+								<div id="date"></div>
+							</li>
+							<li>
+								<strong>File Size</strong>
+								<hr />
+								<div id="size"></div>
+							</li>
+							<li>
+								<strong>Texture Resolution*</strong>
+								<hr />
+								<div id="textureRez"></div>
+							</li>
+							<li>
+								<strong>Vertices</strong>
+								<hr />
+								<div id="verts"></div>
+							</li>
+							<li>
+								<strong>Faces</strong>
+								<hr />
+								<div id="faces"></div>
+							</li>
+							<li>
+								<strong>Material Sets</strong>
+								<hr />
+								<div id="mats"></div>
+							</li>
+						</ul>
+						<div id="webTextureRezInfo">
+							*Some textures have reduced resolution to save bandwidth.
+						</div>
+					</div>
+					<div id="additionalOptionsContainer"></div>
+				</div>
+
+				<!-- 3D Projects Selection -->
+
+				<div class="showcaseWrapper">
+					<a id="Chair" class="lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 351.1 351.1">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source srcset="3DProjects/chair/chair.avif" type="image/avif" />
+							<source srcset="3DProjects/chair/chair.jpg" type="image/jpeg" />
+							<img
+								src="3DProjects/chair/chair.jpg"
+								alt="Chair"
+								loading="lazy"
+								height="700"
+								width="700"
+							/>
+						</picture>
+						<img
+							class="projectArrow"
+							src="images/up-arrow.svg"
+							alt=""
+							loading="lazy"
+							height="70"
+							width="70"
+						/>
+					</a>
+					<a id="Redbot" class="lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 351.1 351.1">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source
+								srcset="3DProjects/redbot/redbot.avif"
+								type="image/avif"
+							/>
+							<source srcset="3DProjects/redbot/redbot.jpg" type="image/jpeg" />
+							<img
+								src="3DProjects/redbot/redbot.jpg"
+								alt="Red Robot"
+								loading="lazy"
+								height="700"
+								width="700"
+							/>
+						</picture>
+						<img
+							class="projectArrow"
+							src="images/up-arrow.svg"
+							alt=""
+							loading="lazy"
+							height="70"
+							width="70"
+						/>
+					</a>
+					<a id="Stove" class="lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 351.1 351.1">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source srcset="3DProjects/stove/stove.avif" type="image/avif" />
+							<source srcset="3DProjects/stove/stove.jpg" type="image/jpeg" />
+							<img
+								src="3DProjects/stove/stove.jpg"
+								alt="Stove"
+								loading="lazy"
+								height="700"
+								width="700"
+							/>
+						</picture>
+						<img
+							class="projectArrow"
+							src="images/up-arrow.svg"
+							alt=""
+							loading="lazy"
+							height="70"
+							width="70"
+						/>
+					</a>
+					<a id="CatBed" class="lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 351.1 351.1">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source
+								srcset="3DProjects/catbed/catbed.avif"
+								type="image/avif"
+							/>
+							<source srcset="3DProjects/catbed/catbed.jpg" type="image/jpeg" />
+							<img
+								src="3DProjects/catbed/catbed.jpg"
+								alt="CatBed"
+								loading="lazy"
+								height="700"
+								width="700"
+							/>
+						</picture>
+						<img
+							class="projectArrow"
+							src="images/up-arrow.svg"
+							alt=""
+							loading="lazy"
+							height="70"
+							width="70"
+						/>
+					</a>
+					<a id="Stairs" class="lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 351.1 351.1">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source
+								srcset="3DProjects/staircase/stairs.avif"
+								type="image/avif"
+							/>
+							<source
+								srcset="3DProjects/staircase/stairs.jpg"
+								type="image/jpeg"
+							/>
+							<img
+								src="3DProjects/staircase/stairs.jpg"
+								alt="Stairs"
+								loading="lazy"
+								height="700"
+								width="700"
+							/>
+						</picture>
+						<img
+							class="projectArrow"
+							src="images/up-arrow.svg"
+							alt=""
+							loading="lazy"
+							height="70"
+							width="70"
+						/>
+					</a>
+					<a id="YellowBot" class="lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 351.1 351.1">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source
+								srcset="3DProjects/yellowbot/yellowbot0.avif"
+								type="image/avif"
+							/>
+							<source
+								srcset="3DProjects/yellowbot/yellowbot0.jpg"
+								type="image/jpeg"
+							/>
+							<img
+								src="3DProjects/yellowbot/yellowbot0.jpg"
+								alt="Yellow Robot"
+								loading="lazy"
+								height="700"
+								width="700"
+							/>
+						</picture>
+						<img
+							class="projectArrow"
+							src="images/up-arrow.svg"
+							alt=""
+							loading="lazy"
+							height="70"
+							width="70"
+						/>
+					</a>
+					<a id="Apple" class="lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 351.1 351.1">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source srcset="3DProjects/apple/apple.avif" type="image/avif" />
+							<source srcset="3DProjects/apple/apple.jpg" type="image/jpeg" />
+							<img
+								src="3DProjects/apple/apple.jpg"
+								alt="Apple"
+								loading="lazy"
+								height="700"
+								width="700"
+							/>
+						</picture>
+						<img
+							class="projectArrow"
+							src="images/up-arrow.svg"
+							alt=""
+							loading="lazy"
+							height="70"
+							width="70"
+						/>
+					</a>
+					<a id="Bananas" class="lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 351.1 351.1">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z" />
+						</svg>
+						<!-- Bananas don't have an avif image because the image quality is lower than jpeg -->
+						<picture class="fullImg fadeInOnScroll">
+							<img
+								class="fullImg fadeInOnScroll"
+								src="3DProjects/bananas/bananas.jpg"
+								alt="Bananas"
+								loading="lazy"
+								height="700"
+								width="700"
+							/>
+						</picture>
+						<img
+							class="projectArrow"
+							src="images/up-arrow.svg"
+							alt=""
+							loading="lazy"
+							height="70"
+							width="70"
+						/>
+					</a>
+					<a id="Bread" class="lazyLoadImgContainer">
+						<svg class="placeholderImg" viewBox="0 0 351.1 351.1">
+							<path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z" />
+						</svg>
+						<picture class="fullImg fadeInOnScroll">
+							<source srcset="3DProjects/bread/bread.avif" type="image/avif" />
+							<source srcset="3DProjects/bread/bread.jpg" type="image/jpeg" />
+							<img
+								src="3DProjects/bread/bread.jpg"
+								alt="Bread"
+								loading="lazy"
+								height="700"
+								width="700"
+							/>
+						</picture>
+						<img
+							class="projectArrow"
+							src="images/up-arrow.svg"
+							alt=""
+							loading="lazy"
+							height="70"
+							width="70"
+						/>
+					</a>
+				</div>
+			</section>
+
+			<!-- Contact Section -->
+
+			<section id="ContactForm" class="fadeInOnScroll">
+				<h2 class="label">Get in Touch</h2>
+				<hr />
+				<div class="contactTypes">
+					<a
+						id="contactEmail"
+						class="contactMethod"
+						href="mailto:contact@chrispetta.net"
 					>
-						<div id="poster" slot="poster"></div>
-					</model-viewer>
-					
-					<div id="viewerImg"></div>
-					<div id="loadingSpinner"></div>
-					<div id="loadingBar"></div>
-					<div id="fullscreenBtn"></div>
-					<div id="fullscreenCloseBtn" class="closeBtn" style="display:none;">
-						<div class="xTop"></div>
-						<div class="xBot"></div>
-					</div>
-					<div id="previousBtnWrapper">
-						<div id="previousBtn" class="arrow"></div>
-					</div>
-					<div id="nextBtnWrapper">
-						<div id="nextBtn" class="arrow"></div>
-					</div>
-					<div id="modelCopyright">Copyright &copy; Chris Petta - All Rights Reserved</div>
+						<img
+							class="contactImg"
+							alt="Email"
+							src="images/email.svg"
+							loading="lazy"
+							height="50"
+							width="50"
+						/>
+						<div class="virticalLine"></div>
+						<div class="contactText">contact@chrispetta.net</div>
+					</a>
+					<a
+						id="contactLinkedIn"
+						class="contactMethod"
+						href="https://www.linkedin.com/in/chrispetta/"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<img
+							class="contactImg"
+							alt="LinkedIn"
+							src="images/linkedinLogo.png"
+							loading="lazy"
+							height="42"
+							width="50"
+							style="filter: grayscale(100%) brightness(0.1)"
+						/>
+						<div class="virticalLine"></div>
+						<div class="contactText">linkedin.com/in/chrispetta</div>
+					</a>
 				</div>
-				<div id="itemInformation">
-					<div id="webGLViewerCloseBtn" class="closeBtn" style="height: 20px; width:20px;">
-						<div class="xTop" style="height: 4px;"></div>
-						<div class="xBot" style="height: 4px;"></div>
-					</div>
-					<h2 id="title">Model Title</h2>
-					<hr />
-					<div id="description"></div>
-					<ul id="specs" class="specs">
-						<li>
-							<strong>Date Finished</strong>
-							<hr />
-							<div id="date"></div>
-						</li>
-						<li>
-							<strong>File Size</strong>
-							<hr />
-							<div id="size"></div>
-						</li>
-						<li>
-							<strong>Texture Resolution*</strong>
-							<hr />
-							<div id="textureRez"></div>
-						</li>
-						<li>
-							<strong>Vertices</strong>
-							<hr />
-							<div id="verts"></div>
-						</li>
-						<li>
-							<strong>Faces</strong>
-							<hr />
-							<div id="faces"></div>
-						</li>
-						<li>
-							<strong>Material Sets</strong>
-							<hr />
-							<div id="mats"></div>
-						</li>
-					</ul>
-					<div id="webTextureRezInfo">*Some textures have reduced resolution to save bandwidth.</div>
-				</div>
-				<div id="additionalOptionsContainer"></div>
-			</div>
+			</section>
+		</main>
 
-			<!-- 3D Projects Selection -->
+		<!-- Footer -->
 
-			<div class="showcaseWrapper">
-				<a id="Chair" class="lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 351.1 351.1"><path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="3DProjects/chair/chair.avif" type="image/avif">
-						<source srcset="3DProjects/chair/chair.jpg" type="image/jpeg">
-						<img src="3DProjects/chair/chair.jpg" alt="Chair" loading="lazy" height="700" width="700"/>
-					</picture>
-					<img class="projectArrow" src="images/up-arrow.svg" alt="" loading="lazy" height="70" width="70"/>
-				</a>
-				<a id="Redbot" class="lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 351.1 351.1"><path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="3DProjects/redbot/redbot.avif" type="image/avif">
-						<source srcset="3DProjects/redbot/redbot.jpg" type="image/jpeg">
-						<img src="3DProjects/redbot/redbot.jpg" alt="Red Robot" loading="lazy" height="700" width="700"/>
-					</picture>
-					<img class="projectArrow" src="images/up-arrow.svg" alt="" loading="lazy" height="70" width="70"/>
-				</a>
-				<a id="Stove" class="lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 351.1 351.1"><path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="3DProjects/stove/stove.avif" type="image/avif">
-						<source srcset="3DProjects/stove/stove.jpg" type="image/jpeg">
-						<img src="3DProjects/stove/stove.jpg" alt="Stove" loading="lazy" height="700" width="700"/>
-					</picture>
-					<img class="projectArrow" src="images/up-arrow.svg" alt="" loading="lazy" height="70" width="70"/>
-				</a>
-				<a id="CatBed" class="lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 351.1 351.1"><path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="3DProjects/catbed/catbed.avif" type="image/avif">
-						<source srcset="3DProjects/catbed/catbed.jpg" type="image/jpeg">
-						<img src="3DProjects/catbed/catbed.jpg" alt="CatBed" loading="lazy" height="700" width="700"/>
-					</picture>
-					<img class="projectArrow" src="images/up-arrow.svg" alt="" loading="lazy" height="70" width="70"/>
-				</a>
-				<a id="Stairs" class="lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 351.1 351.1"><path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="3DProjects/staircase/stairs.avif" type="image/avif">
-						<source srcset="3DProjects/staircase/stairs.jpg" type="image/jpeg">
-						<img src="3DProjects/staircase/stairs.jpg" alt="Stairs" loading="lazy" height="700" width="700"/>
-					</picture>
-					<img class="projectArrow" src="images/up-arrow.svg" alt="" loading="lazy" height="70" width="70"/>
-				</a>
-				<a id="YellowBot" class="lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 351.1 351.1"><path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="3DProjects/yellowbot/yellowbot0.avif" type="image/avif">
-						<source srcset="3DProjects/yellowbot/yellowbot0.jpg" type="image/jpeg">
-						<img src="3DProjects/yellowbot/yellowbot0.jpg" alt="Yellow Robot" loading="lazy" height="700" width="700"/>
-					</picture>
-					<img class="projectArrow" src="images/up-arrow.svg" alt="" loading="lazy" height="70" width="70"/>
-				</a>
-				<a id="Apple" class="lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 351.1 351.1"><path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="3DProjects/apple/apple.avif" type="image/avif">
-						<source srcset="3DProjects/apple/apple.jpg" type="image/jpeg">
-						<img src="3DProjects/apple/apple.jpg" alt="Apple" loading="lazy" height="700" width="700"/>
-					</picture>
-					<img class="projectArrow" src="images/up-arrow.svg" alt="" loading="lazy" height="70" width="70"/>
-				</a>
-				<a id="Bananas" class="lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 351.1 351.1"><path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z"/></svg>
-					<!-- Bananas don't have an avif image because the image quality is lower than jpeg -->
-					<picture class="fullImg fadeInOnScroll">
-						<img class="fullImg fadeInOnScroll" src="3DProjects/bananas/bananas.jpg" alt="Bananas" loading="lazy" height="700" width="700"/>
-					</picture>
-					<img class="projectArrow" src="images/up-arrow.svg" alt="" loading="lazy" height="70" width="70"/>
-				</a>
-				<a id="Bread" class="lazyLoadImgContainer">
-					<svg class="placeholderImg" viewBox="0 0 351.1 351.1"><path fill="rgba(150,150,150,0.4)" d="M0 0h351.1v351.1H0z"/></svg>
-					<picture class="fullImg fadeInOnScroll">
-						<source srcset="3DProjects/bread/bread.avif" type="image/avif">
-						<source srcset="3DProjects/bread/bread.jpg" type="image/jpeg">
-						<img src="3DProjects/bread/bread.jpg" alt="Bread" loading="lazy" height="700" width="700"/>
-					</picture>
-					<img class="projectArrow" src="images/up-arrow.svg" alt="" loading="lazy" height="70" width="70"/>
-				</a>
-			</div>
-		</section>
+		<a href="#home" id="gotoTopBtn" aria-label="go to top button"
+			><div class="upArrow"></div
+		></a>
 
-		<!-- Contact Section -->
-
-		<section id="ContactForm" class="fadeInOnScroll">
-			<h2 class="label">Get in Touch</h2>
-			<hr />
-			<div class="contactTypes">
-				<a id="contactEmail" class="contactMethod" href="mailto:contact@chrispetta.net">
-					<img class="contactImg" alt="Email" src="images/email.svg" loading="lazy" height="50" width="50"/>
-					<div class="virticalLine"></div>
-					<div class="contactText">contact@chrispetta.net</div>
+		<footer class="shade2">
+			<p>&copy; Chris Petta 2026</p>
+			<span class="footerLinks">
+				<a
+					href="https://signal.me/#eu/FgRijusdde9SJh0DqfuQRXon_gqln85BJgkSjPWF9rRzm3NWmtJL5quW-vOZLwBH"
+					style="margin-right: 5px"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<img
+						src="images/sm.svg"
+						style="height: 32px; padding: 5px"
+						alt="Text Message"
+						loading="lazy"
+						height="32"
+						width="32"
+					/>
 				</a>
-				<a id="contactLinkedIn" class="contactMethod" href="https://www.linkedin.com/in/chrispetta/" target="_blank" rel="noreferrer">
-					<img class="contactImg" alt="LinkedIn" src="images/linkedinLogo.png" loading="lazy" height="42" width="50" style="filter:grayscale(100%) brightness(0.1)"/>
-					<div class="virticalLine"></div>
-					<div class="contactText">linkedin.com/in/chrispetta</div>
+				<a
+					href="https://matrix.to/#/@cpetta:matrix.org"
+					style="margin-right: 5px"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<img
+						src="images/matrix.svg"
+						style="height: 32px; padding: 5px"
+						alt="Send a message over Matrix"
+						loading="lazy"
+						height="32"
+						width="32"
+					/>
 				</a>
-			</div>
-		</section>
-	</main>
-
-	<!-- Footer -->
-	
-	<a href="#home" id="gotoTopBtn" aria-label="go to top button"><div class="upArrow"></div></a>
-
-	<footer class="shade2">
-		<p>&copy; Chris Petta 2026</p>
-		<span class="footerLinks">
-			<a href="https://signal.me/#eu/FgRijusdde9SJh0DqfuQRXon_gqln85BJgkSjPWF9rRzm3NWmtJL5quW-vOZLwBH" style="margin-right:5px;" target="_blank" rel="noreferrer">
-				<img src="images/sm.svg" style="height:32px;padding:5px;" alt="Text Message" loading="lazy" height="32" width="32"/>
-			</a>
-			<a href="https://matrix.to/#/@cpetta:matrix.org" style="margin-right:5px;" target="_blank" rel="noreferrer">
-				<img src="images/matrix.svg" style="height:32px;padding:5px;" alt="Send a message over Matrix" loading="lazy" height="32" width="32"/>
-			</a>
-			<a href="https://www.linkedin.com/in/chrispetta/" target="_blank" rel="noreferrer">
-				<img src="images/linkedinLogo.png" style="height:32px;padding:5px;" alt="Find me on linkedin" loading="lazy" height="32" width="38"/>
-			</a>
-			<a href="https://github.com/cpetta/chrispetta.net" target="_blank" rel="noreferrer">
-				<img src="images/github.svg" style="padding:5px;" alt="Checkout this site on Github" loading="lazy" height="32" width="32"/>
-			</a>
-		</span>
-	</footer>
-	<script id="customJS" async defer src="js/custom.js"></script>
-</body>
+				<a
+					href="https://www.linkedin.com/in/chrispetta/"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<img
+						src="images/linkedinLogo.png"
+						style="height: 32px; padding: 5px"
+						alt="Find me on linkedin"
+						loading="lazy"
+						height="32"
+						width="38"
+					/>
+				</a>
+				<a
+					href="https://github.com/cpetta/chrispetta.net"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<img
+						src="images/github.svg"
+						style="padding: 5px"
+						alt="Checkout this site on Github"
+						loading="lazy"
+						height="32"
+						width="32"
+					/>
+				</a>
+			</span>
+		</footer>
+		<script id="customJS" async defer src="js/custom.js"></script>
+	</body>
 </html>

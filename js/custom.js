@@ -7,7 +7,7 @@ let projectIndex = 0;
 let firstScroll = false;
 let fadeInOnScrollQueue = 0;
 
-const passive = detectPassive() ? {passive:true} : false;
+const passive = detectPassive() ? { passive: true } : false;
 let avifSupported = false; // avifSupport()
 
 let imgs = []; // 2D Array
@@ -32,16 +32,18 @@ const webGLViewer = document.getElementById("webGLViewer");
 const webGLViewerCloseBtn = document.getElementById("webGLViewerCloseBtn");
 const modelViewer = document.getElementById("modelViewer");
 const poster = document.getElementById("poster");
-const title = document.getElementById('title');
-const specs = document.getElementById('specs');
-const description = document.getElementById('description');
-const date = document.getElementById('date');
-const size = document.getElementById('size');
-const textureRez = document.getElementById('textureRez');
-const verts = document.getElementById('verts');
-const faces = document.getElementById('faces');
-const mats = document.getElementById('mats');
-const additionalOptionsContainer = document.getElementById('additionalOptionsContainer');
+const title = document.getElementById("title");
+const specs = document.getElementById("specs");
+const description = document.getElementById("description");
+const date = document.getElementById("date");
+const size = document.getElementById("size");
+const textureRez = document.getElementById("textureRez");
+const verts = document.getElementById("verts");
+const faces = document.getElementById("faces");
+const mats = document.getElementById("mats");
+const additionalOptionsContainer = document.getElementById(
+	"additionalOptionsContainer",
+);
 
 const fadeInObjects = window.document.querySelectorAll(".fadeInOnScroll");
 const moreButtons = window.document.querySelectorAll(".moreButton");
@@ -50,7 +52,7 @@ const placeholderImgs = window.document.querySelectorAll(".placeholderImg");
 // -----------------------------
 // Fadein on scroll Config
 // -----------------------------
-const threshold = 0.40;
+const threshold = 0.4;
 const base_animation_delay_offset = 0.02;
 const intersecting_entry_list = [];
 const observer = createObserver();
@@ -68,7 +70,7 @@ const modelInfoTypingTextContainer = [
 	new TypingText(verts, 620),
 	new TypingText(faces, 620),
 	new TypingText(mats, 620),
-	new TypingText(additionalOptionsContainer, 301)
+	new TypingText(additionalOptionsContainer, 301),
 ];
 
 /**
@@ -88,75 +90,83 @@ function TypingText(element, delay) {
 function detectPassive() {
 	try {
 		const options = {
-		// This function will be called when the browser attempts to access the passive property.
-		  get passive() {return false;}
+			// This function will be called when the browser attempts to access the passive property.
+			get passive() {
+				return false;
+			},
 		};
-	  
+
 		window.addEventListener("test", null, options);
 		window.removeEventListener("test", null, options);
 		return true;
-	  }
-	  catch(err) {
+	} catch (err) {
 		return false;
-	  }
+	}
 }
 
 /**
  * Detect if the AVIF image format is supported.
  */
-function avifSupport(){
+function avifSupport() {
 	let avif = new Image();
-	avif.src = "data:image/avif;base64,AAAAFGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAC8AAAAGwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAARWlwcnAAAAAoaXBjbwAAABRpc3BlAAAAAAAAAAQAAAAEAAAADGF2MUOBAAAAAAAAFWlwbWEAAAAAAAAAAQABAgECAAAAI21kYXQSAAoIP8R8hAQ0BUAyDWeeUy0JG+QAACANEkA=";
-	avif.onload=()=>{avifSupported = true};
+	avif.src =
+		"data:image/avif;base64,AAAAFGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAC8AAAAGwAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAARWlwcnAAAAAoaXBjbwAAABRpc3BlAAAAAAAAAAQAAAAEAAAADGF2MUOBAAAAAAAAFWlwbWEAAAAAAAAAAQABAgECAAAAI21kYXQSAAoIP8R8hAQ0BUAyDWeeUy0JG+QAACANEkA=";
+	avif.onload = () => {
+		avifSupported = true;
+	};
 }
 avifSupport();
 
-window.addEventListener("load", init, passive?{once:true, passive:true}:false);
+window.addEventListener(
+	"load",
+	init,
+	passive ? { once: true, passive: true } : false,
+);
 window.addEventListener("resize", resizeManager, passive);
-document.body.addEventListener('mouseover', loadmv, {once:true});
-document.body.addEventListener('touchmove', loadmv, {once:true});
-document.body.addEventListener('scroll', loadmv, {once:true});
-document.body.addEventListener('keydown', loadmv, {once:true});
-hamburger.addEventListener("click", ()=>navToggle(false), passive);
-preBtn.addEventListener("click", ()=>clickManager('previous'), passive);
-nxtBtn.addEventListener("click", ()=>clickManager('next'), passive);
+document.body.addEventListener("mouseover", loadmv, { once: true });
+document.body.addEventListener("touchmove", loadmv, { once: true });
+document.body.addEventListener("scroll", loadmv, { once: true });
+document.body.addEventListener("keydown", loadmv, { once: true });
+hamburger.addEventListener("click", () => navToggle(false), passive);
+preBtn.addEventListener("click", () => clickManager("previous"), passive);
+nxtBtn.addEventListener("click", () => clickManager("next"), passive);
 fullscreenBtn.addEventListener("click", fullscreenOpen, passive);
 fullscreenCloseBtn.addEventListener("click", fullscreenClose, passive);
 webGLViewerCloseBtn.addEventListener("click", closeModelViewer, passive);
 
 for (const elm of nav.children) {
-	elm.addEventListener("click", ()=>navToggle(true), passive);
+	elm.addEventListener("click", () => navToggle(true), passive);
 }
 
-for(const moreButton of moreButtons) {
-	moreButton.addEventListener('click', moreButtonClickHandler, passive);
+for (const moreButton of moreButtons) {
+	moreButton.addEventListener("click", moreButtonClickHandler, passive);
 }
 
 function init() {
 	resizeManager();
 	createObserver();
-	for(const placeholderImg of placeholderImgs) {
+	for (const placeholderImg of placeholderImgs) {
 		placeholderImg.style.display = "none";
 	}
-	
-	fetch('3DProjects/3DProjects.json')
-	.then(response => response.json())
-	.then(data => modelProjects = data)
-	.then(modelProjects => {
-		imgs = new Array(modelProjects.length);
-		imgLoaded = new Array(modelProjects.length);
-		modelProjects.forEach(prepareProjects); 
-	});
+
+	fetch("3DProjects/3DProjects.json")
+		.then((response) => response.json())
+		.then((data) => (modelProjects = data))
+		.then((modelProjects) => {
+			imgs = new Array(modelProjects.length);
+			imgLoaded = new Array(modelProjects.length);
+			modelProjects.forEach(prepareProjects);
+		});
 }
 
 /**
  * load modelviewer script when the user interacts with the page.
  * This defered loading increases page load speed and interactive time.
  */
- function loadmv () {
+function loadmv() {
 	if (!modelViewerLoaded) {
 		modelViewerLoaded = true;
-		loadScript('js/model-viewer.min.js', true);
+		loadScript("js/model-viewer.min.js", true);
 	}
 }
 
@@ -165,13 +175,14 @@ function init() {
  */
 async function resizeManager() {
 	navState = false;
-	if(window.innerWidth >= 1265) {
+	if (window.innerWidth >= 1265) {
 		nav.style.transition = "0s";
 		nav.style.maxHeight = "408px";
-	}
-	else {
+	} else {
 		navToggle(true);
-		setTimeout(() => {nav.style.transition = "0.2s ease-out";}, 10); // setTimeout is required, otherwise it will animate oddly on a resize
+		setTimeout(() => {
+			nav.style.transition = "0.2s ease-out";
+		}, 10); // setTimeout is required, otherwise it will animate oddly on a resize
 	}
 }
 
@@ -180,13 +191,15 @@ async function resizeManager() {
  * @param {boolean} closeNav if true is passed, close the mobile nav regardless of what position it's in
  */
 function navToggle(closeNav = false) {
-	if ((navState || closeNav) && window.innerWidth <= 1265) { // If mobile nav is not already open
+	if ((navState || closeNav) && window.innerWidth <= 1265) {
+		// If mobile nav is not already open
 		nav.style.maxHeight = "0px";
-		setTimeout(() => {hamburger.classList.add("navClosed")},201); // using setTimeout here to allow the proper animation to play. avoiding an animation delay on the top bar
+		setTimeout(() => {
+			hamburger.classList.add("navClosed");
+		}, 201); // using setTimeout here to allow the proper animation to play. avoiding an animation delay on the top bar
 		hamburger.classList.remove("navOpen");
 		navState = false;
-	}
-	else {
+	} else {
 		nav.style.maxHeight = "408px";
 		hamburger.classList.add("navOpen");
 		hamburger.classList.remove("navClosed");
@@ -201,11 +214,10 @@ function createObserver() {
 	const _observer = new IntersectionObserver(handleIntersect, {
 		root: null,
 		rootMargin: "0px",
-		threshold: threshold
+		threshold: threshold,
 	});
 
-
-	fadeInObjects.forEach(element => _observer.observe(element));
+	fadeInObjects.forEach((element) => _observer.observe(element));
 	_observer.observe(modelingSection);
 	_observer.observe(modelingLabel);
 	_observer.observe(viewport);
@@ -220,17 +232,19 @@ function createObserver() {
  * @param {*} observer IntersectionObserver object
  */
 async function handleIntersect(entries, observer) {
-	const nav_entry = entries.filter(entry => entry.target === nav);
+	const nav_entry = entries.filter((entry) => entry.target === nav);
 
 	// Add entries to intersecting_entry_list based on their position on the screen
-	for(const entry of entries) {
-		if(!entry.isIntersecting || entry.target === nav) {
+	for (const entry of entries) {
+		if (!entry.isIntersecting || entry.target === nav) {
 			continue;
 		}
 
-		const i = Math.floor(entry.boundingClientRect.top + entry.boundingClientRect.left);
+		const i = Math.floor(
+			entry.boundingClientRect.top + entry.boundingClientRect.left,
+		);
 
-		if(intersecting_entry_list[i] instanceof Array === false) {
+		if (intersecting_entry_list[i] instanceof Array === false) {
 			intersecting_entry_list[i] = [entry];
 		} else {
 			intersecting_entry_list[i].push(entry);
@@ -238,23 +252,23 @@ async function handleIntersect(entries, observer) {
 	}
 
 	// Handle goto top button animation
-	if(nav_entry[0]?.isIntersecting) {
+	if (nav_entry[0]?.isIntersecting) {
 		gotoTopBtn.classList.remove("zoomIn");
 		gotoTopBtn.classList.add("zoomOut");
-	}
-	else {
+	} else {
 		gotoTopBtn.classList.remove("zoomOut");
 		gotoTopBtn.classList.add("zoomIn");
 	}
 
 	// Apply animations with staggered delays
 	let entry_count = 0;
-	for(const set of intersecting_entry_list) {
-		if(!set) {
+	for (const set of intersecting_entry_list) {
+		if (!set) {
 			continue;
 		}
-		for(const entry of set) {
-			const animation_delay_offset = (base_animation_delay_offset * entry_count) / 3;
+		for (const entry of set) {
+			const animation_delay_offset =
+				(base_animation_delay_offset * entry_count) / 3;
 			const element = entry.target;
 			element.style.animationDelay = animation_delay_offset + "s";
 			element.classList.add("-fade-in-animation");
@@ -270,12 +284,11 @@ async function handleIntersect(entries, observer) {
  * @param {boolean} module If true is passed, will set script type to module
  */
 async function loadScript(scriptSrc, module = false) {
-	let script = document.createElement('script');
+	let script = document.createElement("script");
 	script.src = scriptSrc;
-	if(module) {
+	if (module) {
 		script.type = "module";
-	}
-	else {
+	} else {
 		script.setAttribute("nomodule", "");
 	}
 	script.setAttribute("async", "");
@@ -288,43 +301,52 @@ async function loadScript(scriptSrc, module = false) {
  * @param {sting} clicked The uniqueName of a model project from the 3DProjects.json file
  */
 async function modelProjectManager(clicked) {
-	if(clicked != lastModelLoaded) {
+	if (clicked != lastModelLoaded) {
 		lastModelLoaded = clicked;
 		// modelProjects will evaluate false when the JSON file containing all the information hasn't been loaded yet
-		if(modelProjects) {
-			fadeIn(webGLViewer, true, 'grid');
-			if(thumbnailClicked != -1) { // If the last thumbnail clicked was not the modelviewer
+		if (modelProjects) {
+			fadeIn(webGLViewer, true, "grid");
+			if (thumbnailClicked != -1) {
+				// If the last thumbnail clicked was not the modelviewer
 				fadeOut(imgs[projectIndex][thumbnailClicked]);
 			}
 			fadeIn(modelViewer);
 			// When a new project is being loaded, default to the model viewer
 			thumbnailClicked = -1;
 
-			const uniqueName = (element) => {return element.uniqueName === clicked}
+			const uniqueName = (element) => {
+				return element.uniqueName === clicked;
+			};
 			projectIndex = modelProjects.findIndex(uniqueName);
 
 			// Set the 3D model poster as it's loading to the low rez screenshot.
 			poster.style.backgroundImage = `url('3DProjects/${modelProjects[projectIndex].folder}/images/thumbnails/${modelProjects[projectIndex].thumbnails[0]}')`;
 
-			if(projectIndex !== -1) {
+			if (projectIndex !== -1) {
 				removeModelInfo();
 				startTypingNewModelInfo();
 				loadNewModelIntoModelViewer();
 				additionalOptionsContainer.style.display = "flex";
-				setTimeout(()=>{modelViewer.setAttribute("auto-rotate", "")}, 1300);
+				setTimeout(() => {
+					modelViewer.setAttribute("auto-rotate", "");
+				}, 1300);
 			}
-		}
-		else { // if modelProjects is false, try again after the specified time to see if the JSON file has finished loading.
+		} else {
+			// if modelProjects is false, try again after the specified time to see if the JSON file has finished loading.
 			setTimeout(modelProjectManager(clicked), 100);
 		}
 	}
 	// Fix for failure to scroll the model viewer into view when clicking on a project.
 	// Delay the scroll for 2 frames to avoid attempting to scroll while the content is being repainted.
-	setTimeout(() => {requestAnimationFrame(() => {webGLViewer.scrollIntoView()})}, 32);
+	setTimeout(() => {
+		requestAnimationFrame(() => {
+			webGLViewer.scrollIntoView();
+		});
+	}, 32);
 }
 
 /** Close the model project viewer
- * 
+ *
  */
 function closeModelViewer() {
 	fadeOut(webGLViewer);
@@ -337,7 +359,8 @@ function removeModelInfo() {
 	modelInfoTypingTextContainer.forEach((item, index) => {
 		clearTimeout(item.typer); // This fixes a bug where multiple typing animations could overlap if the user clicks on a model project rapidly
 		fadeOut(item.elm, false);
-		if(index != 0) { // If not the title of each data section, e.g. the part of the page that says date, faces, vertices, etc
+		if (index != 0) {
+			// If not the title of each data section, e.g. the part of the page that says date, faces, vertices, etc
 			item.elm.innerHTML = "";
 		}
 	});
@@ -349,16 +372,18 @@ function removeModelInfo() {
 function startTypingNewModelInfo() {
 	modelInfoTypingTextContainer.forEach((element, index) => {
 		element.typer = setTimeout(() => {
-			if(index === 0) {
+			if (index === 0) {
 				fadeIn(specs, false);
-			}
-			else if(index === 9){
+			} else if (index === 9) {
 				addAdditionalOptions();
+			} else {
+				startTypeOut(
+					element,
+					Object.values(modelProjects[projectIndex])[index],
+					30,
+				);
 			}
-			else {
-				startTypeOut(element, Object.values(modelProjects[projectIndex])[index], 30);
-			}
-		}, element.typingDelay)
+		}, element.typingDelay);
 	});
 }
 
@@ -368,13 +393,17 @@ function startTypingNewModelInfo() {
 function loadNewModelIntoModelViewer() {
 	modelViewer.removeAttribute("auto-rotate");
 	modelViewer.showPoster();
-	setTimeout(async () => { // Delay the loading of a model in order to avoid the framerate drop that comes with trying to load it.
-		modelViewer.src =  `3DProjects/${modelProjects[projectIndex].folder}/${modelProjects[projectIndex].model}`;
-		let checkLoad = setInterval(()=> {
-			if(modelViewer.loaded) {
+	setTimeout(async () => {
+		// Delay the loading of a model in order to avoid the framerate drop that comes with trying to load it.
+		modelViewer.src = `3DProjects/${modelProjects[projectIndex].folder}/${modelProjects[projectIndex].model}`;
+		let checkLoad = setInterval(() => {
+			if (modelViewer.loaded) {
 				modelViewer.resetTurntableRotation();
 				modelViewer.cameraOrbit = modelProjects[projectIndex].initialOrbit;
-				modelViewer.setAttribute("exposure", modelProjects[projectIndex].exposure);
+				modelViewer.setAttribute(
+					"exposure",
+					modelProjects[projectIndex].exposure,
+				);
 				modelViewer.dismissPoster();
 				clearInterval(checkLoad);
 			}
@@ -388,35 +417,34 @@ function loadNewModelIntoModelViewer() {
  * @param {number} z Which thumbnail to add
  */
 function addAdditionalOptions(z = 0) {
-	if(z < modelProjects[projectIndex].thumbnails.length) {
-		let link = document.createElement('a');
-		let option = document.createElement('img');
+	if (z < modelProjects[projectIndex].thumbnails.length) {
+		let link = document.createElement("a");
+		let option = document.createElement("img");
 		link.href = "#webGLViewer";
-		link.appendChild(option)
+		link.appendChild(option);
 		additionalOptionsContainer.appendChild(link);
 		option.src = `3DProjects/${modelProjects[projectIndex].folder}/images/thumbnails/${modelProjects[projectIndex].thumbnails[z]}`;
 		option.onclick = () => clickManager(z - 1);
 		option.loading = "eager";
-		fadeIn(option)
-		z++
+		fadeIn(option);
+		z++;
 		setTimeout(() => addAdditionalOptions(z), 50);
 		// update to add all right away but fade in at a different speeds
 	}
 }
 
 /**
- *	ClickManager determines which full size image to display in the viewing area. 
+ *	ClickManager determines which full size image to display in the viewing area.
  *	It's called when the user clicks on the next or previous buttons or when they click on a thumbnail.
  *	@param {*} number The array index of the full size image to load. 'next' and 'previous are also an option.
  */
 function clickManager(number) {
-	if(number == 'next' && thumbnailClicked < imgs[projectIndex].length - 1) {
+	if (number == "next" && thumbnailClicked < imgs[projectIndex].length - 1) {
 		thumbnailClicked++;
-	}
-	else if(number == 'previous' && thumbnailClicked > -1) {
+	} else if (number == "previous" && thumbnailClicked > -1) {
 		thumbnailClicked--;
 	}
-	if(number != 'next' && number != 'previous') {
+	if (number != "next" && number != "previous") {
 		thumbnailClicked = number - 1;
 	}
 	CanvasManager(thumbnailClicked);
@@ -428,10 +456,9 @@ function clickManager(number) {
  * @param {number} clicked if clicked is -1 fade in the modelviewer, otherwise, fade out
  */
 function CanvasManager(clicked) {
-	if(clicked === -1) {
+	if (clicked === -1) {
 		fadeIn(modelViewer);
-	}
-	else {
+	} else {
 		fadeOut(modelViewer);
 	}
 }
@@ -441,17 +468,16 @@ function CanvasManager(clicked) {
  * @param {number} clicked the thumbnail that was clicked
  */
 function loadingManager(clicked) {
-	imgs[projectIndex].forEach((item, index) =>	{
-		if(index === clicked) {
+	imgs[projectIndex].forEach((item, index) => {
+		if (index === clicked) {
 			fadeIn(item);
-		}
-		else {
+		} else {
 			fadeOut(item);
 		}
 	});
 
 	// If the clicked item has already been loaded, and the clicked item isn't the modelviewer
-	if(!imgLoaded[projectIndex][clicked] && clicked >= 0){
+	if (!imgLoaded[projectIndex][clicked] && clicked >= 0) {
 		loadAndAddImage(viewerImg, clicked);
 		imgLoaded[projectIndex][clicked] = true;
 	}
@@ -465,14 +491,21 @@ function loadingManager(clicked) {
 function prepareProjects(item, projIndex) {
 	imgs[projIndex] = new Array(item.images.length);
 	imgLoaded[projIndex] = new Array(item.images.length);
-	item.images.forEach((innerItem, imageIndex) => prepareDisplayImgs(innerItem, imageIndex, projIndex));
+	item.images.forEach((innerItem, imageIndex) =>
+		prepareDisplayImgs(innerItem, imageIndex, projIndex),
+	);
 
 	const element = document.getElementById(item.uniqueName);
-	if(element) {
-		element.addEventListener('click', () => modelProjectManager(item.uniqueName), passive);
-	}
-	else {
-		console.error(`Missing link to 3D Model with uniqueName: ${item.uniqueName}`)
+	if (element) {
+		element.addEventListener(
+			"click",
+			() => modelProjectManager(item.uniqueName),
+			passive,
+		);
+	} else {
+		console.error(
+			`Missing link to 3D Model with uniqueName: ${item.uniqueName}`,
+		);
 	}
 }
 
@@ -483,7 +516,7 @@ function prepareProjects(item, projIndex) {
  * @param {number} projIndex The index of the 3D model project object from 3DProjects.json
  */
 function prepareDisplayImgs(item, imageIndex, projIndex) {
-	imgs[projIndex][imageIndex] = new Image ();
+	imgs[projIndex][imageIndex] = new Image();
 }
 
 /**
@@ -496,19 +529,19 @@ async function loadAndAddImage(imgContainer, number) {
 	let projectFolder = modelProjects[projectIndex].folder;
 	let imageSrc;
 
-	if(avifSupported) {
+	if (avifSupported) {
 		imageSrc = modelProjects[projectIndex].avifImages[number];
-	}
-	else {
+	} else {
 		imageSrc = modelProjects[projectIndex].images[number];
 	}
-	
+
 	const modelImg = `3DProjects/${projectFolder}/images/${imageSrc}`;
 	loadingBarWidth = 0;
 	await Promise.all([
-		fetchImg(modelImg)
-		.then((url) => {img.src = url}),
-		startLoadingBarUpdate()
+		fetchImg(modelImg).then((url) => {
+			img.src = url;
+		}),
+		startLoadingBarUpdate(),
 	]).then(() => {
 		imgContainer.appendChild(img);
 		fadeIn(img);
@@ -524,7 +557,7 @@ async function fetchImg(src) {
 	return new Promise(async (resolve) => {
 		let response = await fetch(src);
 		const reader = response.body.getReader();
-		const contentLength = +response.headers.get('Content-Length');
+		const contentLength = +response.headers.get("Content-Length");
 		let receivedLength = 0; // received that many bytes at the moment
 		let chunks = []; // array of received binary chunks (comprises the body)
 
@@ -536,15 +569,15 @@ async function fetchImg(src) {
 		 * @returns {Blob} Blob image data
 		 */
 		function imgStreamReader() {
-			return  reader.read().then(({value, done}) => {
+			return reader.read().then(({ value, done }) => {
 				if (done) {
 					return new Blob(chunks);
-				  }
+				}
 				chunks.push(value);
 				receivedLength += value.length;
 				loadingBarWidth = parseInt((receivedLength / contentLength) * 100);
 				return imgStreamReader();
-			})
+			});
 		}
 	});
 }
@@ -557,11 +590,14 @@ function fullscreenOpen() {
 	let elem = document.documentElement;
 	if (elem.requestFullscreen) {
 		elem.requestFullscreen();
-	} else if (elem.mozRequestFullScreen) { /* Firefox */
+	} else if (elem.mozRequestFullScreen) {
+		/* Firefox */
 		elem.mozRequestFullScreen();
-	} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+	} else if (elem.webkitRequestFullscreen) {
+		/* Chrome, Safari & Opera */
 		elem.webkitRequestFullscreen();
-	} else if (elem.msRequestFullscreen) { /* IE/Edge */
+	} else if (elem.msRequestFullscreen) {
+		/* IE/Edge */
 		elem.msRequestFullscreen();
 	}
 	viewport.classList.add("fullscreenViewer3d");
@@ -582,7 +618,6 @@ function fullscreenOpen() {
  * @todo apply styles through css classes rather than through javascript
  */
 function fullscreenClose() {
-
 	function fullscreenCloseHelper() {
 		viewport.classList.add("defaultViewer3D");
 		viewport.style.width = "";
@@ -600,24 +635,26 @@ function fullscreenClose() {
 	if (document.exitFullscreen) {
 		fullscreenCloseHelper();
 		document.exitFullscreen();
-	} else if (document.mozCancelFullScreen) { /* Firefox */
+	} else if (document.mozCancelFullScreen) {
+		/* Firefox */
 		fullscreenCloseHelper();
 		document.mozCancelFullScreen();
-	} else if (document.webkitExitFullscreen) { /* Chrome, Safari & Opera */
+	} else if (document.webkitExitFullscreen) {
+		/* Chrome, Safari & Opera */
 		fullscreenCloseHelper();
 		document.webkitExitFullscreen();
-	} else if (document.msExitFullscreen) { /* IE/Edge */
+	} else if (document.msExitFullscreen) {
+		/* IE/Edge */
 		fullscreenCloseHelper();
 		document.msExitFullscreen();
-	}
-	else {
+	} else {
 		fullscreenCloseHelper();
 	}
 }
 
 /**
  * Update the width of the loading bar based on the progress
- * @param {number} width the current % width of the loading bar can range between 0% and 100% 
+ * @param {number} width the current % width of the loading bar can range between 0% and 100%
  */
 function loadingBarUpdate(width) {
 	loadingBar.style.width = `calc(${width}% - 32px - 10px`;
@@ -631,12 +668,14 @@ function loadingBarUpdate(width) {
 async function startLoadingBarUpdate() {
 	new Promise((resolve) => {
 		fadeIn(loadingBar);
-		let ls = setTimeout(()=>{fadeIn(loadingSpinner)}, 200);
+		let ls = setTimeout(() => {
+			fadeIn(loadingSpinner);
+		}, 200);
 		let checkProgress = setInterval(frame, 10);
 		function frame() {
 			if (loadingBarWidth >= 100) {
 				clearInterval(checkProgress);
-				clearInterval(ls)
+				clearInterval(ls);
 				fadeOut(loadingBar);
 				fadeOut(loadingSpinner);
 				resolve();
@@ -653,18 +692,20 @@ async function startLoadingBarUpdate() {
  * @param {string} txt The text to add to element which will be shown on the page
  * @param {number} speed The speed to type the text out
  */
-async function startTypeOut(textTypingObj, txt, speed) { 
+async function startTypeOut(textTypingObj, txt, speed) {
 	fadeIn(textTypingObj.elm);
-	if(txt.length < 50) {
-		textTypingObj.typer = setTimeout(() => typeLetter(textTypingObj, txt, speed), speed);
-	}
-	else {
+	if (txt.length < 50) {
+		textTypingObj.typer = setTimeout(
+			() => typeLetter(textTypingObj, txt, speed),
+			speed,
+		);
+	} else {
 		textTypingObj.elm.innerHTML = txt;
 	}
 }
 
 /**
- * Recursively add the next letter from a string to the given element 
+ * Recursively add the next letter from a string to the given element
  * @param {element} elm element to add a letter to
  * @param {string} txt string which contains the letter that will be added
  * @param {number} speed delay between each letter being typed
@@ -680,35 +721,35 @@ async function typeLetter(elm, txt, speed, i = 0) {
 
 /**
  * Animate the opacity of an element to fade out
- * @param {element} element DOM Element to be faded out 
+ * @param {element} element DOM Element to be faded out
  * @param {boolean} remove if set to false, will not set element to display none
  */
 function fadeOut(element, remove = true) {
 	element.style.opacity = 0;
 	element.classList.remove("fadeOut");
 	element.classList.add("fadeOut");
-	if(element.classList.contains("fadeIn")) {
+	if (element.classList.contains("fadeIn")) {
 		element.classList.remove("fadeIn");
 	}
-	if(remove) {
+	if (remove) {
 		setTimeout(() => {
-			if(element.classList.contains("fadeOut")) {
+			if (element.classList.contains("fadeOut")) {
 				element.style.display = "none";
 			}
-		}, 300);	
+		}, 300);
 	}
 }
 
 /**
  * Animate the opacity of an element to fade in
- * @param {element} element DOM Element to be faded in 
+ * @param {element} element DOM Element to be faded in
  * @param {boolean} remove if set to false, will not change display to block
  */
 function fadeIn(element, add = true, displayType = "block") {
 	element.style.opacity = 1;
 	element.classList.add("fadeIn");
 	element.classList.remove("fadeOut");
-	if(add) {
+	if (add) {
 		element.style.display = displayType;
 	}
 }
@@ -718,10 +759,9 @@ function fadeIn(element, add = true, displayType = "block") {
  * @param {string} id the ID of the text element to show more.
  */
 function showMore(element) {
-	if(element.classList.contains("showMore")) {
+	if (element.classList.contains("showMore")) {
 		element.classList.remove("showMore");
-	}
-	else {
+	} else {
 		element.classList.add("showMore");
 	}
 }
@@ -729,28 +769,33 @@ function showMore(element) {
 function moreButtonClickHandler(event) {
 	const et = event.target;
 	let content;
-	if(et.classList.contains("moreButton")) {
+	if (et.classList.contains("moreButton")) {
 		content = et.childNodes[1].classList;
-	}
-	else if(et.classList.contains("moreButtonContent") || et.classList.contains("lessButtonContent")) {
+	} else if (
+		et.classList.contains("moreButtonContent") ||
+		et.classList.contains("lessButtonContent")
+	) {
 		content = event.target.classList;
 	}
 
-	if(content.contains("moreButtonContent")) {
-		content.remove("moreButtonContent")
-		content.add("lessButtonContent")
+	if (content.contains("moreButtonContent")) {
+		content.remove("moreButtonContent");
+		content.add("lessButtonContent");
+	} else if (content.contains("lessButtonContent")) {
+		content.remove("lessButtonContent");
+		content.add("moreButtonContent");
 	}
-	else if(content.contains("lessButtonContent")) {
-		content.remove("lessButtonContent")
-		content.add("moreButtonContent")
-	}
-	if(et.previousElementSibling != null) {
+	if (et.previousElementSibling != null) {
 		if (et.previousElementSibling.classList.contains("showMoreHidden")) {
 			showMore(et.previousElementSibling);
 		}
 	}
-	if(et.parentElement.previousElementSibling != null) {
-		if (et.parentElement.previousElementSibling.classList.contains("showMoreHidden")) {
+	if (et.parentElement.previousElementSibling != null) {
+		if (
+			et.parentElement.previousElementSibling.classList.contains(
+				"showMoreHidden",
+			)
+		) {
 			showMore(et.parentElement.previousElementSibling);
 		}
 	}
