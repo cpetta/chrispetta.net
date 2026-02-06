@@ -47,6 +47,14 @@ const fadeInObjects = window.document.querySelectorAll(".fadeInOnScroll");
 const moreButtons = window.document.querySelectorAll(".moreButton");
 const placeholderImgs = window.document.querySelectorAll(".placeholderImg");
 
+// -----------------------------
+// Fadein on scroll Config
+// -----------------------------
+const threshold = 0.40;
+const base_animation_delay_offset = 0.02;
+const intersecting_entry_list = [];
+const observer = createObserver();
+
 /**
  * Array which contains all the information for a given model.
  */
@@ -190,20 +198,20 @@ function navToggle(closeNav = false) {
  * Create the intersection observer object which is used to lazy load images and apply the fadeIn css style when an element becomes visible on the screen
  */
 function createObserver() {
-	let observer;
-	const options = {
+	const _observer = new IntersectionObserver(handleIntersect, {
 		root: null,
 		rootMargin: "0px",
-		threshold: 0.4
-	}
-	observer = new IntersectionObserver(handleIntersect, options);
-	for (const element of fadeInObjects) {
-		observer.observe(element);
-	}
-	observer.observe(modelingSection);
-	observer.observe(modelingLabel);
-	observer.observe(viewport);
-	observer.observe(nav);
+		threshold: threshold
+	});
+
+
+	fadeInObjects.forEach(element => _observer.observe(element));
+	_observer.observe(modelingSection);
+	_observer.observe(modelingLabel);
+	_observer.observe(viewport);
+	_observer.observe(nav);
+
+	return _observer;
 }
 
 /**
@@ -211,25 +219,47 @@ function createObserver() {
  * @param {*} entries item that the observer is observing
  * @param {*} observer IntersectionObserver object
  */
-function handleIntersect(entries, observer) {
-	for (const entry of entries) {
-		if(entry.isIntersecting) {
-			if(entry.target.classList.contains("fadeInOnScroll")) {
-				queueFadeInOnScroll(entry.target.classList);
-				observer.unobserve(entry.target);
-			}
-			if(entry.target === nav) {
-				if(firstScroll) {
-					gotoTopBtn.classList.remove("zoomIn");
-					gotoTopBtn.classList.add("zoomOut");
+async function handleIntersect(entries, observer) {
+	const nav_entry = entries.filter(entry => entry.target === nav);
 
-				}
-			}
+	// Add entries to intersecting_entry_list based on their position on the screen
+	for(const entry of entries) {
+		if(!entry.isIntersecting || entry.target === nav) {
+			continue;
 		}
-		else if(entry.target === nav) {
-			firstScroll = true;
-			gotoTopBtn.classList.remove("zoomOut");
-			gotoTopBtn.classList.add("zoomIn");
+
+		const i = Math.floor(entry.boundingClientRect.top + entry.boundingClientRect.left);
+
+		if(intersecting_entry_list[i] instanceof Array === false) {
+			intersecting_entry_list[i] = [entry];
+		} else {
+			intersecting_entry_list[i].push(entry);
+		}
+	}
+
+	// Handle goto top button animation
+	if(nav_entry[0]?.isIntersecting) {
+		gotoTopBtn.classList.remove("zoomIn");
+		gotoTopBtn.classList.add("zoomOut");
+	}
+	else {
+		gotoTopBtn.classList.remove("zoomOut");
+		gotoTopBtn.classList.add("zoomIn");
+	}
+
+	// Apply animations with staggered delays
+	let entry_count = 0;
+	for(const set of intersecting_entry_list) {
+		if(!set) {
+			continue;
+		}
+		for(const entry of set) {
+			const animation_delay_offset = (base_animation_delay_offset * entry_count) / 3;
+			const element = entry.target;
+			element.style.animationDelay = animation_delay_offset + "s";
+			element.classList.add("-fade-in-animation");
+			observer.unobserve(element);
+			entry_count++;
 		}
 	}
 }
@@ -681,22 +711,6 @@ function fadeIn(element, add = true, displayType = "block") {
 	if(add) {
 		element.style.display = displayType;
 	}
-}
-
-/**
- * Takes the classlist of an element, applys the fadeInOnScroll2 class. (causing a fadein animation)
- * @param {DOMTokenList} element classlist of the element
- */
- function queueFadeInOnScroll(element) {
-	let delay = fadeInOnScrollQueue * 50;
-	// If more than 10 animations are queued, start new animations with a shorter delay.
-	if(delay > 1400) delay = fadeInOnScrollQueue * 10;
-	setTimeout(() => {
-		element.remove("fadeInOnScroll");
-		element.add("fadeInOnScroll2");
-		fadeInOnScrollQueue--;
-	}, delay);
-	fadeInOnScrollQueue++;
 }
 
 /**

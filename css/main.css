@@ -151,7 +151,7 @@
 	max-width: 700px;
 	padding: 25px;
 	padding-bottom: 0px;
-	
+
 }
 
 /* 3D projects */
@@ -688,20 +688,33 @@ model-viewer {
 }
 
 .fadeIn {
-	animation: fadeIn 0.3s linear;
+	animation: fadeIn 0.5s ease;
+}
+
+.fadeOut {
+	animation: fadeout 0.3s linear;
 }
 
 .fadeInOnScroll {
 	opacity: 0;
 }
 
-.fadeInOnScroll2 {
-	animation: fadeIn 0.5s linear;
-	opacity: 1;
+@media (prefers-reduced-motion:no-preference) {
+	.fadeInOnScroll {
+		animation: fade_in_on_scroll .4s ease forwards;
+		animation-play-state: paused;
+	}
 }
 
-.fadeOut {
-	animation: fadeout 0.3s linear;
+@media (prefers-reduced-motion:reduce) {
+	.fadeInOnScroll {
+		animation: fade_in .4s ease forwards;
+		animation-play-state: paused;
+	}
+}
+
+.-fade-in-animation {
+	animation-play-state: running;
 }
 
 @keyframes fadeIn {
@@ -721,6 +734,18 @@ model-viewer {
 
 	100% {
 		opacity: 0;
+	}
+}
+
+@keyframes fade_in_on_scroll {
+	from {
+		opacity: 0;
+		transform: translateY(clamp(.5rem, 7%, 1rem))
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0)
 	}
 }
 
