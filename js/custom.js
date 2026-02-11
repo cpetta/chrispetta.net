@@ -54,7 +54,7 @@ const placeholderImgs = window.document.querySelectorAll(".placeholderImg");
 // -----------------------------
 const threshold = 0.4;
 const base_animation_delay_offset = 0.02;
-const intersecting_entry_list = [];
+let intersecting_entry_list = [];
 const observer = createObserver();
 
 /**
@@ -241,7 +241,7 @@ async function handleIntersect(entries, observer) {
 		}
 
 		const i = Math.floor(
-			entry.boundingClientRect.top + entry.boundingClientRect.left,
+			Math.abs(entry.boundingClientRect.top) + Math.abs(entry.boundingClientRect.left),
 		);
 
 		if (intersecting_entry_list[i] instanceof Array === false) {
@@ -276,6 +276,8 @@ async function handleIntersect(entries, observer) {
 			entry_count++;
 		}
 	}
+
+	intersecting_entry_list = [];
 }
 
 /**
