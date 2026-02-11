@@ -267,8 +267,7 @@ async function handleIntersect(entries, observer) {
 			continue;
 		}
 		for (const entry of set) {
-			const animation_delay_offset =
-				(base_animation_delay_offset * entry_count) / 3;
+			const animation_delay_offset = base_animation_delay_offset * entry_count;
 			const element = entry.target;
 			element.style.animationDelay = animation_delay_offset + "s";
 			element.classList.add("-fade-in-animation");
