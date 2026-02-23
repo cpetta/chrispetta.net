@@ -54,8 +54,6 @@
 		<!-- Apple Specific -->
 		<link rel="apple-touch-icon" href="images/icons/icon-180.png" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-
-		<!-- Open Graph -->
 		<meta name="og:type" content="website" />
 		<meta property="og:site_name" content="Chris Petta's Portfolio" />
 		<meta property="og:title" content="Chris Petta's Portfolio" />
@@ -65,7 +63,7 @@
 		/>
 		<meta
 			property="og:image"
-			content="https://chrispetta.net/images/profile-no-bg-900.png"
+			content="https://chrispetta.net/images/chris.jpg"
 		/>
 		<meta property="og:image:type" content="image/jpeg" />
 		<meta property="og:image:width" content="600" />
@@ -74,7 +72,6 @@
 		<meta property="og:url" content="https://chrispetta.net/index.html" />
 		<meta property="og:locale" content="en_US" />
 		<meta name="twitter:card" content="summary" />
-
 		<meta itemprop="name" content="Chris Petta's Portfolio" />
 		<meta
 			itemprop="description"
@@ -596,20 +593,31 @@
 					<picture>
 						<source
 							srcset="
-								images/profile-no-bg-600.avif 1x,
-								images/profile-no-bg-900.avif 2x
+								images/chris-300.avif  1x,
+								images/chris-600.avif  2x,
+								images/chris-900.avif  3x,
+								images/chris-1200.avif 4x
 							"
+							media="only screen and (max-width: 365px)"
 							type="image/avif"
 						/>
+						<source
+							srcset="images/chris-600.avif 1x, images/chris-1200.avif 2x"
+							media="only screen and (min-width: 365px)"
+							type="image/avif"
+						/>
+						<source srcset="images/chris.jpg 1x" type="image/jpeg" />
 						<img
-							src="images/profile-no-bg-900.png"
-							alt="Picture of Chris"
+							src="images/chris.jpg"
+							alt="Picture of Chris wearing a blue and white checkered dress shirt."
 							loading="eager"
-							height="600"
+							height="673"
 							width="600"
 						/>
 					</picture>
-					<!--<div style="grid-row: 2;text-align: center;font-size: 8pt;"></div>-->
+					<div style="grid-row: 2; text-align: center; font-size: 8pt">
+						*Quality profile pictures are hard to come by. - 2018
+					</div>
 				</div>
 
 				<div id="aboutText">
